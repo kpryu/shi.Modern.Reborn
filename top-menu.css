@@ -24,7 +24,7 @@ body > .l-top_menu-v2 {
 }
 
 .l-top_menu-v2 > .menu-logo > .logo-container > .glyph {
-  background-image: url('https://raw.githubusercontent.com/kpryu/shi.Modern.Reborn/main/assets/shiki-black.png');
+  filter: invert(1);
 }
 
 .l-top_menu-v2 > .menu-logo > .logo-container:hover > .glyph {
