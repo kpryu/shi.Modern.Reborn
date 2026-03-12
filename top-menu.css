@@ -1,16 +1,19 @@
 :root {
   --menu-color: #fff;
+  --menu-hover: #3f8268;
   --menu-border: #ddd;
-  --menu-hover: rgba(63, 130, 104, .14);
-  --menu-border-hover: rgba(63, 130, 104, .05);
   --menu-shadow: rgba(0, 0, 0, .22);
-  --menu-text-color: #222;
-  --menu-text-hover: #3f8268;
-  --menu-search-field: #f2f2f2;
+  --menu-text: #222;
+  --menu-exit: #d00000;
+  --menu-submenu: #fff;
+  --menu-submenu-hover: #3f8268;
+  --menu-submenu-border: #ddd;
+  --menu-submenu-text: #222;
+  --menu-submenu-search: #eee;
 }
 
 body > .l-top_menu-v2 {
-  color: var(--menu-text-color);
+  color: var(--menu-text);
   background: var(--menu-color);
   border-bottom: 1px solid var(--menu-border);
   box-shadow: 0 0 20px 0 var(--menu-shadow);
@@ -18,17 +21,9 @@ body > .l-top_menu-v2 {
 
 .l-top_menu-v2 .global-search > .search-results,
 .l-top_menu-v2 > .menu-logo > .menu-dropdown > .submenu {
-  background: var(--menu-color);
-  border-color: var(--menu-border);
+  background: var(--menu-submenu);
+  border-color: var(--menu-submenu-border);
   box-shadow: 0 3px 10px -5px var(--menu-shadow);
-}
-
-.l-top_menu-v2 > .menu-logo > .logo-container > .glyph {
-  filter: invert(1);
-}
-
-.l-top_menu-v2 > .menu-logo > .logo-container:hover > .glyph {
-  filter: invert(.5) sepia(1) saturate(5) hue-rotate(105deg) contrast(.5) brightness(.75);
 }
 
 .l-top_menu-v2 .global-search .search-results:before,
@@ -38,6 +33,64 @@ body > .l-top_menu-v2 {
 .l-top_menu-v2 > .menu-dropdown.profile > span > a:before,
 .l-top_menu-v2 > .menu-dropdown.profile > span > a {
   background: transparent;
+}
+
+.l-top_menu-v2 > .menu-icon.mail,
+.l-top_menu-v2 > .menu-icon.forum,
+.l-top_menu-v2 .menu-dropdown.main .submenu,
+.l-top_menu-v2 .submenu > a.icon-mail span.unread,
+.l-top_menu-v2 > .menu-icon.mail[data-count]:after,
+.l-top_menu-v2 > .menu-dropdown.profile > .submenu a,
+.l-top_menu-v2 .global-search > .field .search-marker,
+.l-top_menu-v2 .submenu > a.icon-mail span.unread span,
+.l-top_menu-v2 > .menu-logo > .menu-dropdown.main .submenu-triangle {
+  color: inherit;
+}
+
+.l-top_menu-v2 .global-search > .field input,
+.l-top_menu-v2 .global-search > .search-results,
+.l-top_menu-v2 > .menu-logo > .menu-dropdown > .submenu a,
+.l-top_menu-v2 .global-search .search-results .search-mode,
+.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item,
+.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item > .info .name .b-link,
+.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item > .info .line .key {
+  color: var(--menu-submenu-text);
+}
+
+.l-top_menu-v2 > .menu-icon.mail:hover,
+.l-top_menu-v2 > .menu-icon.forum:hover,
+.l-top_menu-v2 > .menu-logo > .logo-container:hover,
+.l-top_menu-v2 > .menu-dropdown.profile > .submenu a:hover,
+.l-top_menu-v2 .global-search > .field .search-marker:hover,
+.l-top_menu-v2 > .menu-logo > .menu-dropdown.main .submenu-triangle:hover,
+.l-top_menu-v2 > .menu-logo > .menu-dropdown.main.active .submenu-triangle {
+  color: var(--menu-hover);
+  background: rgba(from var(--menu-hover) r g b / .2);
+}
+
+.l-top_menu-v2 > .menu-logo > .menu-dropdown > .submenu a:hover,
+.l-top_menu-v2 .global-search .search-results .search-mode:hover,
+.l-top_menu-v2 .global-search .search-results .search-mode.active,
+.l-top_menu-v2 .global-search .search-results .search-mode.active:hover,
+.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item.active,
+.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item.active > .info .name .b-link,
+.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item.active > .info .line .key {
+  color: var(--menu-submenu-hover);
+}
+
+.l-top_menu-v2 > .menu-logo > .menu-dropdown > .submenu a:hover,
+.l-top_menu-v2 .global-search .search-results .search-mode:hover,
+.l-top_menu-v2 .global-search .search-results .search-mode.active:hover,
+.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item.active {
+  background: rgba(from var(--menu-submenu-hover) r g b / .12);
+}
+
+.l-top_menu-v2 > .menu-logo > .logo-container > .glyph {
+  filter: invert(1);
+}
+
+.l-top_menu-v2 > .menu-logo > .logo-container:hover > .glyph {
+  filter: invert(.5) sepia(1) saturate(5) hue-rotate(105deg) contrast(.5) brightness(.75);
 }
 
 .l-top_menu-v2 > .menu-dropdown.profile > span > a > img {
@@ -57,41 +110,10 @@ body > .l-top_menu-v2 {
 .l-top_menu-v2 > .menu-dropdown.profile > span > a:hover:before {
   height: 38px;
   width: 38px;
-  background: var(--menu-text-hover);
 }
 
-.l-top_menu-v2 > .menu-icon.mail,
-.l-top_menu-v2 > .menu-icon.forum,
-.l-top_menu-v2 .global-search > .field input,
-.l-top_menu-v2 .menu-dropdown.main .submenu,
-.l-top_menu-v2 .global-search > .search-results,
-.l-top_menu-v2 .submenu > a.icon-mail span.unread,
-.l-top_menu-v2 > .menu-icon.mail[data-count]:after,
-.l-top_menu-v2 > .menu-dropdown.profile > .submenu a,
-.l-top_menu-v2 .global-search > .field .search-marker,
-.l-top_menu-v2 .submenu > a.icon-mail span.unread span,
-.l-top_menu-v2 > .menu-logo > .menu-dropdown > .submenu a,
-.l-top_menu-v2 .global-search .search-results .search-mode,
-.l-top_menu-v2 > .menu-logo > .menu-dropdown.main .submenu-triangle,
-.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item,
-.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item > .info .name .b-link,
-.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item > .info .line .key {
-  color: inherit;
-}
-
-.l-top_menu-v2 > .menu-icon.mail:hover,
-.l-top_menu-v2 > .menu-icon.forum:hover,
-.l-top_menu-v2 > .menu-logo > .logo-container:hover,
-.l-top_menu-v2 > .menu-dropdown.profile > .submenu a:hover,
-.l-top_menu-v2 .global-search > .field .search-marker:hover,
-.l-top_menu-v2 > .menu-logo > .menu-dropdown > .submenu a:hover,
-.l-top_menu-v2 .global-search .search-results .search-mode:hover,
-.l-top_menu-v2 .global-search .search-results .search-mode.active:hover,
-.l-top_menu-v2 > .menu-logo > .menu-dropdown.main .submenu-triangle:hover,
-.l-top_menu-v2 > .menu-logo > .menu-dropdown.main.active .submenu-triangle,
-.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item.active {
-  color: var(--menu-text-hover);
-  background: var(--menu-hover);
+.l-top_menu-v2 .global-search > .search-results .inner {
+  scrollbar-color: var(--menu-submenu-hover) var(--menu-submenu-border);
 }
 
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu > .icon-mail:hover > .text > .unread > span {
@@ -99,36 +121,36 @@ body > .l-top_menu-v2 {
 }
 
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu > .icon-mail > .text > .unread > span {
-  background: var(--menu-search-field);
+  background: var(--menu-border);
 }
 
+.l-top_menu-v2 > .menu-dropdown.profile > span > a:hover:before,
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu > .icon-mail:hover > .text > .unread > span {
-  background: var(--menu-text-hover);
-}
-
-.l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item.active > .info .name .b-link {
-  color: var(--menu-text-hover);
+  background: var(--menu-hover);
 }
 
 .l-top_menu-v2 > .menu-logo > .menu-dropdown > .submenu a:hover {
-  border-color: var(--menu-border-hover);
+  border-color: rgba(from var(--menu-submenu-hover) r g b / .06);
 }
 
 .l-top_menu-v2 .global-search .search-results .search-mode.active {
-  color: var(--menu-text-hover);
-  background: rgba(from var(--menu-text-hover) r g b / .24);
+  background: rgba(from var(--menu-submenu-hover) r g b / .24);
 }
 
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu > .icon-sign_out:hover {
-  color: var(--red);
-  background: rgba(from var(--red) r g b / .1);
+  color: var(--menu-exit);
+  background: rgba(from var(--menu-exit) r g b / .2);
 }
 
 .l-top_menu-v2 > .global-search > .field input {
-  background: var(--menu-search-field);
-  border-color: var(--menu-border);
+  background: var(--menu-submenu-search);
+  border-color: var(--menu-submenu-border);
 }
 
 .l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item > .info .name .b-separator {
-  color: var(--menu-border);
+  color: var(--menu-submenu-border);
+}
+
+.l-top_menu-v2 > .menu-icon.mail[data-count]:after {
+  background: var(--menu-color);
 }
