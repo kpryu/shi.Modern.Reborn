@@ -38,6 +38,7 @@ body > .l-top_menu-v2 {
 .l-top_menu-v2 > .menu-icon.mail,
 .l-top_menu-v2 > .menu-icon.forum,
 .l-top_menu-v2 .menu-dropdown.main .submenu,
+.l-top_menu-v2 > .menu-icon.contest[data-count],
 .l-top_menu-v2 .submenu > a.icon-mail span.unread,
 .l-top_menu-v2 > .menu-icon.mail[data-count]:after,
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu a,
@@ -59,6 +60,7 @@ body > .l-top_menu-v2 {
 
 .l-top_menu-v2 > .menu-icon.mail:hover,
 .l-top_menu-v2 > .menu-icon.forum:hover,
+.l-top_menu-v2 > .menu-icon.contest[data-count]:hover,
 .l-top_menu-v2 > .menu-logo > .logo-container:hover,
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu a:hover,
 .l-top_menu-v2 .global-search > .field .search-marker:hover,
@@ -85,6 +87,11 @@ body > .l-top_menu-v2 {
   background: rgba(from var(--menu-submenu-hover) r g b / .12);
 }
 
+.l-top_menu-v2 > .menu-icon.contest[data-count]:after {
+  background: var(--menu-text);
+  outline-color: var(--menu-color);
+}
+
 .l-top_menu-v2 > .menu-logo > .logo-container > .glyph {
   filter: invert(1);
 }
@@ -103,7 +110,7 @@ body > .l-top_menu-v2 {
   position: absolute;
   width: 34px;
   height: 34px;
-  border-radius: var(--brdr-l);
+  border-radius: var(--brdr-lg);
   transition: .2s ease;
 }
 
