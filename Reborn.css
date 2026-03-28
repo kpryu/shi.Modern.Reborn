@@ -10060,24 +10060,3 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
     font-size: 18px;
   }
 }
-
-
-
-/* Настройки /
-.p-profiles.p-profiles-show .profile-head > .c-brief > .avatar {
-  background-image: url('https://cdn.donmai.us/original/90/84/__sonetto_reverse_1999_drawn_by_mai_chuan__90844778cc3c7e365acde0fcbcf270f9.jpg');
-}
-
-.p-profiles.p-profiles-show .profile-head > .c-brief > .head.misc {
-  background: linear-gradient(7deg, #3f8268, #73a162);
-}
-
-/* Активность */
-.p-profiles.p-profiles-show .profile-head > .c-info > .c-additionals > b {
-  font-size: 0;
-}
-
-.p-profiles.p-profiles-show .profile-head > .c-info > .c-additionals > b:after {
-  content: 'Я насрал:';
-  font-size: var(--alt-font-size);
-}
