@@ -29,7 +29,7 @@
 }
 
 :root {
-  --avatar: url('https://cdn.donmai.us/original/39/81/__original_drawn_by_mika_pikazo__3981274868964d9319bcfd792752e0d5.png');
+  --avatar: url('https://raw.githubusercontent.com/kpryu/shi.Modern.Reborn/main/assets/no_image.gif');
 
   --font-main: "Nunito Sans", "Zen Kaku Gothic Antique", "Noto Sans KR", sans-serif;
   --font-alt: "Geologica", "Mochiy Pop P One", "Black Han Sans", sans-serif;
@@ -7081,14 +7081,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin: 0;
   border-radius: var(--brdr-lg-tp);
   background-image: var(--avatar);
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition: .4s ease;
-}
-
-.p-profiles.p-profiles-show .profile-head > .c-brief > .avatar:hover {
-  background-size: 104%;
 }
 
 .p-profiles.p-profiles-show .profile-head > .c-brief > .avatar > .profile-actions {
