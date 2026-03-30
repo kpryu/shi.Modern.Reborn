@@ -6,27 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&family=Mochiy+Pop+P+One&family=Black+Han+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons+Round');
-
-.material-icons-round {
-  font-family: "Material Icons Round";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
-}
 
 :root {
   --avatar: url('https://raw.githubusercontent.com/kpryu/shi.Modern.Reborn/main/assets/no_image.gif');
@@ -80,8 +60,7 @@
   --opacity: #091723;
   --shadow: #0e1623;
   
-  --build: 'shi.Modern Reborn dev. 0.3.9';
-  --color-test: rgb(190, 41, 41);
+  --color-test: rgb(150, 51, 66);
 }
 
 :root {
@@ -121,23 +100,23 @@
 }
 
 :root {
-  --brdr-lg: 4px;
-  --brdr-lg-tp: 4px 4px 0 0;
-  --brdr-lg-bt: 0 0 4px 4px;
-  --brdr-lg-lt: 4px 0 0 4px;
-  --brdr-lg-rt: 0 4px 4px 0;
+  --brdr-lrg: 4px;
+  --brdr-lrg-tp: 4px 4px 0 0;
+  --brdr-lrg-bt: 0 0 4px 4px;
+  --brdr-lrg-lt: 4px 0 0 4px;
+  --brdr-lrg-rt: 0 4px 4px 0;
 
-  --brdr-md: 3px;
-  --brdr-md-tp: 3px 3px 0 0;
-  --brdr-md-bt: 0 0 3px 3px;
-  --brdr-md-lt: 3px 0 0 3px;
-  --brdr-md-rt: 0 3px 3px 0;
+  --brdr-mdm: 3px;
+  --brdr-mdm-tp: 3px 3px 0 0;
+  --brdr-mdm-bt: 0 0 3px 3px;
+  --brdr-mdm-lt: 3px 0 0 3px;
+  --brdr-mdm-rt: 0 3px 3px 0;
 
-  --brdr-sl: 2px;
-  --brdr-sl-tp: 2px 2px 0 0;
-  --brdr-sl-bt: 0 0 2px 2px;
-  --brdr-sl-lt: 2px 0 0 2px;
-  --brdr-sl-rt: 0 2px 2px 0;
+  --brdr-sml: 2px;
+  --brdr-sml-tp: 2px 2px 0 0;
+  --brdr-sml-bt: 0 0 2px 2px;
+  --brdr-sml-lt: 2px 0 0 2px;
+  --brdr-sml-rt: 0 2px 2px 0;
 }
 
 @keyframes icon-zoom {
@@ -146,7 +125,7 @@
   }
 }
 
-/* - - - - Глобальные - - - - */ 
+/* ========== Глобальные ========== */ 
 .headline > a:before, .midheadline > a:before, .subheadline > a:before,
 .tipsy-arrow, .tooltip-inner .close, .tooltip-arrow { 
   display: none;
@@ -160,6 +139,11 @@ html {
 ::selection {
   background: rgba(from var(--main-brt) r g b / .7);
   color: color-mix(in srgb, var(--main) 80%, var(--black) 40%);
+}
+
+.turbolinks-progress-bar {
+  background: var(--second) !important;
+  box-shadow: none !important;
 }
 
 .b-ajax:before {
@@ -193,7 +177,7 @@ html {
 .b-ajax:after {
   width: 20px;
   height: 20px;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   transform: perspective(75px) rotateX(0) rotateY(0);
   animation: loading-1  1s infinite linear, loading-2 1.5s infinite linear -0.25s;
 }
@@ -237,7 +221,7 @@ html {
   width: 12px;
   height: 12px;
   background: var(--main);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   box-shadow: 20px 0 rgba(from var(--main) r g b / .2), -20px 0 var(--main);
   animation: loading-3 1s infinite linear alternate;
 }
@@ -258,7 +242,7 @@ html {
   font-family: var(--font-main);
   color: var(--tipsy-text);
   border: 1px solid var(--tipsy-bg);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   padding: .6em 1em;
   background: var(--tipsy-bg);
 }
@@ -270,7 +254,7 @@ html {
   font-size: 14px;
   margin: 0;
   padding: 1em;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   box-shadow: 0 2px 12px rgba(from var(--shadow) r g b / .1);
   overflow: hidden;
 }
@@ -282,7 +266,7 @@ html {
   box-shadow: 0 3px 6px -1px rgba(from var(--second) r g b / .1), 0 10px 36px -4px rgba(from var(--second-brt) r g b / .2);
   background: linear-gradient(135deg, color-mix(in srgb, var(--second) 90%, var(--black) 10%), var(--second));
   font-family: var(--font-alt);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
 }
 
 .toastify.notice {
@@ -305,7 +289,7 @@ html {
   font-family: var(--font-alt);
   font-weight: bold;
   color: var(--white);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   line-height: normal;
 }
 
@@ -358,7 +342,7 @@ body, input, select, button, textarea {
   }
 }
 
-/* - - - Подложка снизу - - - */
+/* ==== Подложка снизу ==== */
 .l-page > .l-footer {
   padding: 1em 0;
   color: var(--text-off);
@@ -411,13 +395,44 @@ body, input, select, button, textarea {
   color: var(--second);
 }
 
+/* === Полоски с инфой === */
+.b-entry-info {
+  display: flex;
+  flex-flow: column;
+}
+
+.b-entry-info .line-container {
+  margin: 0;
+}
+
+.b-entry-info .line .key {
+  color: var(--text-off);
+}
+
+.b-entry-info .line .value {
+  color: var(--text);
+}
+
 /* === Сепараторы === */
 .b-separator {
   font-weight: 100;
   color: var(--text-dead);
 }
 
-/* - - - Ссылки - - - */
+/* === Нотинг Хир :( === */
+.b-nothing_here {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-off);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  gap: 4px;
+}
+
+/* ==== Ссылки ==== */
 a {
   text-decoration: none !important;
 }
@@ -434,7 +449,54 @@ a.b-mention:active s {
   color: var(--extra);
 }
 
-/* - - - Загаловки - - - */
+/* ==== Развернуть ==== */
+.b-height_shortener .expand {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-family: var(--font-alt);
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 8px;
+  border-radius: var(--brdr-lrg);
+  background: var(--clr-dark);
+  color: var(--text-off);
+  transition: .3s ease;
+}
+
+.b-height_shortener .expand:hover {
+  color: var(--text);
+  background: var(--clr-darker);
+}
+
+.b-height_shortener .expand:after {
+  margin-left: auto;
+}
+
+/* ==== Кнопки ==== */
+.b-link_button.dark {
+  color: var(--white);
+  background: var(--main);
+  border: none;
+}
+
+.b-link_button.dark:hover {
+  color: var(--white);
+  background: color-mix(in srgb, var(--main) 80%, var(--main-brt) 40%);
+}
+
+.b-link_button.dark:active {
+  transform: scale(.95);
+}
+
+.b-link_button,
+.b-link_button.mini {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: var(--brdr-sml);
+}
+
+/* ==== Загаловки ==== */
 h2, h3, h4 {
   color: var(--text-brt);
   font-family: var(--font-alt);
@@ -472,7 +534,7 @@ h2, h3, h4 {
 .b-spns-yd_970x90, .b-spns-mt_300x250, .b-spns-mt_240x400, .b-spns-mt_300x600, .b-spns-mt_970x250,
 .b-spns-mt_970x90, .b-spns-advrtr_240x400, .b-spns-advrtr_300x250 {
   margin: 0;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   border: 1px solid var(--clr-brdr);
   min-height: 90px;
   background: var(--clr-dark);
@@ -505,14 +567,22 @@ h2, h3, h4 {
   display: contents;
 }
 
-/* - - - Иконки? - - - */
+/* ====== Иконки? ====== */
 .b-quote-v2:before,
 .b-user16 > a:before,
+.b-nothing_here:after,
+.b-lang_trigger:before,
+.b-critique_votes:before,
 .b-spoiler > label:before,
 .b-subposter-action:before,
+.b-footer_vote .star:before,
 header.head h1 a.back:before,
 header.head h2 a.back:before,
 .b-spoiler_block > span:after,
+.b-height_shortener .expand:after,
+.b-height_shortener .expand:hover:after,
+.b-link_button.arrow-right:after,
+.b-link_button.create-review:before,
 .b-add_to_list .plus:before,
 .b-add_to_list.planned .edit:before,
 .b-add_to_list.watching .edit:before,
@@ -522,16 +592,21 @@ header.head h2 a.back:before,
 .b-add_to_list.dropped .edit:before,
 .b-add_to_list .trigger-arrow:before,
 .l-page .menu-toggler .toggler:before,
+.b-review-topic > .inner header:before,
+.b-footer_vote .vote-group .vote:before,
+.b-status-line .section.main .comments:before,
+.b-reviews_navigation .navigation-node:before,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show)
 .l-page :where(.other-names, .more-info):before,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show)
 .c-info-right .watch-online .b-link_button:after,
 .b-add_to_list.expanded .trigger-arrow:before,
+.b-status-line .section.created_at time:before,
 .b-db_entry > .c-about .contest_winners .medal:before,
-.p-animes-show .block .c-description .b-lang_trigger:before,
 .l-menu .block > .b-external_link.b-menu-line > .b-link:before,
 .p-animes-show .b-db_entry > .c-about .contest_winners .winners:after,
 .c-image > .b-user_rate .expanded-options .option .status-name:before,
+.b-review-topic > .inner > .buttons .main-controls > :where(span, a):before,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .hide-more:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:before {
@@ -553,8 +628,62 @@ header.head h2 a.back:before,
   font-feature-settings: 'liga';
 }
 
+.b-height_shortener .expand:after,
+.b-height_shortener .expand:hover:after {
+  content: 'keyboard_arrow_down';
+  font-size: 20px;
+}
+
+.b-nothing_here:after {
+  content: 'sentiment_dissatisfied';
+  font-size: 20px;
+}
+
+.b-lang_trigger:before {
+  content: 'translate';
+}
+
+.b-link_button.arrow-right:after {
+  content: 'arrow_right';
+}
+
+.b-critique_votes:before,
+.b-footer_vote .star:before {
+  content: 'thumbs_up_down';
+}
+
+.b-status-line .section.main .comments:before {
+  content: 'question_answer';
+}
+
+.b-review-topic .buttons .item-edit:before,
+.b-status-line .section.created_at time:before {
+  content: 'create';
+}
+
+.b-reviews_navigation .navigation-node-all:before {
+  content: 'reviews';
+}
+
+.b-footer_vote .vote-group .vote.yes:before,
+.b-review-topic:has(.positive) > .inner header:before,
+.b-reviews_navigation .navigation-node-positive:before {
+  content: 'thumb_up';
+}
+
+.b-review-topic:has(.neutral) > .inner header:before,
+.b-reviews_navigation .navigation-node-neutral:before {
+  content: 'balance';
+}
+
+.b-footer_vote .vote-group .vote.no:before,
+.b-review-topic:has(.negative) > .inner header:before,
+.b-reviews_navigation .navigation-node-negative:before {
+  content: 'thumb_down';
+}
+
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a[href*="/related"]:before {
-  content: 'compare_arrows';
+  content: 'expand';
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a[href*="/chronology"]:before {
@@ -563,10 +692,6 @@ header.head h2 a.back:before,
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a[href*="/franchise"]:before {
   content: 'polyline';
-}
-
-.p-animes-show .block .c-description .b-lang_trigger:before {
-  content: 'translate';
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info):before {
@@ -581,6 +706,7 @@ header.head h2 a.back:before,
   content: 'add_comment';
 }
 
+.b-link_button.create-review:before,
 .b-subposter-action.new_review:before {
   content: 'rate_review';
 }
@@ -609,12 +735,22 @@ header.head h2 a.back:before,
   content: 'keyboard_double_arrow_left';
 }
 
+.b-review-topic .buttons .item-quote:before,
 .b-quote-v2:before {
   content: 'format_quote';
 }
 
+.b-review-topic .buttons .item-ignore:before,
 .b-spoiler > label:before {
   content: 'visibility_off';
+}
+
+.b-review-topic .buttons .item-reply:before {
+  content: 'reply';
+}
+
+.b-review-topic .buttons .item-moderation:before {
+  content: 'flag';
 }
 
 header.head h1 a.back:before,
@@ -669,6 +805,7 @@ header.head h2 a.back:before  {
   content: 'highlight_off';
 }
 
+.b-review-topic .buttons .item-delete:before,
 .c-image > .b-user_rate .expanded-options > .remove-trigger .status-name:before {
   content: 'delete_forever';
 }
@@ -689,7 +826,7 @@ header.head h2 a.back:before  {
   color: var(--text-off);
   width: 38px;
   height: 38px;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .2s ease;
 }
 
@@ -702,7 +839,7 @@ header.head h2 a.back:before  {
   transform: scale(.9);
 }
 
-/* - - - Цитаты - - - */
+/* ===== Цитаты ===== */
 .b-quote-v2 .quoteable::before {
   display: none;
 }
@@ -721,7 +858,7 @@ header.head h2 a.back:before  {
   overflow: hidden;
   background: var(--clr-dark);
   border-left: 3px solid var(--main);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   padding-left: 8px;
 }
 
@@ -755,7 +892,7 @@ header.head h2 a.back:before  {
   color: var(--clr-darker-add);
 }
 
-/* - - - Спойлеры - - - */
+/* ===== Спойлеры ===== */
 .b-spoiler .content .before,
 .b-spoiler .content .after {
   display: none;
@@ -770,7 +907,7 @@ header.head h2 a.back:before  {
 
 .b-spoiler > label {
   position: relative;
-  background: linear-gradient(to top right, var(--main), var(--second-brt));
+  background: var(--main);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border: none;
@@ -783,22 +920,20 @@ header.head h2 a.back:before  {
 
 .b-spoiler > label:hover {
   opacity: 1;
-  background: var(--text);
+  background: var(--second);
   -webkit-background-clip: text;
 }
 
 .b-spoiler > .content .inner {
   border: none;
-  background-image: linear-gradient(to right, rgba(from var(--main) r g b / .3) 0%, rgba(from var(--second-brt) r g b / .3) 100%);
-  background-position: left 90%;
-  background-size: 100% 0.5em;
+  background-image: linear-gradient(0deg, rgba(from var(--main) r g b / .2) .5em, transparent .5em);
+  background-position: left 80%;
+  background-size: 100% .5em;
   background-repeat: no-repeat;
 }
 
 .b-spoiler > .content .inner:hover {
-  background-image: linear-gradient(to right, rgba(from var(--main) r g b / .2) 0%,
-    rgba(from var(--second-brt) r g b / .2) 100%);
-  text-shadow: 1px 1px 0 rgba(from var(--shadow) r g b / .1)
+  background-image: linear-gradient(0deg, rgba(from var(--main) r g b / .1) .5em, transparent .5em);
 }
 
 @keyframes splr-line {
@@ -817,7 +952,7 @@ header.head h2 a.back:before  {
 
 .b-spoiler_inline {
   padding: 0 4px;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   overflow: hidden;
 }
 
@@ -826,10 +961,11 @@ header.head h2 a.back:before  {
   position: relative;
 }
 
-.b-spoiler_inline:not(.is-opened):after {
+.b-spoiler_inline:not(.is-opened):before {
   content: '';
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: linear-gradient(100deg, transparent 40%, rgba(from var(--white) r g b / .5) 50%, transparent 60%);
   background-repeat: no-repeat;
   background-size: 200%;
@@ -857,7 +993,7 @@ header.head h2 a.back:before  {
   background: var(--clr-darker-add);
   width: 100%;
   height: 36px;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   font-size: 14px;
   font-family: var(--font-alt);
   font-weight: 700;
@@ -872,7 +1008,7 @@ header.head h2 a.back:before  {
   min-height: 20px;
   font-weight: 200;
   font-size: 11px;
-  border-radius: var(--brdr-sl-tp);
+  border-radius: var(--brdr-sml-tp);
 }
 
 .b-spoiler_block > span:hover {
@@ -892,10 +1028,10 @@ header.head h2 a.back:before  {
   background: var(--clr-dark);
   padding: 6px 10px;
   border: none;
-  border-radius: var(--brdr-sl-bt);
+  border-radius: var(--brdr-sml-bt);
 }
 
-/* - - - Чекбоксы - - - */
+/* ===== Чекбоксы ===== */
 input[type="checkbox"]:before,
 input[type="radio"]:before {
   font-family: "Material Icons Round";
@@ -970,7 +1106,7 @@ input[type="radio"]:disabled:after {
 
 .b-to-top.active .arrow {
   color: var(--text-dead);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   opacity: 1;
   bottom: calc(16px + 48px);
   left: 10px;
@@ -980,7 +1116,7 @@ input[type="radio"]:disabled:after {
 .b-to-top:hover.active .arrow {
   color: var(--text);
   background: rgba(from var(--opacity) r g b / .08);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .b-to-top.active .arrow:before {
@@ -1030,7 +1166,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   min-width: 0 !important;
   margin: 0 !important;
   padding: 0;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   background: transparent;
   color: inherit;
   transition: .3s ease;
@@ -1046,7 +1182,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   color: inherit;
 }
 
-/* - - - - Шапка / Верхнее меню - - - - */
+/* ========== Шапка / Верхнее меню ========== */
 .l-top_menu-v2 {
   background: var(--main);
   color: var(--grey-w);
@@ -1338,7 +1474,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   color: var(--white);
   width: 46px;
   height: 46px;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .l-top_menu-v2 > .menu-icon.contest[data-count] {
@@ -1522,7 +1658,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   background: var(--clr-block);
   color: var(--text);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
   border-top: none;
   padding: .6em;
   width: 220px;
@@ -1540,7 +1676,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   font-size: 14px;
   color: var(--text);
   border: 1px solid transparent;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   transition: .3s ease;
 }
 
@@ -1555,7 +1691,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   padding-left: 6px;
 }
 
-/* - - - Меню / Профиль - - - */
+/* ===== Меню / Профиль ===== */
 .l-top_menu-v2 > .menu-dropdown.profile {
   display: flex;
   align-items: center;
@@ -1565,7 +1701,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 .l-top_menu-v2 > .menu-dropdown.profile > span > a,
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu > a {
   flex: 0 1 auto;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .l-top_menu-v2 > .menu-dropdown.profile > span > a {
@@ -1577,7 +1713,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 .l-top_menu-v2 > .menu-dropdown.profile > span > a > img {
   width: 32px;
   height: 32px;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .l-top_menu-v2 > .menu-dropdown.profile > span > a:hover > img {
@@ -1663,7 +1799,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 .l-top_menu-v2 > .menu-dropdown.profile > .submenu > .icon-mail > .text > .unread > span {
   padding: 3px;
   background: rgba(from var(--opacity) r g b / .08);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   transition: .2s ease;
 }
 
@@ -1681,7 +1817,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   display: contents !important;
 }
 
-/* - - - Меню / Поиск - - - */
+/* ===== Меню / Поиск ===== */
 @media screen and (min-width: 1024px) {
   .l-top_menu-v2 .global-search > .field input {
     position: fixed;
@@ -1727,7 +1863,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   padding: 0 1em;
   margin: 0 auto;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   left: 0;
   right: 0;
   opacity: 0;
@@ -1786,7 +1922,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   left: 0;
   right: 0;
   margin: 0 auto;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   opacity: 0;
   pointer-events: none;
   transition: .2s ease;
@@ -1805,7 +1941,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   width: 40px;
   height: 40px;
   line-height: 2.5;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   z-index: 1112;
   opacity: 0;
   pointer-events: none;
@@ -1849,7 +1985,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   padding: 6px 12px;
   margin: .6em;
   gap: .6em;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .3s ease;
 }
 
@@ -1870,7 +2006,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 .l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item .image img {
   height: 100%;
   width: 100%;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
 }
 
 .l-top_menu-v2 .global-search .search-results .b-db_entry-variant-list_item > .info {
@@ -1946,7 +2082,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   background: rgba(from var(--main) r g b / .1);
 }
 
-/* - - - - Теги - - - - */
+/* ========== Теги ========== */
 .b-tag,
 .b-tag[href],
 .b-anime_status_tag,
@@ -1965,7 +2101,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   margin: 0;
   padding: 4px 8px;
   border: 1px solid;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   line-height: 1;
   font-variant-caps: all-small-caps;
   transition: .2s ease;
@@ -2113,7 +2249,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 }
 
 
-/* - - - Маркеры - - - */
+/* ========== Маркеры ========== */
 .b-comment > .inner > .markers > .b-broadcast_marker,
 .b-comment > .inner > .markers > .b-new_marker.active,
 .b-comment > .inner > .markers > .b-offtopic_marker,
@@ -2139,7 +2275,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   display: block;
   position: inherit;
   margin-right: 4px;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   text-transform: uppercase;
   font-family: var(--font-alt);
   font-size: 12px;
@@ -2243,7 +2379,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   margin-right: 0 !important;
 }
 
-/* - - - - Таблицы с аниме и персонажами - - - - */
+/* ========== Таблицы с аниме и персонажами ========== */
 .p-animes_collection-index .cc-entries:after,
 .p-mangas_collection-index .cc-entries:after,
 .p-recommendations-index .cc-entries:after,
@@ -2450,7 +2586,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   position: relative;
   padding: 1em;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   background: rgba(from var(--opacity) r g b / .05);
   transition: .3s ease;
   color: var(--text-dead);
@@ -2485,7 +2621,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   width: 100% !important;;
   margin: 0 !important;
   overflow: hidden;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
 }
 
 .b-catalog_entry .cover .image-decor {
@@ -2622,6 +2758,8 @@ body[data-localized_names="ru"]#animes_similar .cc-similar .b-catalog_entry:hove
   padding: 0;
 }
 
+.b-form a.remove,
+.b-form a.remove:hover,
 .b-catalog_entry .cover .misc span {
   color: inherit;
 }
@@ -2637,7 +2775,7 @@ body[data-localized_names="ru"] .c-works .b-catalog_entry .cover .title > .name-
 .c-works .b-catalog_entry .cover .misc {
   line-height: 1;
 }
-/* - - - - Статистика / Полоски в боковом меню - - - - */
+/* ========== Статистика / Полоски в боковом меню ========= */
 .bar.horizontal {
   display: flex;
   flex-flow: column;
@@ -2764,7 +2902,7 @@ body[data-localized_names="ru"] .c-works .b-catalog_entry .cover .title > .name-
     color-mix(in srgb, var(--main) 30%, var(--main-brt) 60%));
 }
 
-/* - - - - Подсказки с аниме - - - - */
+/* ========== Подсказки с аниме ========== */
 body:not(:has(.b-modal)) .b-catalog_entry-tooltip {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -2925,7 +3063,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
   color: var(--text-off);
   border: 1px solid var(--clr-brdr);
   background: var(--clr-dark);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .3s ease;
 }
 
@@ -2944,7 +3082,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 .c-image > .b-user_rate .b-add_to_list .trigger > .add-trigger,
 .b-add_to_list .text.add-trigger {
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-md-lt);
+  border-radius: var(--brdr-mdm-lt);
   border-right: none;
   transition: .3s ease;
 }
@@ -3016,7 +3154,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 .c-image > .b-user_rate .b-add_to_list .trigger > .trigger-arrow,
 .b-add_to_list:has(.text.add-trigger) .trigger-arrow {
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-md-rt);
+  border-radius: var(--brdr-mdm-rt);
   transition: .3s ease;
 }
 
@@ -3035,7 +3173,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 .b-add_to_list.expanded .trigger {
   color: var(--text);
   background: var(--clr-block);
-  border-radius: var(--brdr-md-tp);
+  border-radius: var(--brdr-mdm-tp);
 }
 
 .b-add_to_list .expanded-options {
@@ -3044,7 +3182,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 }
 
 .b-add_to_list.expanded .expanded-options {
-  border-radius: var(--brdr-md-bt);
+  border-radius: var(--brdr-mdm-bt);
   border: 1px solid var(--clr-brdr);
   border-top: none;
 }
@@ -3300,7 +3438,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
   padding: 0 2px;
   font-size: 16px;
   border: none;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .c-image > .b-user_rate .b-add_to_list .trigger > .edit-trigger {
@@ -3328,7 +3466,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 
 .c-image > .b-user_rate .b-add_to_list .expanded-options .option {
   padding: 0 10px;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
 .c-image > .b-user_rate .b-add_to_list .expanded-options .text {
@@ -3569,7 +3707,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate form > .b-input:not(.text) {
   padding: 4px 8px;
   background: var(--clr-dark);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
 .b-user_rate-extended > .cc form > .b-input select,
@@ -3712,7 +3850,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   margin: 0;
   border: none;
   padding: .5em .6em .6em;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   line-height: 1.4 !important;
   transition: .3s ease;
 }
@@ -3770,7 +3908,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   border: none;
   font-size: 14px;
   line-height: 1.4;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   background: rgba(from var(--red) r g b / .1);
   transition: .3s ease;
 }
@@ -4054,7 +4192,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 
-/* - - - Автор - - - */
+/* ======== Автор ======== */
 .b-user16 {
   display: inline-block;
   margin: 0;
@@ -4092,7 +4230,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   padding: 4px 6px;
   gap: 4px;
   transition: .2s ease;
@@ -4108,11 +4246,17 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   text-decoration: none;
 }
 
-/* - - - - Смайлы - - - - */
+.b-source .mal .key,
+.b-source .source .key,
+.b-source .contributors .key {
+  color: var(--text-off);
+}
+
+/* ======== Смайлы ======== */
 .smiley {
   height: 24px;
   margin-top: -3px;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   transition: .2s ease;
 }
 
@@ -4120,7 +4264,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   height: 50px;
 }
 
-/* - - - - Комменты - - - - */
+/* ======== Комменты ======== */
 .b-comment {
   margin-bottom: .6em;
   padding: 0;
@@ -4131,7 +4275,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   min-height: auto;
   display: grid;
   background: var(--clr-block);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   border: 1px solid var(--clr-brdr);
   grid-template-columns: 150px auto;
   grid-template-rows: 2fr auto;
@@ -4192,7 +4336,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   align-items: center;
   margin: 0;
   padding: 4px;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   color: var(--text-off);
   border: 1px solid transparent;
   height: 26px;
@@ -4276,7 +4420,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 
 .b-comment > .inner header img {
   margin: 0;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .b-comment > .inner .name-date {
@@ -4351,10 +4495,31 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   position: relative;
 }
 
+.b-shiki_editor.no-preview-avatar .preview .b-comment .body {
+  grid-area: 1 / 1 / 1 / 3;
+}
+
 .b-comment > .inner > .body > .b-replies {
   font-size: 12px;
   color: var(--text-off);
   padding: .4em 0 0;
+}
+
+.b-comment > .inner .body .ban .b-user16 {
+  vertical-align: bottom;
+}
+
+.b-comment > .inner .body .ban .resolution,
+.b-comment > .inner .body .ban .resolution a {
+  color: var(--red);
+}
+
+.b-comment > .inner .body .ban .resolution a  {
+  font-weight: 600;
+}
+
+.b-comment > .inner .body .ban .resolution a:hover {
+  color: rgba(from var(--red) r g b / .8);
 }
 
 .tooltip-inner .b-comment > .inner .name-date .name {
@@ -4380,7 +4545,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   color: var(--text-off);
 }
 
-/* - - - Обзор Комментариев - - - */
+/* ===== Обзор Комментариев ===== */
 .p-comments-show > .l-page > div > div > .subheadline,
 .p-comments-show > .l-page > div > div > .block > .subheadline {
   display: flex;
@@ -4391,7 +4556,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
   border-bottom: none;
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
 }
 
 .p-comments-show  .subheadline .b-user16 {
@@ -4402,7 +4567,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .p-comments-show > .l-page > div > div > .block > .b-comment:first-child > .inner,
 .p-comments-show .b-comments > .b-comment:first-child,
 .p-comments-show .b-comments > .b-comment:first-child > .inner {
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-comments-show .b-comment > .inner > header {
@@ -4412,11 +4577,11 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .p-comments-show > .l-page > div .block > .editor-container,
 .p-comments-show .block > .b-comments > .b-comment:not(:first-child),
 .p-comments-show .block > .b-comments > .b-comment:not(:first-child) > .inner {
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .p-comments-show .block > .b-comments > .b-comment:not(:first-child) > .inner > header {
-  border-radius: var(--brdr-lg-lt);
+  border-radius: var(--brdr-lrg-lt);
 }
 
 .p-comments-show > .l-page > div > div > .block {
@@ -4430,7 +4595,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   border: 1px solid var(--clr-brdr);
 }
 
-/* - - - Подгрузка Комментариев - - - */
+/* ===== Подгрузка Комментариев ===== */
 .b-forum .faye-loader,
 .b-comments .comments-loader,
 .b-comments .comments-hider,
@@ -4438,7 +4603,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   background: var(--clr-dark);
   color: var(--text-off);
   border: none;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   margin: 0 0 .6em;
   padding: 1em;
   font-size: 14px;
@@ -4482,15 +4647,11 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   outline: 3px solid var(--clr-block);
   background: var(--clr-dark);
   color: var(--text-off);
-  border-radius: var(--brdr-lg-rt);
+  border-radius: var(--brdr-lrg-rt);
   transition: .2s ease;
 }
 
-body:not(.p-profiles-show) .b-comments .comments-collapser {
-  right: 0;
-}
-
-body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
+.b-comments .comments-collapser {
   right: 17px;
 }
 
@@ -4499,7 +4660,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   background: var(--clr-dark-add);
 }
 
-/* - - - Написать комментарий - - - */
+/* ===== Написать комментарий ===== */
 .b-shiki_editor .b-button.ok:before, .return-to-reply:before,
 .b-shiki_editor .controls > .buttons > .editor-controls > span:before,
 .b-shiki_editor .controls > .buttons > .editor-controls > label:before {
@@ -4584,7 +4745,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   border: none;
   background: rgba(from var(--opacity) r g b / .05);
   padding: 4px;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   color: var(--text);
   transition: .3s ease;
 }
@@ -4626,7 +4787,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   width: 34px;
   color: var(--text);
   border: 1px solid transparent;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
 .b-shiki_editor > .links .b-button.ok:hover,
@@ -4666,7 +4827,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   bottom: 170px;
   background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   width: 390px;
   left: 160px;
   gap: 2px;
@@ -4724,7 +4885,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   order: 1;
   padding: 4px 6px;
   height: auto;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   color: var(--text);
   align-items: center;
   transition: .2s ease;
@@ -4780,11 +4941,13 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
 .b-shiki_editor > .quotes > .input-container > .link-value,
 .b-shiki_editor > .upload > .input-container > .link-value {
   height: auto;
+  max-width: 260px;
   line-height: 2;
   background: var(--clr-dark);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-md-lt);
+  border-radius: var(--brdr-mdm-lt);
   color: var(--text);
+  transition: .2s ease;
 }
 
 .b-shiki_editor > .links > .input-container > .link-value:focus,
@@ -4793,6 +4956,14 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
 .b-shiki_editor > .upload > .input-container > .link-value:focus {
   background: var(--clr-block);
   border-color: var(--second);
+  box-shadow: 0 0 0 1px inset var(--second);
+}
+
+.b-shiki_editor > .links:has(.b-button.ok:hover) > .input-container > .link-value,
+.b-shiki_editor > .images:has(.b-button.ok:hover) > .input-container > .link-value,
+.b-shiki_editor > .quotes:has(.b-button.ok:hover) > .input-container > .link-value,
+.b-shiki_editor > .upload:has(.b-button.ok:hover) > .input-container > .link-value {
+  border-right-color: rgba(from var(--main) r g b / .26)
 }
 
 .b-shiki_editor .b-button.ok,
@@ -4807,7 +4978,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   border-left: none;
   color: var(--text-brt);
   font-size: 0;
-  border-radius: var(--brdr-md-rt);
+  border-radius: var(--brdr-mdm-rt);
   margin-left: 0;
   padding: 0 16px;
   line-height: 1;
@@ -4835,7 +5006,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   font-weight: 600;
   border: 1px solid var(--clr-brdr);
   border-top: none;
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .ac_results li {
@@ -4916,7 +5087,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
 
 .b-shiki_editor > .body > .editor .b-input.text:hover,
 .b-shiki_editor > .body > .editor .b-input.text:has(textarea:focus) {
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 @keyframes textarea-gradient {
@@ -4953,12 +5124,12 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
 }
 
 .b-shiki_editor > .body > .editor .b-input.text:hover:after {
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   inset: 2px;
 }
 
 .b-shiki_editor > .body > .editor .b-input.text:has(textarea:focus):after {
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   background: var(--clr-block);
   inset: 3px;
 }
@@ -4967,7 +5138,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   background: transparent;
   color: var(--text);
   border: none;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   padding: .3em .6em;
   overflow-x: hidden !important;
   scrollbar-width: thin;
@@ -5005,7 +5176,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   padding: 5px 15px;
   color: var(--text-off);
   background: rgba(from var(--opacity) r g b / .05);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   border: none;
   margin: 0;
   order: 1;
@@ -5131,7 +5302,7 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   background-image: radial-gradient(var(--clr-darker-add) 1px, var(--clr-block) 1px);
 	background-size: 24px 24px;
 	background-color: var(--clr-block);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   border: 1px solid var(--clr-brdr);
   font-size: 0;
   opacity: 1 !important;
@@ -5157,7 +5328,580 @@ body:is(.p-profiles-show, .p-profiles-feed) .b-comments .comments-collapser {
   color: var(--white);
 }
 
-/* - - - - Загаловок / Заголовки - - - - */
+/* ======== Отзывы ======== */
+.b-topic-preview:after,
+.b-topic-preview:before,
+.b-topic > .inner:after,
+.b-topic > .inner:before,
+.b-review-topic > .inner header:after,
+.b-footer_vote .vote-group .separator,
+.p-reviews-new .b-comment > .inner:after,
+.p-reviews-new .b-comment > .inner:before,
+.b-reviews_navigation .navigation-node .count:after,
+.b-reviews_navigation .navigation-node .count:before,
+.b-reviews_navigation .navigation-node .label:before,
+.b-reviews_navigation .review-controls .to-other-reviews:after,
+.b-review-topic.is-review_review_author_details > .inner header:after,
+.b-review-topic.is-review_review_author_details > .inner .review-info .opinion,
+.b-review-topic.is-review_review_author_details > .inner .review-info .user-rate-label,
+.b-review-topic.is-review_review_author_details > .inner .review-details .section.main:after,
+.b-review-topic.is-review_review_author_details > .inner .review-info .user-rate .b-add_to_list .edit {
+  display: none;
+}
+
+.b-review-topic > .inner header,
+.b-review-topic > .inner header img,
+.b-review-topic > .inner > .buttons,
+.b-reviews_navigation .navigation-node .count,
+.b-reviews_navigation .b-review-topic + .review-controls,
+.b-review-topic.is-review_review_author_details > .inner :is(header, aside.buttons,
+.review-info .label, .review-info .user-rate, .review-info .user-rate .b-rate, .review-details .name-url .to-review) {
+  margin: 0;
+}
+
+.b-review-topic > .inner > div,
+.b-review-topic.is-review_review_author_details > .inner .review-info,
+.b-review-topic.is-review_review_author_details > .inner .review-info > div,
+.b-review-topic.is-review_review_author_details > .inner .review-details .name-url,
+.b-review-topic.is-review_review_author_details > .inner .review-details .b-status-line {
+  display: contents;
+}
+
+.b-critique_votes,
+.b-critique_votes span,
+.b-critique_votes:before,
+.b-status-line .section.main .comments:before,
+.b-status-line .section.created_at time:before {
+  color: inherit;
+}
+
+.b-critique_votes .votes-for {
+  color: var(--green);
+}
+
+.b-critique_votes .votes-against {
+  color: var(--red);
+}
+
+.b-reviews_navigation a.navigation-node.is-active:hover .label span {
+  text-decoration: none;
+}
+
+.b-shiki_editor aside.markers:has(.b-review_opinion_marker) {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.markers .b-review_opinion_marker {
+  margin: 0;
+}
+
+.markers .b-review_opinion_marker > span,
+.b-review_opinion_marker.is-positive input:not(:checked) + span,
+.b-review_opinion_marker.is-neutral input:not(:checked) + span,
+.b-review_opinion_marker.is-negative input:not(:checked) + span {
+  padding: 4px 8px;
+  border-radius: var(--brdr-sml);
+  color: var(--text-off);
+  background: var(--clr-dark);
+  border: none;
+}
+
+.b-review_opinion_marker.is-positive input:checked + span,
+.b-review_opinion_marker.is-neutral input:checked + span,
+.b-review_opinion_marker.is-negative input:checked + span,
+.b-review_opinion_marker.is-positive input:not(:checked) + span:hover,
+.b-review_opinion_marker.is-neutral input:not(:checked) + span:hover,
+.b-review_opinion_marker.is-negative input:not(:checked) + span:hover {
+  color: var(--white);
+}
+
+.b-review_opinion_marker.is-positive input:checked + span {
+  background: var(--green);
+}
+
+.b-review_opinion_marker.is-positive input:not(:checked) + span:hover {
+  background: color-mix(in srgb, var(--green) 70%, var(--clr-dark) 30%);
+}
+
+.b-review_opinion_marker.is-neutral input:checked + span {
+  background: var(--second);
+}
+
+.b-review_opinion_marker.is-neutral input:not(:checked) + span:hover {
+  color: var(--text);
+  background: var(--second-brt);
+}
+
+.b-review_opinion_marker.is-negative input:checked + span {
+  background: var(--red);
+}
+
+.b-review_opinion_marker.is-negative input:not(:checked) + span:hover {
+  background: color-mix(in srgb, var(--red) 70%, var(--clr-dark) 30%);
+}
+
+.p-reviews-new .l-content > .block,
+.p-reviews-index .review-controls,
+.p-reviews-index .navigation-container {
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg);
+  padding: 1em;
+}
+
+.p-reviews-new .l-content > .block,
+.p-reviews-index .review-controls {
+  border-radius: var(--brdr-lrg-bt);
+  justify-content: end;
+  margin-bottom: .6em;
+}
+
+.b-reviews_navigation .navigation-container {
+  height: auto;
+  max-height: none;
+  line-height: normal;
+  margin-bottom: 6px;
+  gap: 4px;
+}
+
+.b-reviews_navigation .navigation-node {
+  border: none;
+  display: grid;
+  line-height: 1;
+  grid-template-columns: .1fr 1fr;
+  grid-template-rows: 1.4fr 1fr;
+  align-items: center;
+  font-size: 13px;
+  text-transform: none;
+  font-family: var(--font-alt);
+  overflow: hidden;
+  gap: 0 8px;
+  padding: 4px 8px;
+  border-radius: var(--brdr-mdm);
+  transition: .3s ease;
+}
+
+.b-reviews_navigation .navigation-node.is-active {
+  padding: 4px 8px;
+  font-size: 13px;
+  flex: none;
+}
+
+.b-reviews_navigation .navigation-node:before {
+  grid-area: 1 / 1 / 3 / 1;
+  font-size: 32px;
+}
+
+.b-reviews_navigation .navigation-node .count {
+  grid-area: 1 / 2 / 1 / 2;
+  line-height: .9;
+  font-size: 20px;
+  font-weight: 900;
+  align-self: flex-end;
+}
+
+.b-reviews_navigation .navigation-node .label {
+  grid-area: 2 / 2 / 2 / 2;
+  align-self: flex-start;
+}
+
+.b-reviews_navigation .navigation-node-all {
+  margin-right: auto;
+}
+
+.b-reviews_navigation .navigation-node-all,
+.b-reviews_navigation .navigation-node-neutral,
+.b-reviews_navigation .navigation-node-positive,
+.b-reviews_navigation .navigation-node-negative {
+  color: var(--text);
+  background: var(--clr-dark);
+}
+
+.b-reviews_navigation .navigation-node-neutral,
+.b-reviews_navigation .navigation-node-positive,
+.b-reviews_navigation .navigation-node-negative {
+  color: var(--text-off);
+}
+
+.b-reviews_navigation .navigation-node-all:hover,
+.b-reviews_navigation .navigation-node-neutral:hover,
+.b-reviews_navigation .navigation-node-all.is-active,
+.b-reviews_navigation .navigation-node-neutral.is-active,
+.b-reviews_navigation .navigation-node-all:not(.is-active):not(.is-empty):hover,
+.b-reviews_navigation .navigation-node-neutral:not(.is-active):not(.is-empty):hover {
+  color: var(--text-brt);
+  background: var(--clr-dark-add);
+}
+
+.b-reviews_navigation .navigation-node-all.is-active:hover,
+.b-reviews_navigation .navigation-node-neutral.is-active:hover {
+  color: var(--text-brt);
+  background: var(--clr-darker);
+}
+
+.b-reviews_navigation .navigation-node-positive.is-active,
+.b-reviews_navigation .navigation-node-positive:not(.is-active):not(.is-empty):hover {
+  color: var(--green);
+  background: color-mix(in srgb, var(--green) 20%, var(--clr-block) 80%);
+}
+
+.b-reviews_navigation .navigation-node-positive.is-active:hover {
+  background: color-mix(in srgb, var(--green) 30%, var(--clr-block) 80%);
+}
+
+.b-reviews_navigation .navigation-node-negative.is-active,
+.b-reviews_navigation .navigation-node-negative:not(.is-active):not(.is-empty):hover {
+  color: var(--red);
+  background: color-mix(in srgb, var(--red) 20%, var(--clr-block) 80%);
+}
+
+.b-reviews_navigation .navigation-node-negative.is-active:hover {
+  background: color-mix(in srgb, var(--red) 30%, var(--clr-block) 80%);
+}
+
+.b-reviews_navigation .review-controls .to-other-reviews {
+  display: flex;
+  align-items: center;
+  order: 1;
+  width: auto;
+  min-width: 0;
+  margin-right: 0;
+  margin-left: auto;
+  color: var(--text);
+  background: var(--clr-dark);
+}
+
+.b-reviews_navigation .review-controls .to-other-reviews:hover {
+  background: var(--clr-dark-add);
+}
+
+.p-reviews-index .review-controls .create-review,
+.b-reviews_navigation .review-controls .create-review.mini {
+  display: flex;
+  align-items: center;
+}
+
+.p-reviews-index .review-controls .create-review:before {
+  font-size: 20px;
+}
+
+.b-topic-preview {
+  padding: 0;
+  border: none;
+  margin-bottom: .6em;
+}
+
+.b-review-topic > .inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0fr 2fr 0fr;
+  border-radius: var(--brdr-lrg);
+  border: 1px solid var(--clr-brdr);
+}
+
+.b-review-topic > .inner header {
+  grid-area: 1 / 1 / 1 / 5;
+  padding: 8px;
+  position: relative;
+  align-items: center;
+  background: var(--clr-dark);
+  border-radius: var(--brdr-lrg-tp);
+  border-bottom: 1px solid var(--clr-brdr);
+  overflow: hidden;
+  min-height: 70px;
+  z-index: 1;
+  gap: 8px;
+}
+
+.b-review-topic > .inner header:before {
+  transform: rotate(-12deg);
+  font-size: 146px;
+  left: 160px;
+  bottom: -72px;
+  display: flex;
+  z-index: -1;
+  position: absolute;
+  color: var(--clr-darker);
+  pointer-events: none;
+}
+
+.b-review-topic:has(.neutral) > .inner header:before {
+  left: 170px;
+  bottom: -62px;
+}
+
+.b-review-topic:has(.negative) > .inner header:before {
+  left: 190px;
+  bottom: -4px;
+  transform: rotate(-8deg);
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0fr 1fr;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details .name-url .name-inner {
+  grid-area: 1 / 1 / 1 / 1;
+  align-items: center;
+  display: flex;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details .name-url .name {
+  font-size: 16px;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details .b-status-line {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.b-critique_votes:before,
+.b-footer_vote .star:before,
+.b-footer_vote .vote-group .vote:before,
+.b-status-line .section.main .comments:before,
+.b-status-line .section.created_at time:before,
+.b-reviews_navigation .review-controls .create-review.mini:before {
+  font-size: 18px;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details .section.main > span > span,
+.b-review-topic.is-review_review_author_details > .inner .review-details .section.main > span,
+.b-review-topic.is-review_review_author_details > .inner .review-details .created_at time {
+  display: flex;
+  align-items: center;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details .section.main {
+  grid-area: 2 / 1 / 2 / 1;
+}
+
+.b-status-line .section.main > span:not(:last-child) {
+  margin-right: 4px;
+}
+
+.b-status-line .created_at,
+.b-status-line .section.main > span {
+  padding: 4px 8px;
+  background: var(--clr-darker);
+  border-radius: var(--brdr-mdm);
+}
+
+.b-status-line .section.created_at time:before {
+  padding-left: 0;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details .name-url .to-review,
+.b-review-topic.is-review_review_author_details > .inner .review-details .b-status-line .created_at {
+  grid-area: 1 / 4 / 1 / 4;
+  justify-self: end;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details .name-url .to-review {
+  z-index: 1;
+  width: 100%;
+  opacity: 0;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-details:has(.name-url .to-review:hover) .created_at {
+  background: var(--clr-darker-add);
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-info .user-rate {
+  grid-area: 2 / 3 / 2 / 5;
+  justify-self: end;
+  align-self: center;
+  padding-right: 2px;
+  gap: 8px;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-info .user-rate .b-add_to_list .trigger {
+  padding: 0;
+  height: 20px;
+  border: none;
+  background: none;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-info .user-rate .b-add_to_list .text,
+.b-review-topic.is-review_review_author_details > .inner .review-info .user-rate .b-add_to_list .status-name {
+  padding: 0;
+  font-size: 14px;
+  font-variant-caps: normal;
+  text-transform: uppercase;
+  line-height: normal;
+}
+
+.b-review-topic.is-review_review_author_details > .inner .review-info .label {
+  grid-area: 2 / 4 / 2 / 4;
+  align-self: flex-end;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: right;
+  display: none;
+}
+
+.b-review-topic > .inner .body {
+  grid-area: 2 / 1 / 2 / 5;
+  background: var(--clr-block);
+  border-bottom: 1px solid var(--clr-brdr);
+  position: relative;
+  overflow: hidden;
+  padding: 6px 10px;
+  z-index: 1;
+}
+
+.b-review-topic > .inner .b-form.edit_review {
+  grid-area: 2 / 1 / 2 / 5;
+  padding: 12px;
+}
+
+.b-review-topic > .inner .b-form.edit_review .body {
+  border-bottom: none;
+  padding: 0;
+}
+
+.b-review-topic > .inner > div > footer {
+  grid-area: 3 / 1 / 3 / 3;
+  border-radius: 0 0 0 var(--brdr-lrg);
+}
+
+.b-footer_vote {
+  margin: 0;
+  width: 100%;
+  padding: .6em 1em;
+  border: none;
+  color: inherit;
+  font-size: 14px;
+  align-items: center;
+  background: var(--clr-dark);
+}
+
+.b-review-topic > .inner .b-footer_vote {
+  border-radius: 0 0 0 var(--brdr-lrg);
+}
+
+.b-footer_vote .vote-group {
+  gap: 4px;
+  z-index: 1;
+}
+
+.b-footer_vote .vote-group .vote {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--brdr-sml);
+  transition: .3s ease;
+}
+
+.b-footer_vote .vote-group .vote:active {
+  transform: scale(.95);
+  transition: .1s ease;
+}
+
+.b-footer_vote .vote-group .vote.yes {
+  color: color-mix(in srgb, var(--green) 60%, var(--text) 20%);
+  background: rgba(from var(--green) r g b / .16);
+}
+
+.b-footer_vote .vote-group .vote.yes:hover {
+  color:var(--green);
+  background: rgba(from var(--green) r g b / .24);
+}
+
+.b-footer_vote .vote-group .vote.no {
+  color: color-mix(in srgb, var(--red) 60%, var(--text) 20%);
+  background: rgba(from var(--red) r g b / .16);
+}
+
+.b-footer_vote .vote-group .vote.no:hover {
+  color:var(--red);
+  background: rgba(from var(--red) r g b / .24);
+}
+
+.b-footer_vote .vote-group .vote span {
+  border: none;
+  color: inherit;
+  transition: .3s ease;
+}
+
+.b-review-topic > .inner > .buttons {
+  grid-area: 3 / 2 / 3 / 5;
+  padding-right: .6em;
+  justify-content: end;
+  display: flex !important;
+  background: var(--clr-dark);
+  border-radius: 0 0 var(--brdr-lrg) 0;
+  min-height: 42.8px;
+}
+
+.b-review-topic:not(:has(.b-footer_vote)) > .inner > .buttons {
+  grid-area: 3 / 1 / 3 / 5;
+}
+
+.b-review-topic > .inner > .buttons .main-controls {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 4px;
+  z-index: 1;
+  opacity: 0;
+  transition: .3s ease;
+}
+
+.b-review-topic > .inner:hover > .buttons .main-controls {
+  opacity: 1;
+}
+
+.b-review-topic > .inner > .buttons .main-controls > :where(span, a) {
+  display: flex;
+  align-items: center;
+  line-height: normal !important;
+  border-radius: var(--brdr-mdm);
+  border: 1px solid transparent;
+  color: var(--text-off);
+  padding: 3px 5px;
+  margin: 0;
+  gap: 3px;
+  transition: .3s ease;
+}
+
+.b-review-topic > .inner > .buttons .main-controls > :where(span, a):hover {
+  color: var(--text);
+  background: var(--clr-darker);
+  border-color: rgba(from var(--opacity) r g b / .03);
+}
+
+.b-review-topic > .inner > .buttons .main-controls > :where(span, a):before {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 1 !important;
+}
+
+.b-review-topic > .inner > .buttons .main-controls > :where(span, a):after {
+  content: attr(title);
+  line-height: normal;
+  width: auto;
+  display: block;
+  font-size: 12px;
+}
+
+.b-review-topic > .inner > .buttons .item-quote {
+  order: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s ease;
+}
+
+.b-review-topic > .inner > .buttons .item-quote.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ======== Загаловок / Заголовки ======== */
 body:not(#profiles_show) > .l-page header.head {
   position: relative;
   display: flex;
@@ -5183,7 +5927,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) {
   background: var(--clr-block);
   padding: .6em;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 body:not(#profiles_show).p-db_entries > .l-page header.head :where(h1, h2) {
@@ -5212,7 +5956,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) {
   font-family: var(--font-alt);
   font-weight: var(--alt-font-weight);
   border-bottom: 0;
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
   font-size: 28px;
   line-height: 34px;
   gap: 8px;
@@ -5220,6 +5964,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) {
 
 body:not(#profiles_show) > .l-page header.head > .b-breadcrumbs {
   margin: 0 10px 10px;
+}
+
+body:not(#profiles_show) > .l-page header.head > .b-breadcrumbs .no-url {
+  color: var(--text-dead);
 }
 
 body:not(#profiles_show) > .l-page header.head > .b-breadcrumbs > span {
@@ -5250,7 +5998,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back {
   width: 34px;
   height: 34px;
   border: 1px solid transparent;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   float: left;
   margin-right: 4px;
 }
@@ -5272,7 +6020,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   color: var(--text-off);
   background: var(--clr-back);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   margin: 0;
   padding: 10px;
   min-height: 40px;
@@ -5285,7 +6033,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .b-postloader.collapsed:hover {
-  background: var(--colo-block);
+  background: var(--clr-block);
   color: var(--text);
 }
 
@@ -5319,11 +6067,17 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-column-start: 1;
   grid-column-end: 11;
 }
-/* - - - - Странница Аниме - - - - */
+
+/* ========== Страницы с Боковым Меню ========== */
+.p-topics-show > .l-page > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu),
 .p-db_entries > .l-page > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu) {
   display: contents;
 }
 
+.b-lang_trigger span,
+.b-lang_trigger:after,
+.p-topics-show .l-content > .subheadline a > .count,
+.p-db_entries .l-content > .subheadline a > .count,
 .l-page .menu-toggler .toggler:after,
 .l-menu .subheadline .count:before,
 .l-menu .subheadline .count:after,
@@ -5332,36 +6086,75 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   display: none;
 }
 
-.p-db_entries .l-content .b-comments,
-.p-db_entries .l-content > .subheadline,
-.p-db_entries .l-content .editor-container,
-.p-db_entries > .l-page .l-content .block > .block:has(.cc-similar),
-.p-db_entries .l-content > .block:has(.b-reviews_navigation),
-.p-db_entries > .l-page > div .l-menu > .b-animes-menu > .block,
-.p-db_entries > .l-page > div .l-menu > .b-animes-menu > .b-favoured,
-.p-db_entries > .l-page > div .l-menu > .b-animes-menu > .b-menu-links {
+.l-content .b-comments,
+.l-content > .subheadline,
+.p-topics .l-menu .b-forums,
+.l-content .editor-container,
+.p-characters-show .l-content > .cc-roles,
+:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry,
+.l-content .b-review-topic > .subheadline,
+.l-page .l-content > .b-topic > .subheadline,
+.l-content:has(.b-review-topic) > .block > .subheadline,
+.p-animes-characters .l-content > .block > .subheadline,
+.p-animes-characters .l-content > .block > .cc-characters,
+.l-page > div .l-menu > .b-animes-menu > :where(.block, .b-favoured, .b-menu_logo, .b-menu-links) {
   padding: 1em;
   background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
-.p-db_entries > .l-page > div .l-menu > .b-animes-menu > .block,
-.p-db_entries > .l-page > div .l-menu > .b-animes-menu > .b-favoured,
-.p-db_entries > .l-page > div .l-menu > .b-animes-menu > .b-menu-links {
+.p-topics .l-menu .b-forums,
+.l-content .b-comments.is-headline,
+.p-characters-show .l-content > .cc-roles,
+.p-characters-show .l-content > .b-db_entry,
+.l-page > div .l-menu > .b-animes-menu > .b-menu_logo {
+  margin: 0;
+}
+
+.l-page .l-content > .b-topic,
+.l-content > .block > .block > .b-review-topic {
+  padding: 0;
+}
+
+.b-lang_trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-off);
+  width: 36px;
+  height: 36px;
+  margin: 0 0 5px 10px;
+  border-radius: var(--brdr-mdm);
+  transition: .2s ease;
+}
+
+.b-lang_trigger:hover {
+  color: var(--text);
+  background: var(--clr-dark-add);
+}
+
+.b-lang_trigger:active {
+  color: var(--text-dead);
+  background: transparent;
+}
+
+/* ======== Боковое Меню ======== */
+.l-page > div .l-menu > .b-animes-menu > .block,
+.l-page > div .l-menu > .b-animes-menu > .b-favoured,
+.l-page > div .l-menu > .b-animes-menu > .b-menu-links {
   padding: 0 .6em .6em;
   overflow: hidden;
   margin: 0 !important;
   max-width: calc(1260px / 4);
 }
 
-.p-db_entries > .l-page > div .l-menu > .b-animes-menu .subheadline {
+.l-page > div .l-menu > .b-animes-menu .subheadline {
   border-bottom: 1px solid var(--clr-brdr);
   padding: .6em;
   margin-bottom: .6em;
 }
 
-/* ======== Боковое Меню ======== */
 .l-menu .subheadline .count {
   position: absolute;
   right: 0;
@@ -5370,7 +6163,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   font-size: 12px;
   font-weight: 200;
   color: var(--text-off);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   opacity: 1;
   transition: .3s ease;
 }
@@ -5390,7 +6183,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   line-height: 2;
   color: var(--text-off);
   padding-right: 6px;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .3s ease;
 }
 
@@ -5454,7 +6247,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   text-align: center;
   color: var(--text-off);
   background: var(--clr-dark);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .2s ease;
 }
 
@@ -5522,7 +6315,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .l-menu .b-favoured img,
 .l-menu .b-clubs img {
   margin: 0;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
 .l-menu .b-clubs img {
@@ -5548,17 +6341,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   justify-content: center;
   align-items: center;
   background-image: none;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
-/* ======== Основная Страница ======== */
-.p-db_entries > .l-page > div {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0 12px;
-  transition: .3s ease;
-}
-
+/* ======== Скрыть Боковое Меню ======== */
 .l-page .menu-toggler {
   position: fixed;
   display: flex;
@@ -5604,69 +6390,224 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   transform: none;
 }
 
-.p-db_entries > .l-page > div > header {
-  grid-column: 1 / 4;
-  grid-row: 1 / 1;
+.l-page > div > header,
+.l-page > div .menu-slide-outer > .menu-slide-inner > .l-content {
   width: calc(1260px - 1260px / 4);
+}
+
+.l-page:is(.menu-expanded) > div > header,
+.l-page:is(.menu-expanded) > div .menu-slide-outer > .menu-slide-inner > .l-content {
+  width: 1260px;
+}
+
+.l-page > div .menu-slide-outer > .menu-slide-inner > .l-menu {
+  width: calc(1260px / 4 - 12px);
+}
+
+.l-page:is(.menu-expanded) > div .menu-slide-outer > .menu-slide-inner > .l-menu {
+  opacity: 0;
+  width: 0;
+  margin-right: -500px;
+}
+
+/* ======== Основная Страница ======== */
+.l-page > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 12px;
   transition: .3s ease;
 }
 
-.p-db_entries > .l-page > div .menu-slide-outer > .menu-slide-inner > .l-content,
-.p-db_entries > .l-page > div .menu-slide-outer > .menu-slide-inner > .l-menu {
+.l-page > div > header {
+  grid-column: 1 / 4;
+  grid-row: 1 / 1;
+  transition: .3s ease;
+}
+
+.l-page > div .menu-slide-outer > .menu-slide-inner > .l-content,
+.l-page > div .menu-slide-outer > .menu-slide-inner > .l-menu {
   width: 100%;
   margin: 0;
 }
 
-.p-db_entries > .l-page > div .menu-slide-outer > .menu-slide-inner > .l-content {
+.l-page > div .menu-slide-outer > .menu-slide-inner > .l-content {
   grid-column: 1 / 4;
   grid-row: 2 / 4;
-  width: calc(1260px - 1260px / 4);
   transition: .3s ease;
 }
 
-.p-user_rates-index > .l-page:is(.menu-expanded) header,
-.p-user_rates-index > .l-page:is(.menu-expanded) > div > .block > .menu-slide-outer > .menu-slide-inner > .l-content,
-.p-db_entries > .l-page:is(.menu-expanded) > div > header,
-.p-db_entries > .l-page:is(.menu-expanded) > div .menu-slide-outer > .menu-slide-inner > .l-content {
-  width: 1260px;
-}
-
-.p-db_entries > .l-page > div .menu-slide-outer > .menu-slide-inner > .l-menu {
+.l-page > div .menu-slide-outer > .menu-slide-inner > .l-menu {
   grid-column: 4 / 5;
   grid-row-start: 1;
   grid-row-end: 3;
   display: flex;
   flex-flow: column;
   overflow: hidden;
-  width: calc(1260px / 4 - 12px);
   gap: 12px;
   transition: .3s ease;
 }
 
-.p-user_rates-index > .l-page:is(.menu-expanded) .l-menu,
-.p-db_entries > .l-page:is(.menu-expanded) > div .menu-slide-outer > .menu-slide-inner > .l-menu {
-  opacity: 0;
-  width: 0;
-  margin-right: -500px;
-}
-
-.p-db_entries > .l-page > div .menu-slide-outer {
+.l-page > div .menu-slide-outer {
   transition: .3s ease;
 }
 
-.p-animes-show .c-image .b-user_rate,
-.p-mangas-show .c-image .b-user_rate,
-.p-ranobe-show .c-image .b-user_rate {
+.l-content > .subheadline,
+.l-content .b-review-topic > .subheadline {
+  border-bottom: none;
+  border-radius: var(--brdr-lrg-tp);
+}
+
+.l-page .l-content > .b-topic > .subheadline,
+.l-content:has(.b-review-topic) > .block > .subheadline {
+  margin: 0 !important;
+  border-radius: 0;
+  border-bottom: none;
+}
+
+.l-content .subheadline:has(.b-user16) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.l-content .subheadline .b-user16 {
+  margin-left: 8px;
+}
+
+.l-content .b-review-topic .inner.block {
+  margin-bottom: 12px;
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.l-content .b-comments {
+  border-top: none;
+  border-radius: var(--brdr-lrg-bt);
+  padding-top: 0;
+  margin-bottom: 12px;
+}
+
+.l-content .editor-container {
+  margin-top: 12px;
+  padding-top: 0;
+}
+
+.l-content .editor-container > .subheadline {
+  padding: 1em;
+}
+
+/* ==== Персонажи ==== */
+:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry:after,
+:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry:before,
+:is(.p-characters-show, .p-people-show) .b-db_entry > .c-about > .cc:after,
+:is(.p-characters-show, .p-people-show) .b-db_entry > .c-about > .cc:before {
+  display: none;
+}
+
+:is(.p-characters-show, .p-people-show) .b-db_entry > .c-about,
+:is(.p-characters-show, .p-people-show) .b-db_entry > .c-about > .cc {
+  display: contents;
+}
+
+
+:is(.p-characters-show, .p-people-show) .b-db_entry
+:is(.c-image, .c-info-left, .c-info-right, .c-description) {
   margin: 0;
-  max-width: none;
 }
 
-/* ==== Аниме Тест ==== */
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-db_entry) {
+.p-animes-characters .l-content > .block > .subheadline:first-child {
+  border-radius: 0;
+}
+
+.p-characters-show .l-content > .cc-roles,
+:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry,
+.p-animes-characters .l-content > .block > .cc-characters {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.p-characters-show .l-content > .subheadline,
+.p-animes-characters .l-content > .block > .subheadline:not(:first-child) {
+  margin-top: 12px;
+  border-radius: var(--brdr-lrg-tp);
+}
+
+.p-characters-show .l-content > .subheadline {
+  border-bottom: 1px solid var(--clr-brdr);
+}
+
+.p-characters-show .l-content > .cc-roles,
+:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry,
+.p-animes-characters .l-content > .block > .cc-characters {
+  border-top: none;
+}
+
+.p-characters-show .l-content > .cc-roles {
+  padding: .6em;
+}
+
+:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 250px repeat(3, 1fr);
+  grid-template-rows: 280px auto;
+  padding-top: 0;
+  gap: 8px;
 }
 
+.p-people-show .l-content > .b-db_entry {
+  grid-template-rows: auto;
+  margin-bottom: 12px;
+}
+
+:is(.p-characters-show, .p-people-show) .b-db_entry .c-image {
+  grid-row: 1 / 3;
+  max-width: 250px;
+  width: auto;
+}
+
+:where(.p-characters-show, .p-people-show) .b-db_entry > .c-about > .cc > .c-info-right {
+  margin: 0 !important;
+  grid-column: 2 / 4;
+  grid-row: 1;
+  width: auto;
+}
+
+.p-people-show:not(.p-characters-show) .b-db_entry > .c-about > .cc > .c-info-right {
+  grid-column: 1 / 1;
+  grid-row: 4;
+}
+
+:is(.p-characters-show) .b-db_entry .c-info-right .subheadline {
+  text-align: left;
+}
+
+:is(.p-characters-show, .p-people-show) .b-db_entry .c-info-left {
+  grid-column: 1 / 1;
+  width: 100%;
+}
+
+:is(.p-characters-show) .b-db_entry > .c-description {
+  grid-row: 2 / 5;
+  grid-column: 2 / 5;
+  width: 100%;
+}
+
+.p-people-show:not(.p-characters-show) .b-db_entry > .c-description {
+  grid-column: 2 / 5;
+  width: 100%;
+}
+
+.p-people-show:not(.p-characters-show) .b-db_entry > .c-description:nth-child(3) {
+  grid-row: 1 / 1;
+}
+
+.p-people-show:not(.p-characters-show) .b-db_entry > .c-description:nth-child(4) {
+  grid-row: 2 / 2;
+}
+
+.p-people-show:not(.p-characters-show) .b-db_entry > .c-description:nth-child(5) {
+  grid-row: 3 / 3;
+}
+
+/* ======== Страница Аниме/Манги/Ранобэ ======== */
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .entry-2,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .entry-3,
@@ -5675,15 +6616,14 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about > .cc:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-characters:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page .l-content .cc.m0.two-videos:after,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .block .c-description .b-lang_trigger span,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors > .c-authors .cc:after,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .block .c-description .b-lang_trigger:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots .cc:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .c-about .c-info-left .subheadline,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-related-authors:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-related-authors:before,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child > .cc:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-user_rate .trigger .text > span:not(.status-name),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate:has(.b-form.rate-edit) .b-add_to_list .trigger,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-authors .b-db_entry-variant-list_item:nth-child(n+3):nth-child(-n+20),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info) > span {
@@ -5732,27 +6672,11 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child
 :where(.b-db_entry-variant-list_item, .b-db_entry-variant-list_item .image, .b-db_entry-variant-list_item .b-user_rate),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .contest_winners .winners:hover .winner:nth-child(n+2),
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated {
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .name,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .hide-more {
   margin: 0;
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-entry-info,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .block .c-description .b-lang_trigger,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry > .c-about .contest_winners,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info),
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-entry-info .line-container .value,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child :where(.b-options-floated, .b-options-floated a),
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.watch-online) .c-authors .b-db_entry-variant-list_item:nth-child(3),
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right > .block:not(.contest_winners, :has(.scores)) > .block {
-  display: flex;
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .block .c-description .b-lang_trigger,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info),
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right > .block:not(.contest_winners, :has(.scores)) > .block {
-  justify-content: center;
-  align-items: center;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-user_rate .b-add_to_list .trigger,
@@ -5765,7 +6689,26 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 100%;
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-entry-info,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry > .c-about .contest_winners,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-entry-info .line-container .value,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child :where(.b-options-floated, .b-options-floated a),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.watch-online) .c-authors .b-db_entry-variant-list_item:nth-child(3),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right > .block:not(.contest_winners, :has(.scores)) > .block {
+  display: flex;
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right > .block:not(.contest_winners, :has(.scores)) > .block {
+  justify-content: center;
+  align-items: center;
+}
+
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .block > .block:has(.cc-similar),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-reviews_navigation),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about .c-info-right > .block,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-related-authors .c-column,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-description,
@@ -5773,14 +6716,29 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about .c-info-right,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-image .cc.block,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-image .b-user_rate,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-characters .c-characters,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos {
   background: var(--clr-block);
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .block:has(.scores) .b-rate .score-notice,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate .trigger,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate .trigger:has(.edit) .status-name {
+  padding: 0;
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-reviews_navigation),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block
-:where(.c-characters, .c-screenshots, .c-videos) .subheadline {
+:where(.c-characters, .c-screenshots, .c-videos, .block:has(.cc-similar), .cc-related-authors .c-column:first-child) .subheadline {
   padding: 1em;
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-db_entry) {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 12px;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-image .cc.block {
@@ -5820,7 +6778,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   text-shadow: 1px 1px 3px rgba(from var(--black) r g b / .2);
   background: linear-gradient(to top right, var(--main), var(--main-brt));
   box-shadow: 0 6px 12px -4px rgba(from var(--shadow) r g b / .2);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   border: none;
   transition: .3s ease;
 }
@@ -5893,7 +6851,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border: none;
   background: var(--clr-dark-add);
   padding: 0 4px;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   line-height: normal;
 }
 
@@ -5924,7 +6882,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   padding: 0 8px;
   line-height: normal;
   height: auto;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info):hover {
@@ -5957,7 +6915,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots img,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc .b-video,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors > .c-authors .b-db_entry-variant-list_item img {
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors > .c-authors .info > .name .b-link {
@@ -5994,25 +6952,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   padding: 0 1em 1em;
   border-left: 1px solid var(--clr-brdr);
   border-right: 1px solid var(--clr-brdr);
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .block .c-description .b-lang_trigger {
-  color: var(--text-off);
-  width: 36px;
-  height: 36px;
-  margin: 0 0 5px 10px;
-  border-radius: var(--brdr-md);
-  transition: .2s ease;
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .block .c-description .b-lang_trigger:hover {
-  color: var(--text);
-  background: var(--clr-dark-add);
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .block .c-description .b-lang_trigger:active {
-  color: var(--text-dead);
-  background: transparent;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .b-db_entry:not(:has(.contest_winners)) .c-description {
@@ -6120,7 +7059,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .block:has(.scores) .b-rate .score-notice {
   margin-top: -3px;
-  padding: 0;
   font-size: 10px;
   font-weight: 700;
 }
@@ -6130,8 +7068,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-row: 6 / 6;
   padding: 12px;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
   margin-bottom: 12px;
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate {
+  max-width: none;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-image .b-user_rate > div {
@@ -6240,9 +7182,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-column: 1 / 5;
   grid-row: 7 / 7;
   padding: 0 1em 1em;
-  background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots {
@@ -6252,7 +7193,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin: 0 !important;
   border-left: 1px solid var(--clr-brdr);
   border-bottom: 1px solid var(--clr-brdr);
-  border-radius: 0 0 0 var(--brdr-lg);
+  border-radius: 0 0 0 var(--brdr-lrg);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots .cc {
@@ -6272,7 +7213,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   padding: 0 1em 1em .5em;
   border-right: 1px solid var(--clr-brdr);
   border-bottom: 1px solid var(--clr-brdr);
-  border-radius: 0 var(--brdr-lg) 0 0;
+  border-radius: 0 var(--brdr-lrg) 0 0;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc {
@@ -6289,10 +7230,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-column: 1 / 5;
   grid-row: 9 / 9;
   margin-top: 12px;
-  padding: 1em;
+  padding: 0 1em .6em;
   border: 1px solid var(--clr-brdr);
   border-bottom: none;
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more-more[style="display: block;"] {
@@ -6300,32 +7241,21 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated {
-  gap: 8px;
+  padding-top: 4px;
+  gap: 4px;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a {
-  color: var(--text);
+  color: var(--text-off);
+  padding: 4px;
   font-size: 0;
+  line-height: 1;
+  border-radius: var(--brdr-mdm);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:hover {
-  gap: 2px;
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:before {
-  
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:after {
-  display: block;
-  color: inherit;
-  padding: 0;
-  font-weight: 600;
-  transition: .2s ease;
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:hover:after {
-  font-size: 14px;
+  color: var(--main);
+  background: rgba(from var(--main) r g b / .1);
 }
 
 [data-locale="ru"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a[href*="/related"]:after {
@@ -6348,7 +7278,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item {
   gap: 8px;
-  padding: 0;
   border: none;
   overflow: hidden;
   min-height: 94px;
@@ -6361,13 +7290,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item img {
   width: 60px;
   height: auto;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .name {
   font-family: var(--font-alt);
   font-weight: var(--alt-font-weight);
-  margin: 0;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .name .b-link {
@@ -6395,7 +7323,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate .trigger {
-  padding: 0;
   max-width: 240px;
   height: 28px;
   border-width: 1px;
@@ -6411,10 +7338,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .trigger :where(.plus, .edit):after {
   margin-left: 2px;
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate .trigger:has(.edit) .status-name {
-  padding: 0;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate .trigger .status-name {
@@ -6438,12 +7361,11 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .hide-more {
   display: flex;
-  margin: 0;
   padding: 4px 12px;
   font-size: 0;
   color: var(--text-off);
   background: var(--clr-dark);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .2s ease;
   grid-column: span 2;
 }
@@ -6488,10 +7410,33 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page .l-content .block > .block:has(.cc-similar) {
   grid-column: 1 / 5;
   grid-row: 10 / 10;
-  border-radius: var(--brdr-lg-bt);
+  padding: 0 1em 1em;
+  border: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg-bt);
 }
 
-/* - - - - Правки - - - - */
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-reviews_navigation) {
+  border: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg);
+  margin: 12px 0;
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .subheadline {
+  border-bottom: none;
+  border-radius: var(--brdr-lrg-tp);
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .b-comments {
+  padding-top: 0;
+  border-top: none;
+  border-radius: var(--brdr-lrg-bt);
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .editor-container {
+  padding-top: 0;
+}
+
+/* ========== Правки ========== */
 .b-log_entry > .author > .b-user16 {
   order: 1;
 }
@@ -6788,12 +7733,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-versions-show > .l-page > div > .b-log_entry > .target,
 .p-user_rate_logs-show > .l-page > div > .b-user_rate_log {
   border-top: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-user_rate_logs-show > .l-page > div > .b-user_rate_log > .target {
   background: var(--clr-dark);
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .b-log_entry:hover,
@@ -6905,7 +7850,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-profiles-show .profile-content > .block:last-child > div > .editor-container  {
   background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   margin: 0;
 }
 
@@ -7079,7 +8024,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   background: var(--clr-block);
   padding: 0;
   margin: 0;
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
   background-image: var(--avatar);
   background-size: cover;
   background-position: center;
@@ -7109,7 +8054,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   text-shadow: 0 1px 3px rgba(from var(--black) r g b / .3);
   background: rgba(from var(--black) r g b / .08);
   border: 1px solid rgba(from var(--white) r g b / .2);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   backdrop-filter: blur(6px);
   transition: .25s ease;
 }
@@ -7197,7 +8142,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-area: 6 / 1 / 6 / 2;
   position: initial;
   background: linear-gradient(20deg, var(--anime-bar-left), var(--anime-bar-right));
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
   margin: -13px 0 0;
   padding: .8em .4em;
   width: auto;
@@ -7338,7 +8283,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin: 0;
   padding: .8em 1em;
   border: none;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   transition: .25s ease;
 }
 
@@ -7364,7 +8309,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin: 0;
   padding: .6em .9em;
   border: none;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   align-self: flex-start;
   font-family: var(--font-alt);
   font-weight: var(--alt-font-weight);
@@ -7495,7 +8440,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: nowrap;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   font-size: 12px;
   color: var(--text-off);
   text-transform: uppercase;
@@ -7580,7 +8525,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   font-size: 10px;
   text-transform: uppercase;
   border: none;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   color: var(--text-off);
   transition: .25s ease;
 }
@@ -7644,7 +8589,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .p-profiles-show .cc-friends .b-user .avatar > img {
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   filter: opacity(0.75);
   transition: .25s ease;
   width: 32px;
@@ -7684,7 +8629,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .p-profiles-show .c-column > .b-clubs .b-club .logo {
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   height: 40px;
   width: 40px;
   margin: 0 auto;
@@ -7983,7 +8928,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   display: flex;
   flex-direction: column-reverse;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   width: 100%;
   margin: 0;
   backface-visibility: hidden;
@@ -8036,7 +8981,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 100%;
   margin: 0;
   background: var(--clr-back);
-  border-radius: var(--brdr-md-tp);
+  border-radius: var(--brdr-mdm-tp);
   border-bottom: none;
 }
 
@@ -8081,7 +9026,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   line-height: 1.3;
   margin: 3px 0 0 3px;
   padding: 0 6px;
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   backdrop-filter: blur(2px);
   background: rgba(from var(--black) r g b / .1);
   color: var(--white);
@@ -8103,7 +9048,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--brdr-md-tp);
+  border-radius: var(--brdr-mdm-tp);
 }
 
 /* - - - О себе - - - */
@@ -8118,13 +9063,13 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 /* - - - Лента - - - */
 .p-profiles-show .profile-content > .block:not(.about.block):last-child > .subheadline {
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
   border-bottom: none;
   margin-top: 12px;
 }
 
 .p-profiles-show .profile-content > .block:last-child > div > .b-comments {
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
   border-top: none;
   padding: 0 1em 1em;
 }
@@ -8139,13 +9084,14 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-profiles-comments .comments-search:after,
 .p-profiles-comments .comments-search:before,
 .p-user_histories .b-options-floated a:before,
-.p-profiles-collections .b-options-floated > a:before,
 .p-profiles-collections .b-nothing_here:after,
 .p-user_rates-index header.head h1 > a.misc:after,
+.p-profiles-collections .b-options-floated > a:before,
+.p-profiles-collections .subheadline .misc-links a:before,
 .p-achievements-index .b-list_switchers .switcher:before,
-.p-achievements-franchise .b-list_switchers .switcher:before,
 .p-achievements-author .b-list_switchers .switcher:before,
-.p-user_rates-index .list-posters .user_rate .edit-user_rate:before ,
+.p-achievements-franchise .b-list_switchers .switcher:before,
+.p-user_rates-index .list-posters .user_rate .edit-user_rate:before,
 .p-user_rates-index .l-page .l-content > .b-options-floated .b-link:before,
 .p-user_rates-index .l-content header > .b-options-floated .action:before,
 .p-user_rates-index .subheadline-buttons .b-list_switchers .switcher:before {
@@ -8176,15 +9122,23 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   content: 'change_circle';
 }
 
-.p-profiles-collections .b-options-floated > a:nth-child(1):before {
+.p-profiles-collections .b-options-floated > a[href$="/collections"]:before {
   content: 'public';
 }
 
-.p-profiles-collections .b-options-floated > a:nth-child(2):before {
+.p-profiles-collections .b-options-floated > a[href*="=private"]:before {
+  content: 'lock';
+}
+
+.p-profiles-collections .b-options-floated > a[href*="=opened"]:before {
   content: 'lock_open';
 }
 
-.p-profiles-collections .b-options-floated > a:last-child:before {
+.p-profiles-collections .b-options-floated > a[href*="=unpublished"]:before {
+  content: 'public_off';
+}
+
+.p-profiles-collections .b-options-floated > a[href*="=coauthored"]:before {
   content: 'person_add';
 }
 
@@ -8244,7 +9198,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   content: 'edit';
 }
 
-.p-user_rates-index .item-add:before {
+.p-user_rates-index .item-add:before,
+.p-profiles-collections .subheadline .misc-links a:before {
   content: 'add';
 }
 
@@ -8252,6 +9207,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   content: 'moving';
 }
 
+.p-profiles-collections .b-options-floated > a > .brackets,
 .p-user_rates-index .l-page .l-content > .b-options-floated .b-link span:after,
 .p-user_rates-index .l-page .l-content .b-options-floated > .b-link:after,
 .p-profiles-friends > .l-page > div > .block > .cc:after,
@@ -8304,7 +9260,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   background: var(--clr-block);
   padding: 0 1em .6em;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-achievements-franchise .subheadline,
@@ -8335,7 +9291,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   background: var(--clr-block);
   padding: .6em 1em;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-achievements-author .subheadline,
@@ -8425,7 +9381,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .p-profiles-friends > .l-page > div > .block > .cc > .b-user > .avatar > img {
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   border: 1px solid var(--clr-brdr);
   box-shadow: 0 1px 9px rgba(from var(--shadow) r g b / .16);
   width: 80px;
@@ -8469,7 +9425,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   justify-content: flex-start;
   align-items: center;
   padding: .6em;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   box-shadow: 0 2px 8px rgba(from var(--shadow) r g b / .2);
 }
 
@@ -8497,7 +9453,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo > .logo {
   margin: 0;
   width: 48px;
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo > .name {
@@ -8554,10 +9510,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   color: var(--extra);
 }
 
-/* - - - Избранное - - - */
+/* ======== Избранное ======== */
 .p-profiles-favorites > .l-page > div > .block > .subheadline:not(:first-child) {
   margin-top: 12px;
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
 }
 
 .p-profiles-favorites > .l-page > div > .block > .subheadline {
@@ -8568,7 +9524,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   padding: .2em;
 }
 
-/* - - - Комменты - - - */
+/* ======== Комменты ======== */
 .p-profiles-comments > .l-page > div > .block > .subheadline {
   padding: 1em;
 }
@@ -8584,7 +9540,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 240px;
   font-size: 16px;
   line-height: 2;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   opacity: 0;
   pointer-events: none;
   transition: .3s ease;
@@ -8602,7 +9558,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   align-items: center;
   background: var(--clr-dark);
   color: var(--text-off);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   z-index: 2;
   transition: .3s ease;
 }
@@ -8640,7 +9596,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   opacity: 0;
   border: 1px solid var(--clr-brdr);
   border-right: none;
-  border-radius: var(--brdr-lg-lt);
+  border-radius: var(--brdr-lrg-lt);
   pointer-events: none;
 }
 
@@ -8671,7 +9627,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .p-user_histories .b-options-floated {
   margin: 0;
-  top: 5px;
+  top: 3px;
   right: 8px;
 }
 
@@ -8681,9 +9637,9 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 37px;
-  height: 37px;
-  border-radius: var(--brdr-lg);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--brdr-lrg);
   transition: .2s ease;
 }
 
@@ -8725,11 +9681,11 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .p-user_histories .l-page > div > .block > .block > .history-page > .history-interval > .b-user_history-line:last-child {
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-user_histories .l-page > div > .block > .block > .history-page > .mischeadline {
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
   margin: 12px 0 0;
   text-align: center;
   font-family: var(--font-alt);
@@ -8738,7 +9694,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-user_histories-logs .b-user_rate_log:last-child,
 .p-user_histories-show .b-user_history-line:last-child,
 .p-user_histories .l-page > div > .block > .history-page:last-child {
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-user_histories-logs .l-page > div > .block > .subheadline {
@@ -8766,7 +9722,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .p-profiles-reviews .l-page .block > .b-forum > .b-topic:not(:first-child),
 .p-profiles-collections .l-page .block > .b-forum > .b-topic:not(:first-child) {
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
 }
 
 .p-profiles-collections .l-page .block > .subheadline,
@@ -8776,12 +9732,23 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .p-profiles-collections .l-page .block > .subheadline {
+  min-height: 54px;
   text-align: left;
   border-bottom: none;
 }
 
+.p-profiles-collections .subheadline .misc-links {
+  padding: 0;
+}
+
+.p-profiles-collections .subheadline .misc-links a {
+  font-size: 0;
+}
+
 .p-profiles-collections .b-options-floated,
 .p-profiles-collections .b-options-floated > a,
+.p-profiles-collections .subheadline .misc-links,
+.p-profiles-collections .l-page .block > .subheadline,
 .p-profiles-collections .b-nothing_here {
   display: flex;
   align-items: center;
@@ -8790,7 +9757,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .p-profiles-collections .b-options-floated {
   right: 1em;
-  padding: .7em 0;
+  padding: 12px 0;
   justify-content: flex-end;
   margin: 0;
   order: 1;
@@ -8806,6 +9773,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-color: rgba(from var(--main) r g b / .3);
 }
 
+.p-profiles-collections .b-options-floated > a.selected:hover {
+  color: var(--second);
+  background: rgba(from var(--second-brt) r g b / .16);
+  border-color: rgba(from var(--second) r g b / .3);
+}
+
 .p-profiles-collections .b-options-floated > a {
   text-align: center;
   padding: .3em .6em;
@@ -8814,7 +9787,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   color: var(--text-off);
   background: rgba(from var(--opacity) r g b / .04);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
   z-index: 2;
   transition: .2s ease;
 }
@@ -8837,7 +9810,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   color: var(--text-off);
   background: var(--clr-dark);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   opacity: 0;
   transition: .3s ease;
   z-index: 1;
@@ -8965,7 +9938,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .p-achievements-index .block2 > .subheadline {
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
 }
 
 .p-achievements-author .b-options-floated,
@@ -8991,7 +9964,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   right: 10px;
   margin: 0;
   padding: 6px;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
 .p-achievements-index .block2 > .b-options-floated:has(a) {
@@ -9006,7 +9979,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   height: 100%;
   color: var(--text);
   padding: 8px 12px;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .2s ease;
 }
 
@@ -9049,7 +10022,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   align-items: center;
   justify-content: center;
   color: var(--text-off);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .3s ease;
 }
 
@@ -9102,7 +10075,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-achievements-index .c-franchises .b-badge {
   filter: none;
   overflow: hidden;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
 }
 
 .p-achievements-franchise .b-badge:before,
@@ -9120,7 +10093,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   font-weight: 600;
   line-height: normal;
   color: var(--white);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   text-shadow: 0 1px 1px rgba(from var(--shadow) r g b / .6), 0 1px 5px rgba(from var(--shadow) r g b / .2);
   opacity: 0;
   transition: .3s ease;
@@ -9200,7 +10173,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   padding: 0;
   overflow: hidden;
   background: var(--clr-block);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   box-shadow: 0 2px 6px rgba(from var(--shadow) r g b / .1), 0 4px 16px -2px rgba(from var(--shadow) r g b / .15);
   transition: .3s ease;
 }
@@ -9316,7 +10289,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .p-achievements-author .cc .b-achievement,
 .p-achievements-index .cc-authors .b-achievement {
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
 }
 
 .p-achievements-author .cc .b-achievement img,
@@ -9350,7 +10323,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   font-family: var(--font-main);
   font-weight: 200;
   font-size: 12px;
-  border-radius: var(--brdr-md-bt);
+  border-radius: var(--brdr-mdm-bt);
 }
 
 .p-achievements-author .cc .b-achievement:hover:before,
@@ -9391,7 +10364,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-user_rates-index > .l-page .l-menu > .b-collection-filters > .block {
   background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   padding: 1em;
 }
 
@@ -9487,7 +10460,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 46px;
   height: 46px;
   color: var(--text);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   background: var(--clr-block);
   box-shadow: 0 2px 4px rgba(from var(--shadow) r g b / .1), 0 4px 12px -4px rgba(from var(--shadow) r g b / .2);
   transition: .3s ease;
@@ -9521,7 +10494,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   font-weight: 500;
   font-family: var(--font-alt);
   text-shadow: 0 1px 3px var(--shadow);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   background: rgba(from var(--opacity) r g b / .2);
   backdrop-filter: blur(6px);
   gap: 4px;
@@ -9562,7 +10535,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-user_rates-index .l-page .l-content > .subheadline {
   padding: 0;
   height: 52px;
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
 }
 
 .p-user_rates-index .l-page .l-content > .subheadline-buttons {
@@ -9580,7 +10553,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   height: 38px;
   color: var(--text-dead);
   background: transparent;
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   transition: .3s ease;
 }
 
@@ -9598,13 +10571,13 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-user_rates-index .l-page .l-content > .b-collection_search {
   border-top: none;
   margin-bottom: 12px;
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-user_rates-index .l-page .l-content > .b-collection_search > .field input {
   background: var(--clr-dark);
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   padding: 0 .6em;
   line-height: 2.4;
   transition: .1s ease;
@@ -9648,7 +10621,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 32px;
   height: 32px;
   text-shadow: 0 1px 3px rgba(from var(--black) r g b / .2);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   opacity: 0;
   pointer-events: none;
   transition: .3s ease;
@@ -9675,7 +10648,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   text-shadow: 0 1px 3px var(--black), 0 1px 6px var(--black);
   line-height: normal;
   max-height: 20px;
-  border-radius: var(--brdr-sl-bt);
+  border-radius: var(--brdr-sml-bt);
   background: rgba(from var(--black) r g b / .6);
   backdrop-filter: blur(2px);
   overflow-y: auto;
@@ -9693,13 +10666,13 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .p-user_rates-index .list-posters .user_rate > .text:before {
   background: transparent;
-  border-radius: var(--brdr-sl-bt);
+  border-radius: var(--brdr-sml-bt);
 }
 
 .p-user_rates-index .l-page .l-content > .list-groups > header {
   padding: 0;
   height: 56px;
-  border-radius: var(--brdr-lg-tp);
+  border-radius: var(--brdr-lrg-tp);
 }
 
 .p-user_rates-index .l-content header > .subheadline {
@@ -9730,7 +10703,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   height: 38px;
   width: 38px;
   color: var(--text-off);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   background: transparent;
   transition: .3s ease;
 }
@@ -9815,7 +10788,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   line-height: 2;
   font-size: 14px;
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-md);
+  border-radius: var(--brdr-mdm);
   background: var(--clr-block);
 }
 
@@ -9861,7 +10834,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   font-variant-caps: all-small-caps;
   font-weight: 300;
   font-family: var(--font-alt);
-  border-radius: var(--brdr-sl);
+  border-radius: var(--brdr-sml);
 }
 
 .b-user_rate-extended > .cc .b-catalog_entry:after,
@@ -9915,7 +10888,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   position: fixed;
   top: 0px !important;
   background: var(--clr-block);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   padding: 0 1em 1em;
   box-shadow: 0 4px 6px rgba(from var(--shadow) r g b / .2), 0 6px 24px rgba(from var(--shadow) r g b / .2);
 }
@@ -9983,12 +10956,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   text-align: center;
   border-top: none;
   margin-top: 0;
-  border-radius: var(--brdr-lg-bt);
+  border-radius: var(--brdr-lrg-bt);
 }
 
 .p-user_rates-index .l-content > .list-groups > .summary.lines.library {
   border: 1px solid var(--clr-brdr);
-  border-radius: var(--brdr-lg);
+  border-radius: var(--brdr-lrg);
   padding: 1em;
 }
 
@@ -10055,4 +11028,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   .b-shiki_editor > .links > label > span {
     font-size: 18px;
   }
+}
+
+:root {
+  --build: 'shi.Modern Reborn alpha 0.4.7';
 }
