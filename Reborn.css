@@ -6,7 +6,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&family=Mochiy+Pop+P+One&family=Black+Han+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons+Round');
+
+.material-icons-round {
+  font-family: "Material Icons Round";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
 
 :root {
   --avatar: url('https://raw.githubusercontent.com/kpryu/shi.Modern.Reborn/main/assets/no_image.gif');
@@ -401,6 +421,10 @@ body, input, select, button, textarea {
   flex-flow: column;
 }
 
+.b-height_shortened {
+  max-height: 52px;
+}
+
 .b-entry-info .line-container {
   margin: 0;
 }
@@ -417,6 +441,42 @@ body, input, select, button, textarea {
 .b-separator {
   font-weight: 100;
   color: var(--text-dead);
+}
+
+/* === Инпуты === */
+.b-input select,
+.b-input input {
+  line-height: 2;
+  padding: 0 8px;
+  color: var(--text-off);
+  background: var(--clr-dark);
+  border: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-mdm);
+  transition: .3s ease;
+}
+
+.b-input select {
+  appearance: textarea;
+}
+
+.b-input select:focus,
+.b-input select:hover,
+.b-input input:focus,
+.b-input input:hover {
+  color: var(--text);
+  background: var(--clr-block);
+}
+
+.b-input select:focus,
+.b-input input:focus {
+  border-color: var(--second);
+  box-shadow: 0 0 0 1px inset var(--second), 0 0 0 3px rgba(from var(--second) r g b / .4);
+}
+
+/* === Плейсхолдеры === */
+.b-input .hint,
+.b-input input::placeholder {
+  color: var(--text-off);
 }
 
 /* === Нотинг Хир :( === */
@@ -496,6 +556,42 @@ a.b-mention:active s {
   border-radius: var(--brdr-sml);
 }
 
+.buttons :is(input, .cancel, a:not(.b-button)) {
+  user-select: none;
+  font-family: var(--font-alt);
+  font-size: 14px;
+  margin: 0;
+  border: none;
+  padding: .6em;
+  border-radius: var(--brdr-sml);
+  line-height: 1.4 !important;
+  transition: .3s ease;
+}
+
+.buttons .cancel {
+  color: var(--text);
+  background: var(--clr-dark);
+}
+
+.buttons .cancel:hover {
+  color: var(--text);
+  background: var(--clr-darker);
+}
+
+.buttons :is(input, .cancel, a:not(.b-button)):active {
+  color: var(--text-off);
+  transform: scale(.95);
+  pointer-events: none;
+  user-select: none;
+  transition: .1s ease;
+}
+
+.b-form .buttons {
+  width: fit-content;
+  display: flex;
+  gap: 8px;
+}
+
 /* ==== Загаловки ==== */
 h2, h3, h4 {
   color: var(--text-brt);
@@ -547,6 +643,10 @@ h2, h3, h4 {
   z-index: 1;
 }
 
+.spns_yd_970x90:has(div:empty) {
+  display: none;
+}
+
 .b-spns-yd_240x400:has(div:empty), .b-spns-yd_240x500:has(div:empty), .b-spns-yd_240x600:has(div:empty),
 .b-spns-yd_300x600:has(div:empty), .b-spns-yd_1170x200:has(div:empty), .b-spns-yd_970x90:has(div:empty),
 .b-spns-mt_300x250:has(div:empty), .b-spns-mt_240x400:has(div:empty), .b-spns-mt_300x600:has(div:empty),
@@ -576,6 +676,7 @@ h2, h3, h4 {
 .b-spoiler > label:before,
 .b-subposter-action:before,
 .b-footer_vote .star:before,
+.p-animes .item-edit:before,
 header.head h1 a.back:before,
 header.head h2 a.back:before,
 .b-spoiler_block > span:after,
@@ -602,11 +703,13 @@ header.head h2 a.back:before,
 .c-info-right .watch-online .b-link_button:after,
 .b-add_to_list.expanded .trigger-arrow:before,
 .b-status-line .section.created_at time:before,
+.b-status-line .section.changed_at time:before,
 .b-db_entry > .c-about .contest_winners .medal:before,
 .l-menu .block > .b-external_link.b-menu-line > .b-link:before,
 .p-animes-show .b-db_entry > .c-about .contest_winners .winners:after,
 .c-image > .b-user_rate .expanded-options .option .status-name:before,
 .b-review-topic > .inner > .buttons .main-controls > :where(span, a):before,
+.b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .hide-more:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:before {
@@ -626,6 +729,10 @@ header.head h2 a.back:before,
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
+}
+
+.b-status-line .section.changed_at time:before {
+  content: 'update';
 }
 
 .b-height_shortener .expand:after,
@@ -656,6 +763,7 @@ header.head h2 a.back:before,
   content: 'question_answer';
 }
 
+.p-animes .item-edit:before,
 .b-review-topic .buttons .item-edit:before,
 .b-status-line .section.created_at time:before {
   content: 'create';
@@ -776,31 +884,37 @@ header.head h2 a.back:before  {
 }
 
 .b-add_to_list.planned .edit:before,
+.b-catalog_entry.planned .image-decor:after,
 .c-image > .b-user_rate .expanded-options .option[data-status="planned"] .status-name:before {
   content: 'schedule';
 }
 
 .b-add_to_list.watching .edit:before,
+.b-catalog_entry.watching .image-decor:after,
 .c-image > .b-user_rate .expanded-options .option[data-status="watching"] .status-name:before {
   content: 'slow_motion_video';
 }
 
 .b-add_to_list.rewatching .edit:before,
+.b-catalog_entry.rewatching .image-decor:after,
 .c-image > .b-user_rate .expanded-options .option[data-status="rewatching"] .status-name:before {
   content: 'rotate_left';
 }
 
 .b-add_to_list.completed .edit:before,
+.b-catalog_entry.completed .image-decor:after,
 .c-image > .b-user_rate .expanded-options .option[data-status="completed"] .status-name:before {
   content: 'check_circle_outline';
 }
 
 .b-add_to_list.on_hold .edit:before,
+.b-catalog_entry.on_hold .image-decor:after,
 .c-image > .b-user_rate .expanded-options .option[data-status="on_hold"] .status-name:before {
   content: 'pause_circle_outline';
 }
 
 .b-add_to_list.dropped .edit:before,
+.b-catalog_entry.dropped .image-decor:after,
 .c-image > .b-user_rate .expanded-options .option[data-status="dropped"] .status-name:before {
   content: 'highlight_off';
 }
@@ -2432,7 +2546,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 .p-people-roles .c-role .c-animes.s-2,
 .p-people-roles .c-role .c-animes.s-3,
 .p-people-roles .c-role .c-animes.s-4 {
-  margin: 0 0 12px;
+  margin: 0;
   max-height: 180px;
 }
 
@@ -2630,6 +2744,181 @@ body > .b-feedback > .marker-positioner > .marker-text {
   position: relative;
 }
 
+.b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:after {
+  color: var(--white);
+  width: auto;
+  height: auto;
+  padding: 0 0 3px 3px;
+  border-radius: 0 0 0 50%;
+  transition: .3s ease;
+}
+
+.b-catalog_entry-tooltip .b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:after {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  right: 1px;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+}
+
+.b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped):hover .image-decor:after {
+  padding: 0;
+  right: 0;
+  top: -40px;
+}
+
+.b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:before {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  color: var(--white);
+  font-weight: 900;
+  font-size: 10px;
+  line-height: 2.5;
+  text-transform: uppercase;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  transition: .3s ease;
+}
+
+.b-catalog_entry-tooltip .b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:before {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  font-size: 0;
+}
+
+[data-locale="ru"] .b-catalog_entry.completed .image-decor:before {
+  content: 'Просмотрено';
+}
+
+[data-locale="ru"] .b-catalog_entry.planned .image-decor:before {
+  content: 'Запланировано';
+}
+
+[data-locale="ru"] .b-catalog_entry.watching .image-decor:before {
+  content: 'Смотрю';
+}
+
+[data-locale="ru"] .b-catalog_entry.rewatching .image-decor:before {
+  content: 'Пересматриваю';
+}
+
+[data-locale="ru"] .b-catalog_entry.on_hold .image-decor:before {
+  content: 'Отложено';
+}
+
+[data-locale="ru"] .b-catalog_entry.dropped .image-decor:before {
+  content: 'Брошено';
+}
+
+[data-locale="en"] .b-catalog_entry.completed .image-decor:before {
+  content: 'Completed';
+}
+
+[data-locale="en"] .b-catalog_entry.planned .image-decor:before {
+  content: 'Planned';
+}
+
+[data-locale="en"] .b-catalog_entry.watching .image-decor:before {
+  content: 'Watching';
+}
+
+[data-locale="en"] .b-catalog_entry.rewatching .image-decor:before {
+  content: 'Rewatching';
+}
+
+[data-locale="en"] .b-catalog_entry.on_hold .image-decor:before {
+  content: 'On Hold';
+}
+
+[data-locale="en"] .b-catalog_entry.dropped .image-decor:before {
+  content: 'Dropped';
+}
+
+.b-catalog_entry.completed .image-decor:before {
+  box-shadow: 0 -20px 0 4px inset var(--list-complete), 0 0 0 4px inset var(--list-complete);
+}
+
+.b-catalog_entry-tooltip .b-catalog_entry.completed .image-decor:before {
+  box-shadow: 0 0 0 3px inset var(--list-complete);
+}
+
+.b-catalog_entry.completed:hover .image-decor:before {
+  box-shadow: 0 0 0 0 inset var(--list-complete);
+  padding-top: 40px;
+}
+
+.b-catalog_entry.completed .image-decor:after {
+  background: var(--list-complete);
+}
+
+.b-catalog_entry.planned .image-decor:before,
+.b-catalog_entry.watching .image-decor:before,
+.b-catalog_entry.rewatching .image-decor:before {
+  box-shadow: 0 -20px 0 4px inset var(--list-watching), 0 0 0 4px inset var(--list-watching);
+}
+
+.b-catalog_entry-tooltip .b-catalog_entry.planned .image-decor:before,
+.b-catalog_entry-tooltip .b-catalog_entry.watching .image-decor:before,
+.b-catalog_entry-tooltip .b-catalog_entry.rewatching .image-decor:before {
+  box-shadow: 0 0 0 3px inset var(--list-watching);
+}
+
+.b-catalog_entry.planned:hover .image-decor:before,
+.b-catalog_entry.watching:hover .image-decor:before,
+.b-catalog_entry.rewatching:hover .image-decor:before {
+  box-shadow: 0 0 0 0 inset var(--list-watching);
+  padding-top: 40px;
+}
+
+.b-catalog_entry.planned .image-decor:after,
+.b-catalog_entry.watching .image-decor:after,
+.b-catalog_entry.rewatching .image-decor:after {
+  background: var(--list-watching);
+}
+
+.b-catalog_entry.on_hold .image-decor:before {
+  box-shadow: 0 -20px 0 4px inset var(--list-paused), 0 0 0 4px inset var(--list-paused);
+}
+
+.b-catalog_entry-tooltip .b-catalog_entry.on_hold .image-decor:before {
+  box-shadow: 0 0 0 3px inset var(--list-paused);
+}
+
+.b-catalog_entry.on_hold:hover .image-decor:before {
+  box-shadow: 0 0 0 0 inset var(--list-paused);
+  padding-top: 40px;
+}
+
+.b-catalog_entry.on_hold .image-decor:after {
+  background: var(--list-paused);
+}
+
+.b-catalog_entry.dropped .image-decor:before {
+  box-shadow: 0 -20px 0 4px inset var(--list-drop), 0 0 0 4px inset var(--list-drop);
+}
+
+.b-catalog_entry-tooltip .b-catalog_entry.dropped .image-decor:before {
+  box-shadow: 0 0 0 3px inset var(--list-drop);
+}
+
+.b-catalog_entry.dropped:hover .image-decor:before {
+  box-shadow: 0 0 0 0 inset var(--list-drop);
+  padding-top: 40px;
+}
+
+.b-catalog_entry.dropped .image-decor:after {
+  background: var(--list-drop);
+}
+
 .b-catalog_entry .cover .image-decor img {
   width: 100%;
   aspect-ratio: 11/15.5;
@@ -2775,6 +3064,7 @@ body[data-localized_names="ru"] .c-works .b-catalog_entry .cover .title > .name-
 .c-works .b-catalog_entry .cover .misc {
   line-height: 1;
 }
+
 /* ========== Статистика / Полоски в боковом меню ========= */
 .bar.horizontal {
   display: flex;
@@ -2994,6 +3284,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
   flex-flow: column-reverse;
   align-items: flex-end;
   justify-content: flex-end;
+  pointer-events: none;
 }
 
 .b-catalog_entry-tooltip:has(.flexible-button) .inner .rating {
@@ -3013,7 +3304,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 }
 
 .b-catalog_entry-tooltip .flexible-button:has(.text.add-trigger) {
-  min-width: 212px;
+  min-width: 202px;
 }
 
 .b-db_entry-variant-list_item > .info .b-add_to_list .trigger > .text.add-trigger > .status-name,
@@ -3722,8 +4013,9 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
   background: transparent;
   border: none;
   border-radius: 0;
-  line-height: 2;
+  padding: 0;
   cursor: pointer;
+  box-shadow: none;
   transition: .3s ease;
 }
 
@@ -3751,6 +4043,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate form > .b-input.user_rate_text textarea:hover,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate form > .b-input.user_rate_text textarea:focus {
   color: var(--text);
+  box-shadow: none;
 }
 
 .b-user_rate-extended > .cc form > .b-input select:active,
@@ -4271,6 +4564,16 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   border: none;
 }
 
+.b-comment-info {
+  color: var(--text-off);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.b-comment-info a.b-user16 {
+  font-size: 14px;
+}
+
 .b-comment > .inner {
   min-height: auto;
   display: grid;
@@ -4282,12 +4585,27 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 .b-comment > .inner > .markers,
-.b-comment > .inner > aside.buttons {
+.b-comment > .inner > aside.buttons,
+.b-comment > .inner .was_updated {
   display: flex;
   align-items: center;
   padding: .4em;
   margin: 0;
   grid-area: 2 / 2 / 2 / 2;
+}
+
+.b-comment > .inner .was_updated {
+  justify-content: center;
+  background: var(--clr-block);
+  color: var(--text);
+  font-size: 14px;
+  width: 100%;
+  z-index: 3;
+}
+
+.b-comment > .inner .was_updated div {
+  line-height: normal;
+  font-size: inherit;
 }
 
 .b-comment > .inner > aside.buttons {
@@ -5350,6 +5668,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 .b-review-topic > .inner header,
+.markers .b-review_opinion_marker,
 .b-review-topic > .inner header img,
 .b-review-topic > .inner > .buttons,
 .b-reviews_navigation .navigation-node .count,
@@ -5375,6 +5694,10 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   color: inherit;
 }
 
+.b-review-topic > .inner header img {
+  border-radius: var(--brdr-mdm);
+}
+
 .b-critique_votes .votes-for {
   color: var(--green);
 }
@@ -5391,10 +5714,6 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   display: flex;
   align-items: center;
   gap: 4px;
-}
-
-.markers .b-review_opinion_marker {
-  margin: 0;
 }
 
 .markers .b-review_opinion_marker > span,
@@ -5442,6 +5761,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   background: color-mix(in srgb, var(--red) 70%, var(--clr-dark) 30%);
 }
 
+.p-critiques-new .l-content > .block,
 .p-reviews-new .l-content > .block,
 .p-reviews-index .review-controls,
 .p-reviews-index .navigation-container {
@@ -5451,6 +5771,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   padding: 1em;
 }
 
+.p-critiques-new .l-content > .block,
 .p-reviews-new .l-content > .block,
 .p-reviews-index .review-controls {
   border-radius: var(--brdr-lrg-bt);
@@ -5664,6 +5985,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .b-footer_vote .vote-group .vote:before,
 .b-status-line .section.main .comments:before,
 .b-status-line .section.created_at time:before,
+.b-status-line .section.changed_at time:before,
 .b-reviews_navigation .review-controls .create-review.mini:before {
   font-size: 18px;
 }
@@ -5684,6 +6006,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 .b-status-line .created_at,
+.b-status-line .changed_at,
 .b-status-line .section.main > span {
   padding: 4px 8px;
   background: var(--clr-darker);
@@ -5901,6 +6224,198 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   pointer-events: auto;
 }
 
+/* ===== Отзывы на Форуме и в Профиле ===== */
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .markers,
+.b-review-topic .b-status-line .section:not(:last-child):after {
+  display: none;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner header,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-topic-preview > .inner footer,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .name-date,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .section.about .author {
+  display: contents;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .l-page .block > .b-forum > .b-topic,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .l-page .block > .b-forum > .b-topic:first-child {
+  padding: 0;
+  border: none;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic:first-child > .inner,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic:first-child > .inner header {
+  border-radius: var(--brdr-lrg-bt);
+  border-top: none;
+}
+
+.p-topics.p-topics-index .b-review-topic > .inner {
+  border-radius: 0;
+}
+
+.p-topics.p-topics-index .b-review-topic:first-child > .inner {
+  border-top: 1px solid var(--clr-brdr);
+}
+
+.p-topics.p-topics-index .b-review-topic .b-comments {
+  padding-top: 8px;
+  margin: 0;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner {
+  grid-template-columns: 80px repeat(4, 1fr);
+  grid-template-rows: 0fr 1fr;
+  background: var(--clr-dark);
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .poster {
+  grid-column: 1 / 1;
+  grid-row: 1 / 3;
+  justify-self: center;
+  aspect-ratio: 1 / 1;
+  padding: 8px;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--brdr-mdm);
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .name-date .name {
+  grid-area: 1 / 2 / 1 / 5;
+  font-family: var(--font-alt);
+  font-weight: var(--alt-font-weight);
+  color: var(--text-brt);
+  align-self: center;
+}
+
+[data-localized_names="ru"]:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .name-date .name > .name-ru,
+[data-localized_names="en"]:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .name-date .name > .name-en {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .name-date .name:hover {
+  color: var(--second);
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .name-date .status-tags {
+  grid-area: 1 / 5 / 1 / 5;
+  justify-self: end;
+  display: flex;
+  padding: 8px;
+  gap: 4px;
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag {
+  border: none;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  color: var(--text);
+  border-radius: var(--brdr-sml);
+  background: var(--clr-darker);
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag:before {
+  font-family: var(--font-alt);
+  font-variant-caps: normal;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 10px;
+  padding: 5px 8px;
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag.review-positive {
+  color: var(--white);
+  background: var(--green);
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag.review-positive:hover {
+  background: rgba(from var(--green) r g b / .8);
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag.review-negative {
+  color: var(--white);
+  background: var(--red);
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag.review-negative:hover {
+  background: rgba(from var(--red) r g b / .8);
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag.ignored {
+  color: var(--white);
+  background: var(--red);
+}
+
+.b-topic-preview > .inner header .b-anime_status_tag.ignored:hover {
+  background: rgba(from var(--red) r g b / .8);
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line {
+  display: flex;
+  align-self: start;
+  grid-area: 2 / 2 / 2 / 6;
+  margin: 0 !important;
+  gap: 4px;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .about {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0 !important;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .b-user16 {
+  font-variant-caps: normal;
+  font-size: 12px;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .main {
+  margin-right: auto;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .about,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .comments,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .created_at time,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .changed_at time,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .b-critique_votes {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .changed_at,
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line:not(:has(.changed_at )) .created_at {
+  margin-right: 8px;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .body-inner {
+  grid-column: 1 / 6;
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+  border-right: none;
+  border-left: none;
+  padding: 8px;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .b-footer_vote {
+  grid-area: 5 / 1 / 5 / 4;
+}
+
+:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner > .buttons {
+  grid-area: 5 / 3 / 5 / 6;
+}
+
 /* ======== Загаловок / Заголовки ======== */
 body:not(#profiles_show) > .l-page header.head {
   position: relative;
@@ -6069,6 +6584,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 /* ========== Страницы с Боковым Меню ========== */
+.l-page:has(.l-menu) > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu),
 .p-topics-show > .l-page > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu),
 .p-db_entries > .l-page > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu) {
   display: contents;
@@ -6086,12 +6602,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   display: none;
 }
 
+.l-menu .block2,
 .l-content .b-comments,
 .l-content > .subheadline,
 .p-topics .l-menu .b-forums,
 .l-content .editor-container,
-.p-characters-show .l-content > .cc-roles,
-:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry,
+.p-people-index > .l-page > div > .cc-8,
 .l-content .b-review-topic > .subheadline,
 .l-page .l-content > .b-topic > .subheadline,
 .l-content:has(.b-review-topic) > .block > .subheadline,
@@ -6104,10 +6620,9 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-radius: var(--brdr-lrg);
 }
 
+.l-menu .block2,
 .p-topics .l-menu .b-forums,
 .l-content .b-comments.is-headline,
-.p-characters-show .l-content > .cc-roles,
-.p-characters-show .l-content > .b-db_entry,
 .l-page > div .l-menu > .b-animes-menu > .b-menu_logo {
   margin: 0;
 }
@@ -6217,28 +6732,36 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   padding: 0;
 }
 
+[data-locale="ru"] .l-menu .b-show_more:before,
 [data-locale="ru"] .b-animes-menu .b-show_more:before {
   content: 'Показать больше';
 }
 
+[data-locale="en"] .l-menu .b-show_more:before,
 [data-locale="en"] .b-animes-menu .b-show_more:before {
   content: 'Show more';
 }
 
+[data-locale="ru"] .l-menu .hide-more:before,
 [data-locale="ru"] .b-animes-menu .hide-more:before {
   content: 'Скрыть';
 }
 
+[data-locale="en"] .l-menu .hide-more:before,
 [data-locale="en"] .b-animes-menu .hide-more:before {
   content: 'Hide';
 }
 
+.l-menu .b-show_more:before,
+.l-menu .hide-more:before,
 .b-animes-menu .b-show_more:before,
 .b-animes-menu .hide-more:before {
   font-size: 12px;
   line-height: 2;
 }
 
+.l-menu .b-show_more,
+.l-menu .hide-more,
 .b-animes-menu .b-show_more,
 .b-animes-menu .hide-more {
   margin: 0;
@@ -6255,6 +6778,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin-top: 4px;
 }
 
+.l-menu .b-show_more:hover,
+.l-menu .hide-more:hover,
 .b-animes-menu .b-show_more:hover,
 .b-animes-menu .hide-more:hover {
   color: var(--text);
@@ -6390,13 +6915,13 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   transform: none;
 }
 
-.l-page > div > header,
-.l-page > div .menu-slide-outer > .menu-slide-inner > .l-content {
+.l-page:has(.l-menu) > div > header,
+.l-page:has(.l-menu) > div .menu-slide-outer > .menu-slide-inner > .l-content {
   width: calc(1260px - 1260px / 4);
 }
 
-.l-page:is(.menu-expanded) > div > header,
-.l-page:is(.menu-expanded) > div .menu-slide-outer > .menu-slide-inner > .l-content {
+.l-page:has(.l-menu):is(.menu-expanded) > div > header,
+.l-page:has(.l-menu):is(.menu-expanded) > div .menu-slide-outer > .menu-slide-inner > .l-content {
   width: 1260px;
 }
 
@@ -6411,11 +6936,15 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 /* ======== Основная Страница ======== */
-.l-page > div {
+.l-page:has(.l-menu) > div {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0 12px;
   transition: .3s ease;
+}
+
+.p-topics-index .l-page:has(.l-menu) > .b-hot_topics-v2 {
+  display: flex;
 }
 
 .l-page > div > header {
@@ -6508,17 +7037,35 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   display: contents;
 }
 
+.p-characters-show .l-content > .cc-roles,
+:is(.p-people-works, .p-people-roles) .l-content :where(.subheadline, .c-role, .cc-5),
+:is(.p-characters-animes, .p-characters-mangas, .p-characters-ranobe)
+.l-content .block :where(.subheadline, .cc-5),
+:is(.p-characters-show, .p-people-show) .l-content > .b-db_entry {
+  padding: 1em;
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg);
+}
 
+.p-characters-show .l-content > .cc-roles,
 :is(.p-characters-show, .p-people-show) .b-db_entry
-:is(.c-image, .c-info-left, .c-info-right, .c-description) {
+:is(.c-image, .c-info-left, .c-info-right, .c-description, .contest_winners, .contest_winners .winners) {
   margin: 0;
 }
 
+:is(.p-people-works, .p-people-roles) .l-content :where(.subheadline, .c-role, .cc-5),
+:is(.p-characters-animes, .p-characters-mangas, .p-characters-ranobe)
+.l-content .block :where(.subheadline, .cc-5),
 .p-animes-characters .l-content > .block > .subheadline:first-child {
   border-radius: 0;
 }
 
+.p-people-works .l-content .cc-5,
 .p-characters-show .l-content > .cc-roles,
+.p-people-roles .l-content .c-role:last-child,
+:is(.p-characters-animes, .p-characters-mangas, .p-characters-ranobe)
+.l-content .block :where(.cc-5),
 :is(.p-characters-show, .p-people-show) .l-content > .b-db_entry,
 .p-animes-characters .l-content > .block > .cc-characters {
   border-radius: var(--brdr-lrg-bt);
@@ -6534,10 +7081,30 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-bottom: 1px solid var(--clr-brdr);
 }
 
+.p-characters-show .l-content > .subheadline:has([title="Все комментарии"]) {
+  border-bottom: none;
+}
+
+.p-people-works .l-content .cc-5,
 .p-characters-show .l-content > .cc-roles,
+:is(.p-characters-animes, .p-characters-mangas, .p-characters-ranobe)
+.l-content .block :where(.cc-5),
 :is(.p-characters-show, .p-people-show) .l-content > .b-db_entry,
 .p-animes-characters .l-content > .block > .cc-characters {
   border-top: none;
+}
+
+.p-people-roles .l-content .c-role {
+  border-top: none;
+  padding: .3em;
+}
+
+.p-people-roles .l-content .c-role:not(:last-child) {
+  border-bottom: none;
+}
+
+.p-people-roles .l-content .c-role:not(:nth-child(3)) {
+  padding-top: 0;
 }
 
 .p-characters-show .l-content > .cc-roles {
@@ -6584,6 +7151,34 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 100%;
 }
 
+.p-characters-show .b-db_entry > .c-about .contest_winners,
+.p-characters-show .b-db_entry > .c-about .contest_winners .medal {
+  display: flex;
+}
+
+.p-characters-show .b-db_entry > .c-about .contest_winners {
+  flex-flow: column;
+}
+
+.p-characters-show .b-db_entry > .c-about .contest_winners .medal:before {
+  width: auto;
+}
+
+.p-characters-show[data-locale="ru"] .b-db_entry > .c-about .contest_winners .medal:after {
+  content: 'Победы в номинациях:';
+}
+
+.p-characters-show[data-locale="en"] .b-db_entry > .c-about .contest_winners .medal:after {
+  content: 'Wins in nominations:';
+}
+
+.p-characters-show .b-db_entry > .c-about .contest_winners .medal {
+  position: static;
+  width: auto;
+  height: auto;
+  gap: 4px;
+}
+
 :is(.p-characters-show) .b-db_entry > .c-description {
   grid-row: 2 / 5;
   grid-column: 2 / 5;
@@ -6607,7 +7202,55 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-row: 3 / 3;
 }
 
+/* ===== Все Люди ===== */
+.p-people-index .l-page header.head .notice :where(span, a):after {
+  display: none;
+}
+
+.p-people-index .l-page header.head .notice {
+  top: 0;
+  bottom: 0;
+  margin: auto 1.5em;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 800;
+  gap: 4px;
+}
+
+.p-people-index .l-page header.head .notice :where(span, a) {
+  padding: 6px 8px;
+  background: var(--clr-dark-add);
+  border-radius: var(--brdr-mdm);
+  text-transform: inherit;
+  font-weight: inherit;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.p-people-index .l-page header.head .notice span {
+  pointer-events: none;
+}
+
+.p-people-index .l-page header.head .notice a {
+  color: var(--text);
+}
+
+.p-people-index .l-page header.head .notice a:hover {
+  color: var(--main);
+  background: rgba(from var(--main) r g  b / .16);
+}
+
+.p-people-index > .l-page > div > .cc-8 {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.p-people-index .cc-8 .b-postloader.collapsed {
+  grid-column: span 8;
+}
+
 /* ======== Страница Аниме/Манги/Ранобэ ======== */
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .no-video:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .entry-2,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .entry-3,
@@ -6623,6 +7266,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-related-authors:before,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child > .cc:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-user_rate .trigger .text > span:not(.status-name),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-reviews_navigation):has(.b-nothing_here),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated a:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate:has(.b-form.rate-edit) .b-add_to_list .trigger,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-authors .b-db_entry-variant-list_item:nth-child(n+3):nth-child(-n+20),
@@ -6636,6 +7280,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-image .b-user_rate > div .b-add_to_list form,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about .c-info-right,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc.two-videos,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc.no-video,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-image,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-characters,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-related-authors,
@@ -6671,6 +7316,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-entry-info .line-container,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child
 :where(.b-db_entry-variant-list_item, .b-db_entry-variant-list_item .image, .b-db_entry-variant-list_item .b-user_rate),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content:not(:has(.cc-characters .c-characters)) > .block .c-image .b-user_rate,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .contest_winners .winners:hover .winner:nth-child(n+2),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .name,
@@ -6684,7 +7330,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate .rate-show .b-rate .stars-container,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right > .block:not(.contest_winners, :has(.scores)) img,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .info,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots :where(.entry-1, .entry-2, .entry-3, .entry-4),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots :where(.entry-1, .entry-2, .entry-3, .entry-4, .entry-5),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc :where(.b-video, .b-video .video-link) {
   width: 100%;
 }
@@ -6694,7 +7340,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-entry-info .line-container .value,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child :where(.b-options-floated, .b-options-floated a),
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.watch-online) .c-authors .b-db_entry-variant-list_item:nth-child(3),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right > .block:not(.contest_winners, :has(.scores)) > .block {
   display: flex;
 }
@@ -6706,7 +7351,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   align-items: center;
 }
 
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .block > .block:has(.cc-similar),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-reviews_navigation),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about .c-info-right > .block,
@@ -6743,37 +7387,34 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-image .cc.block {
   grid-column: 1 / 1;
-  grid-row: 1 / 1;
+  grid-row: 1 / 3;
   padding-left: 1em;
   border-left: 1px solid var(--clr-brdr);
 }
 
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .b-db_entry:not(:has(.watch-online)) .c-image .cc.block {
-  grid-row: 1 / 3;
-}
-
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online {
   grid-column: 1 / 1;
-  grid-row: 2 / 2;
+  grid-row: 4 / 4;
+  align-self: end;
+  background: transparent;
   position: relative;
   line-height: normal;
   color: var(--white);
-  padding: 1em;
-  padding-right: 0;
-  border-left: 1px solid var(--clr-brdr);
+  padding: 0 0 1em 1em;
+  z-index: 1;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online .b-link_button {
   position: relative;
   line-height: inherit;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   color: inherit;
   overflow: hidden;
-  padding-top: 12px;
+  padding: 8px;
   margin: 0;
   max-width: none;
-  height: 60px;
+  height: 40px;
   max-height: 60px;
   text-shadow: 1px 1px 3px rgba(from var(--black) r g b / .2);
   background: linear-gradient(to top right, var(--main), var(--main-brt));
@@ -6784,13 +7425,14 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online .b-link_button:hover {
+  font-size: 0;
   opacity: .8;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online .b-link_button:after {
   font-size: 90px;
   position: absolute;
-  top: -12px;
+  top: -18px;
   right: -14px;
   opacity: 0;
   transition: .3s ease;
@@ -6803,11 +7445,19 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online .kind {
   position: absolute;
-  margin-top: 32px;
+  margin-top: 20px;
   color: inherit;
   line-height: inherit;
-  font-size: 11px;
+  font-size: 14px;
+  font-weight: 800;
   pointer-events: none;
+  opacity: 0;
+  transition: .3s ease;
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online:has(.b-link_button:hover) .kind {
+  opacity: 1;
+  margin-top: 11px;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about .c-info-left {
@@ -6897,6 +7547,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin: 0 !important;
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show)
+.l-content:not(:has(.c-info-right .block .contest_winners, .c-info-right .block .scores)) .cc-related-authors > .c-authors,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content:has(.c-info-right:empty) .cc-related-authors > .c-authors {
+  grid-row: 1 / 3;
+}
+
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors > .c-authors .subheadline {
   padding-top: 0;
 }
@@ -6954,10 +7610,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-right: 1px solid var(--clr-brdr);
 }
 
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .b-db_entry:not(:has(.contest_winners)) .c-description {
-  grid-column: 1 / 5;
-  border-right: 1px solid var(--clr-brdr);
-  transition: none;
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content:has(.c-info-right .watch-online) .c-description .b-source {
+  margin-top: 30px;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry > .c-about .contest_winners {
@@ -7070,9 +7724,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border: 1px solid var(--clr-brdr);
   border-radius: var(--brdr-lrg-bt);
   margin-bottom: 12px;
-}
-
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-image .b-user_rate {
   max-width: none;
 }
 
@@ -7178,6 +7829,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-area: 2 / 1 / 2 / 5;
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content >
+.block:has(.no-video .c-screenshots, .no-video .c-videos) .cc-characters .c-characters,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-characters .c-characters {
   grid-column: 1 / 5;
   grid-row: 7 / 7;
@@ -7186,6 +7839,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-radius: var(--brdr-lrg-tp);
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content >
+.block:not(:has(.two-videos, .no-video)) .cc-characters .c-characters {
+  border-radius: var(--brdr-lrg);
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .cc.no-video > .c-screenshots,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots {
   grid-column: 1 / 3;
   grid-row: 8 / 8;
@@ -7196,17 +7855,30 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-radius: 0 0 0 var(--brdr-lrg);
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .cc.no-video > .c-screenshots {
+  grid-column: 1 / 5;
+  padding: 0 1em 1em;
+  border-right: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg-bt);
+}
+
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots .cc {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 6px;
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .cc.no-video > .c-screenshots .cc {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .no-video:not(:has(.c-screenshots)) .c-videos :is(.entry-1, .entry-2, .entry-3, .entry-4),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots :is(.entry-1, .entry-2, .entry-3, .entry-4) {
   display: block;
 }
 
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .two-videos .c-videos {
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .two-videos .c-videos,
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .no-video:not(:has(.c-screenshots)) .c-videos {
   grid-column: 3 / 5;
   grid-row: 8 / 8;
   margin: 0 !important;
@@ -7216,10 +7888,21 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-radius: 0 var(--brdr-lrg) 0 0;
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .no-video:not(:has(.c-screenshots)) .c-videos {
+  grid-column: 1 / 5;
+  padding: 0 1em 1em;
+  border-left: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg-bt);
+}
+
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc {
   display: grid;
   grid-template-columns: 1fr;
   gap: 6px;
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .no-video:not(:has(.c-screenshots)) .c-videos .cc {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc .b-video {
@@ -7234,6 +7917,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border: 1px solid var(--clr-brdr);
   border-bottom: none;
   border-radius: var(--brdr-lrg-tp);
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content:not(:has(.cc-similar)) > .block .cc-related-authors .c-column:first-child {
+  padding: 0 1em 1em;
+  border: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more-more[style="display: block;"] {
@@ -7434,6 +8123,74 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .editor-container {
   padding-top: 0;
+}
+
+/* ===== Кадры / Видео ===== */
+.p-db_entries-videos .l-content :where(.block, .b-source, .cc) {
+  margin: 0 !important;
+}
+
+.p-db_entries-videos .l-content :where(.subheadline, .cc, .b-source),
+.p-db_entries-screenshots .l-content :where(.subheadline, .cc) {
+  padding: 1em;
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+}
+
+.p-db_entries-screenshots .l-content .cc,
+.p-db_entries-videos .l-content :where(.b-source, .cc) {
+  border-top: none;
+}
+
+.p-db_entries-videos .l-content .b-source,
+.p-db_entries-screenshots .l-content .cc {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.p-db_entries-videos .l-content .cc,
+.p-db_entries-screenshots .l-content .cc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 8px;
+  gap: 4px;
+}
+
+.p-db_entries-videos .l-content .cc {
+  border-radius: 0;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.p-db_entries-videos .l-content .cc .b-video,
+.p-db_entries-screenshots .l-content .cc .c-screenshot {
+  width: 100%;
+  margin: 0;
+  border-radius: var(--brdr-sml);
+}
+
+.p-db_entries-videos .l-content .cc .b-video {
+  aspect-ratio: 16 / 9;
+}
+
+.p-db_entries-videos .l-content .b-source .contributors {
+  float: none;
+}
+
+.subheadline-buttons {
+  margin-top: 4px;
+  right: 6px;
+}
+
+.p-animes .item-edit {
+  display: flex;
+  padding: 6px;
+  color: var(--text-off);
+  background: var(--clr-dark);
+  border-radius: var(--brdr-mdm);
+}
+
+.p-animes .item-edit:hover {
+  color: var(--second);
+  background: rgba(from var(--second) r g b / .16);
 }
 
 /* ========== Правки ========== */
@@ -7688,6 +8445,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   color: var(--text);
 }
 
+.b-log_entry > span.id[data-text="Видео"] > a {
+  max-width: 160px;
+  display: inline;
+  line-height: 36px;
+}
+
 .b-log_entry > .spoiler.collapse,
 .b-log_entry > .spoiler.collapsed,
 .b-log_entry > .spoiler.collapse span,
@@ -7791,7 +8554,102 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   transition: .3s ease;
 }
 
-/* - - - - Глобальные - - - - */ 
+/* ===== Кадры / Видео ===== */
+.b-form:after,
+.b-form:before {
+  display: none;
+}
+
+.p-db_entries-edit_field .new_video .inputs {
+  display: contents;
+}
+
+.p-db_entries-edit_field .l-content > .block > .subheadline,
+.p-db_entries-edit_field .l-content .videos-deleter :where(.subheadline, .cc),
+.p-db_entries-edit_field .l-content .block > :where(.b-text_with_paragraphs, .m8, .cc-2) {
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+  padding: 1em;
+}
+
+.p-db_entries-edit_field .l-content .edit-page,
+.p-db_entries-edit_field .new_video .inputs > div,
+.p-db_entries-edit_field .l-content .videos-deleter .cc .b-video {
+  margin: 0;
+}
+
+.p-db_entries-edit_field .l-content > .block > .subheadline:not(:first-child),
+.p-db_entries-edit_field .l-content .videos-deleter .subheadline {
+  border-radius: var(--brdr-lrg-tp);
+}
+
+.p-db_entries-edit_field .l-content .videos-deleter .cc {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.p-db_entries-edit_field .l-content .block > :where(.b-text_with_paragraphs, .m8, .cc-2) {
+  margin: 0 !important;
+}
+
+.p-db_entries-edit_field .l-content .block > :where(.b-text_with_paragraphs, .m8, .cc-2) {
+  border-top: none;
+  padding-top: 0;
+}
+
+.p-db_entries-edit_field .l-content .block > :where(.b-text_with_paragraphs, .m8) {
+  border-bottom: none;
+}
+
+.p-db_entries-edit_field .l-content .block > .m8 {
+  padding: 1em 1em 0;
+}
+
+.p-db_entries-edit_field .l-content .block > .b-text_with_paragraphs {
+  padding: .2em 1em .6em;
+}
+
+.p-db_entries-edit_field .l-content .block > .cc-2 {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.p-db_entries-edit_field .l-content .block > .cc-2 > .c-column {
+  grid-column: 1 / 3;
+  width: 100%;
+}
+
+.p-db_entries-edit_field .l-content .videos-deleter .cc,
+.p-db_entries-edit_field .l-content .block > .cc-2 .new_video {
+  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.p-db_entries-edit_field .new_video .buttons,
+.p-db_entries-edit_field .new_video .b-input.string {
+  grid-column: span 2;
+}
+
+.p-db_entries-edit_field .l-content .videos-deleter .cc .b-video,
+.p-db_entries-edit_field .new_video .b-input.video_name > input {
+  width: 100%;
+  max-width: none;
+}
+
+.p-db_entries-edit_field .new_video .buttons {
+  justify-self: end;
+}
+
+.p-db_entries-edit_field .l-content .videos-deleter {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.p-db_entries-edit_field .l-content .videos-deleter .cc {
+  grid-template-columns: repeat(3, 1fr);
+  border-top: none;
+}
+
+/* ============ Глобальные ============ */ 
 
 
 /* - - - - Профиль - - - - */
@@ -9315,6 +10173,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-profiles-favorites > .l-page > div > .block > .cc-favourites,
 .p-profiles-clubs > .l-page > div > .block > .b-clubs {
   border-top: none;
+  padding: 1em;
+}
+
+.p-profiles-reviews .l-page .block > .subheadline {
   padding: 1em;
 }
 
@@ -11031,5 +11893,5 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 :root {
-  --build: 'shi.Modern Reborn alpha 0.4.7';
+  --build: 'shi.Modern Reborn alpha 0.4.12';
 }
