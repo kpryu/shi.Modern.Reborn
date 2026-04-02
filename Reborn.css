@@ -6,27 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&family=Mochiy+Pop+P+One&family=Black+Han+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons+Round');
-
-.material-icons-round {
-  font-family: "Material Icons Round";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
-}
 
 :root {
   --avatar: url('https://raw.githubusercontent.com/kpryu/shi.Modern.Reborn/main/assets/no_image.gif');
@@ -445,6 +425,7 @@ body, input, select, button, textarea {
 
 /* === Инпуты === */
 .b-input select,
+.b-input textarea,
 .b-input input {
   line-height: 2;
   padding: 0 8px;
@@ -461,6 +442,8 @@ body, input, select, button, textarea {
 
 .b-input select:focus,
 .b-input select:hover,
+.b-input textarea:focus,
+.b-input textarea:hover,
 .b-input input:focus,
 .b-input input:hover {
   color: var(--text);
@@ -468,6 +451,7 @@ body, input, select, button, textarea {
 }
 
 .b-input select:focus,
+.b-input textarea:focus,
 .b-input input:focus {
   border-color: var(--second);
   box-shadow: 0 0 0 1px inset var(--second), 0 0 0 3px rgba(from var(--second) r g b / .4);
@@ -625,6 +609,38 @@ h2, h3, h4 {
   color: var(--second);
 }
 
+/* ==== Видео ==== */
+.b-video .marker:before {
+  display: none;
+}
+
+.b-video {
+  border-radius: var(--brdr-mdm);
+}
+
+.b-video .video-link {
+  background: color-mix(in srgb, var(--main) 20%, var(--black) 80%);
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.b-video :is(.name, .marker) {
+  color: var(--white);
+  line-height: 21px;
+  border-radius: var(--brdr-sml);
+  background: rgba(from var(--black) r g b / .6);
+  transition: .25s ease;
+}
+
+.b-video .video-link:before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 54px !important;
+  text-shadow: 1px 1px 3px rgba(from var(--shadow) r g b / .2);
+  background: rgba(from var(--second) r g b / .8);
+}
+
 /* ==== Реклама ==== */
 .b-spns-yd_240x400, .b-spns-yd_240x500, .b-spns-yd_240x600, .b-spns-yd_300x600, .b-spns-yd_1170x200,
 .b-spns-yd_970x90, .b-spns-mt_300x250, .b-spns-mt_240x400, .b-spns-mt_300x600, .b-spns-mt_970x250,
@@ -675,6 +691,7 @@ h2, h3, h4 {
 .b-critique_votes:before,
 .b-spoiler > label:before,
 .b-subposter-action:before,
+.b-video .video-link:before,
 .b-footer_vote .star:before,
 .p-animes .item-edit:before,
 header.head h1 a.back:before,
@@ -709,6 +726,8 @@ header.head h2 a.back:before,
 .p-animes-show .b-db_entry > .c-about .contest_winners .winners:after,
 .c-image > .b-user_rate .expanded-options .option .status-name:before,
 .b-review-topic > .inner > .buttons .main-controls > :where(span, a):before,
+:is(.b-image, .b-video) :is(.edit, .delete, .collapse, .drag-handle, .confirm, .cancel,
+.move-left, .move-right, .mobile-edit, .prosemirror-expand, .prosemirror-open):before,
 .b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .hide-more:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more:after,
@@ -729,6 +748,10 @@ header.head h2 a.back:before,
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
+}
+
+.b-video .video-link:before {
+  content: 'play_arrow';
 }
 
 .b-status-line .section.changed_at time:before {
@@ -763,7 +786,9 @@ header.head h2 a.back:before,
   content: 'question_answer';
 }
 
+:is(.b-image, .b-video) .edit:before,
 .p-animes .item-edit:before,
+:is(.b-image, .b-video) .mobile-edit:before,
 .b-review-topic .buttons .item-edit:before,
 .b-status-line .section.created_at time:before {
   content: 'create';
@@ -919,9 +944,30 @@ header.head h2 a.back:before  {
   content: 'highlight_off';
 }
 
+:is(.b-image, .b-video) .delete:before,
 .b-review-topic .buttons .item-delete:before,
 .c-image > .b-user_rate .expanded-options > .remove-trigger .status-name:before {
   content: 'delete_forever';
+}
+
+:is(.b-image, .b-video) .confirm:before {
+  content: 'done';
+}
+
+:is(.b-image, .b-video) .cancel:before {
+  content: 'clear';
+}
+
+:is(.b-image, .b-video) .drag-handle:before {
+  content: 'drag_handle';
+}
+
+:is(.b-image, .b-video) .move-left:before {
+  content: 'chevron_left';
+}
+
+:is(.b-image, .b-video) .move-right:before {
+  content: 'chevron_right';
 }
 
 .b-db_entry > .c-about .contest_winners .medal:before {
@@ -954,11 +1000,27 @@ header.head h2 a.back:before  {
 }
 
 /* ===== Цитаты ===== */
-.b-quote-v2 .quoteable::before {
+.b-quote .quoteable:before,
+.b-quote-v2 .quoteable:before {
   display: none;
 }
 
-.b-quote-v2 .b-user16:hover span{
+.b-quote {
+  border: none;
+  margin: 4px 0;
+  padding: 4px 8px;
+  color: var(--text);
+  font-style: normal;
+  background: var(--clr-dark);
+  border-left: 3px solid var(--clr-brdr);
+}
+
+.b-quote .quoteable {
+  margin: 0;
+  line-height: normal;
+}
+
+:is(.b-quote, .b-quote-v2) .b-user16:hover span {
   text-decoration: none;
 }
 
@@ -988,7 +1050,7 @@ header.head h2 a.back:before  {
   padding: 0;
 }
 
-.b-quote-v2 .quoteable .b-user16 {
+:is(.b-quote, .b-quote-v2) .quoteable .b-user16 {
   font-size: 15px;
 }
 
@@ -1145,6 +1207,22 @@ header.head h2 a.back:before  {
   border-radius: var(--brdr-sml-bt);
 }
 
+/* ==== Списки ==== */
+.b-list li:before {
+  display: none;
+}
+
+.b-list li {
+  line-height: normal;
+  list-style: outside;
+  list-style-type: square;
+  margin-bottom: 4px;
+}
+
+.b-list li::marker {
+  color: var(--main);
+}
+
 /* ===== Чекбоксы ===== */
 input[type="checkbox"]:before,
 input[type="radio"]:before {
@@ -1204,7 +1282,7 @@ input[type="radio"]:disabled:after {
   color: var(--text-dead);
 }
 
-/* - - - Промотка вверх и баг репорт - - - */
+/* ====== Промотка вверх и баг репорт ====== */
 .b-to-top,
 .b-to-top.active .slide,
 .b-to-top .slide::before,
@@ -2601,6 +2679,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 :where(.p-animes-characters, .p-mangas-characters, .p-ranobes-characters) .cc-characters,
 :where(.p-animes-similar, .p-mangas-similar, .p-ranobes-similar) .cc-similar,
 
+.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0,
 .cc-4a, .cc-5a, .cc-6a, .cc-7a, .cc-8a, .cc-9a,
 .cc-4.m0, .cc-5.m0, .cc-6.m0, .cc-7.m0, .cc-8.m0, .cc-9.m0,
 .cc-4-g15.m0, .cc-5-g15.m0, .cc-6-g15.m0, .cc-7-g15.m0, .cc-8-g15.m0, .cc-9-g15,
@@ -2620,6 +2699,18 @@ body > .b-feedback > .marker-positioner > .marker-text {
 
 .cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0 {
   grid-gap: 0;
+}
+
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0) .b-catalog_entry {
+  border-radius: 0;
+}
+
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0) .b-catalog_entry .image-cutter {
+  max-height: none !important;
+}
+
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0) .b-catalog_entry .cover .image-decor img {
+  aspect-ratio: 80 / 113;
 }
 
 .cc:has(> .c-column),
@@ -2649,7 +2740,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   grid-template-columns: repeat(5, 1fr);
 }
 
-.cc-6:has(> .c-column), .cc-6a, .cc-6.m0, .cc-6-g15.m0,
+.cc-6:has(> .c-column), .cc-6a, .cc-6.m0, .cc-6-g0, .cc-6-g15.m0,
 .p-people-show .c-characters, .p-people-works .cc-5, .c-works,
 :is(.p-animes-similar, .p-mangas-similar, .p-ranobes-similar) .cc-similar,
 #characters_animes .cc-5,
@@ -2657,7 +2748,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
   grid-template-columns: repeat(6, 1fr);
 }
 
-.cc-7:has(> .c-column), .cc-7a, .cc-7.m0, .cc-7-g15.m0,
+.cc-7:has(> .c-column), .cc-7a, .cc-7.m0, .cc-7-g0, .cc-7-g15.m0,
 .body > .body-inner > .collection-row,
 .collection-groups > .cc-collection-groups,
 .block > .cc-characters > .c-characters > .cc, .block > .block > .cc-similar,
@@ -2665,14 +2756,14 @@ body > .b-feedback > .marker-positioner > .marker-text {
   grid-template-columns: repeat(7, 1fr);
 }
 
-.cc-8:has(> .c-column), .cc-8a, .cc-8.m0, .cc-8-g15.m0,
+.cc-8:has(> .c-column), .cc-8a, .cc-8.m0, .cc-8-g0, .cc-8-g15.m0,
 .cc-favourites,
 :where(.p-animes, .p-mangas, .p-ranobes) .cc-characters:last-child,
 #animes_characters .cc-characters:last-child {
   grid-template-columns: repeat(8, 1fr);
 }
 
-.cc-9:has(> .c-column), .cc-9a, .cc-9.m0, .cc-9-g15 {
+.cc-9:has(> .c-column), .cc-9a, .cc-9.m0, .cc-9-g0, .cc-9-g15 {
   grid-template-columns: repeat(9, 1fr);
 }
 
@@ -2764,6 +2855,15 @@ body > .b-feedback > .marker-positioner > .marker-text {
   height: 16px;
 }
 
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0)
+.b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:after {
+  border-radius: 0 0 0 50%;
+  padding: 0 0 2px 2px;
+  font-size: 16px;
+  right: 2px;
+  top: 2px;
+}
+
 .b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped):hover .image-decor:after {
   padding: 0;
   right: 0;
@@ -2793,6 +2893,12 @@ body > .b-feedback > .marker-positioner > .marker-text {
   height: 100%;
   inset: 0;
   font-size: 0;
+}
+
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0)
+.b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:before {
+  font-size: 8px;
+  line-height: 1.8;
 }
 
 [data-locale="ru"] .b-catalog_entry.completed .image-decor:before {
@@ -2851,6 +2957,10 @@ body > .b-feedback > .marker-positioner > .marker-text {
   box-shadow: 0 0 0 3px inset var(--list-complete);
 }
 
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0) .b-catalog_entry.completed .image-decor:before {
+  box-shadow: 0 -13px 0 2px inset var(--list-complete), 0 0 0 2px inset var(--list-complete);
+}
+
 .b-catalog_entry.completed:hover .image-decor:before {
   box-shadow: 0 0 0 0 inset var(--list-complete);
   padding-top: 40px;
@@ -2860,28 +2970,24 @@ body > .b-feedback > .marker-positioner > .marker-text {
   background: var(--list-complete);
 }
 
-.b-catalog_entry.planned .image-decor:before,
-.b-catalog_entry.watching .image-decor:before,
-.b-catalog_entry.rewatching .image-decor:before {
+.b-catalog_entry:is(.planned, .watching, .rewatching) .image-decor:before {
   box-shadow: 0 -20px 0 4px inset var(--list-watching), 0 0 0 4px inset var(--list-watching);
 }
 
-.b-catalog_entry-tooltip .b-catalog_entry.planned .image-decor:before,
-.b-catalog_entry-tooltip .b-catalog_entry.watching .image-decor:before,
-.b-catalog_entry-tooltip .b-catalog_entry.rewatching .image-decor:before {
+.b-catalog_entry-tooltip .b-catalog_entry:is(.planned, .watching, .rewatching) .image-decor:before {
   box-shadow: 0 0 0 3px inset var(--list-watching);
 }
 
-.b-catalog_entry.planned:hover .image-decor:before,
-.b-catalog_entry.watching:hover .image-decor:before,
-.b-catalog_entry.rewatching:hover .image-decor:before {
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0) .b-catalog_entry:is(.planned, .watching, .rewatching) .image-decor:before {
+  box-shadow: 0 -13px 0 2px inset var(--list-watching), 0 0 0 2px inset var(--list-watching);
+}
+
+.b-catalog_entry:is(.planned, .watching, .rewatching):hover .image-decor:before {
   box-shadow: 0 0 0 0 inset var(--list-watching);
   padding-top: 40px;
 }
 
-.b-catalog_entry.planned .image-decor:after,
-.b-catalog_entry.watching .image-decor:after,
-.b-catalog_entry.rewatching .image-decor:after {
+.b-catalog_entry:is(.planned, .watching, .rewatching) .image-decor:after {
   background: var(--list-watching);
 }
 
@@ -2891,6 +2997,10 @@ body > .b-feedback > .marker-positioner > .marker-text {
 
 .b-catalog_entry-tooltip .b-catalog_entry.on_hold .image-decor:before {
   box-shadow: 0 0 0 3px inset var(--list-paused);
+}
+
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0) .b-catalog_entry.on_hold .image-decor:before {
+  box-shadow: 0 -13px 0 2px inset var(--list-paused), 0 0 0 2px inset var(--list-paused);
 }
 
 .b-catalog_entry.on_hold:hover .image-decor:before {
@@ -2908,6 +3018,10 @@ body > .b-feedback > .marker-positioner > .marker-text {
 
 .b-catalog_entry-tooltip .b-catalog_entry.dropped .image-decor:before {
   box-shadow: 0 0 0 3px inset var(--list-drop);
+}
+
+:is(.cc-6-g0, .cc-7-g0, .cc-8-g0, .cc-9-g0) .b-catalog_entry.dropped .image-decor:before {
+  box-shadow: 0 -13px 0 2px inset var(--list-drop), 0 0 0 2px inset var(--list-drop);
 }
 
 .b-catalog_entry.dropped:hover .image-decor:before {
@@ -2992,35 +3106,6 @@ body[data-localized_names="ru"] .b-catalog_entry .cover .title > .name-ru {
   -webkit-box-orient: vertical;
   -webkit-box-pack: center;
   overflow: hidden;
-}
-
-body[data-localized_names="en"]#animes_similar .cc-similar .b-catalog_entry .cover .title > .name-en,
-body[data-localized_names="ru"]#animes_similar .cc-similar .b-catalog_entry .cover .title > .name-ru {
-  -webkit-line-clamp: 2;
-}
-
-body[data-localized_names="en"]#animes_similar .cc-similar .b-catalog_entry:hover .cover .title > .name-en,
-body[data-localized_names="ru"]#animes_similar .cc-similar .b-catalog_entry:hover .cover .title > .name-ru {
-  -webkit-line-clamp: 5;
-}
-
-#animes_similar .cc-similar .b-catalog_entry .cover .title {
-  opacity: 1;
-  line-height: 1;
-  padding: 4px;
-  inset: 160px 0 0;
-  max-height: none;
-  transition: .2s ease;
-}
-
-#animes_similar .cc-similar .b-catalog_entry:hover .cover .title {
-  padding: 0 12px;
-  inset: 0;
-  line-height: normal;
-}
-
-#animes_similar .cc-similar .b-catalog_entry .cover .title > span {
-  margin: 0;
 }
 
 .b-catalog_entry .cover .misc {
@@ -5617,24 +5702,33 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 .shiki-file_uploader-drop_placeholder {
-  background-image: radial-gradient(var(--clr-darker-add) 1px, var(--clr-block) 1px);
-	background-size: 24px 24px;
-	background-color: var(--clr-block);
-  border-radius: var(--brdr-lrg);
+  font-size: 14px;
+  color: var(--text-off);
   border: 1px solid var(--clr-brdr);
-  font-size: 0;
+  text-shadow: 1px 1px 2px rgba(from var(--shadow) r g b / .1);
+	background-image: radial-gradient(var(--clr-darker-add) 1px, transparent 1px);
+	background-size: 20px 22px;
+	background-color: var(--clr-dark);
   opacity: 1 !important;
-  transition: opacity .5s ease, border-color .5s ease, color 0.5s ease;
+  transition: .3s ease;
+}
+
+.b-shiki_editor .shiki-file_uploader-drop_placeholder {
+  border-radius: var(--brdr-lrg);
+}
+
+.shiki-file_uploader-drop_placeholder.hovered:not(.disallowed) {
+  color: var(--main);
+  font-weight: 700;
+  text-shadow: none;
+  border-color: var(--main);
+	background-image: radial-gradient(var(--main) 1px, transparent 1px);
+  box-shadow: 0 0 0 7px inset rgba(from var(--main) r g b / .2), 0 0 0 1px inset var(--main);
 }
 
 .shiki-file_uploader-drop_placeholder.disallowed {
   border-color: var(--red);
-}
-
-.shiki-file_uploader-drop_placeholder.hovered:not(.disallowed) {
-  border-color: var(--clr-brdr);
-  background-image: radial-gradient(color-mix(in srgb, var(--main) 50%, var(--main-brt) 50%) 1px, var(--clr-dark) 1px);
-	background-color: var(--clr-dark);
+  box-shadow: 0 0 0 7px inset rgba(from var(--red) r g b / .2), 0 0 0 1px inset var(--red);
 }
 
 .shiki-file_uploader-upload_progress:before {
@@ -7547,9 +7641,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin: 0 !important;
 }
 
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content:has(.c-info-right:empty) .cc-related-authors > .c-authors,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show)
-.l-content:not(:has(.c-info-right .block .contest_winners, .c-info-right .block .scores)) .cc-related-authors > .c-authors,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content:has(.c-info-right:empty) .cc-related-authors > .c-authors {
+.l-content:not(:has(.c-info-right .block a[href*="/studio"], .c-info-right .block a[href*="/publisher"]))
+.cc-related-authors > .c-authors {
   grid-row: 1 / 3;
 }
 
@@ -8007,10 +8102,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   flex: 1;
 }
 
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate {
-  align-self: end;
-}
-
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate .trigger {
   max-width: 240px;
   height: 28px;
@@ -8126,24 +8217,25 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 /* ===== Кадры / Видео ===== */
+.p-db_entries-screenshots .l-content :where(.block, .b-source, .cc),
 .p-db_entries-videos .l-content :where(.block, .b-source, .cc) {
   margin: 0 !important;
 }
 
 .p-db_entries-videos .l-content :where(.subheadline, .cc, .b-source),
-.p-db_entries-screenshots .l-content :where(.subheadline, .cc) {
+.p-db_entries-screenshots .l-content :where(.subheadline, .cc, .b-source) {
   padding: 1em;
   background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
 }
 
-.p-db_entries-screenshots .l-content .cc,
+.p-db_entries-screenshots .l-content :where(.b-source, .cc),
 .p-db_entries-videos .l-content :where(.b-source, .cc) {
   border-top: none;
 }
 
 .p-db_entries-videos .l-content .b-source,
-.p-db_entries-screenshots .l-content .cc {
+.p-db_entries-screenshots .l-content .b-source {
   border-radius: var(--brdr-lrg-bt);
 }
 
@@ -8191,6 +8283,17 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-animes .item-edit:hover {
   color: var(--second);
   background: rgba(from var(--second) r g b / .16);
+}
+
+/* ===== Похожее ===== */
+.p-db_entries-similar .l-content .block > :where(.subheadline, .cc-similar) {
+  padding: 1em;
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+}
+
+.p-db_entries-similar .l-content .block > .cc-similar {
+  border-top: none;
 }
 
 /* ========== Правки ========== */
@@ -8565,6 +8668,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .p-db_entries-edit_field .l-content > .block > .subheadline,
+.p-db_entries-edit_field .l-content .screenshots-positioner,
 .p-db_entries-edit_field .l-content .videos-deleter :where(.subheadline, .cc),
 .p-db_entries-edit_field .l-content .block > :where(.b-text_with_paragraphs, .m8, .cc-2) {
   background: var(--clr-block);
@@ -8574,7 +8678,9 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .p-db_entries-edit_field .l-content .edit-page,
 .p-db_entries-edit_field .new_video .inputs > div,
-.p-db_entries-edit_field .l-content .videos-deleter .cc .b-video {
+.p-db_entries-edit_field .l-content .screenshots-uploader,
+.p-db_entries-edit_field .l-content .videos-deleter .cc .b-video,
+.p-db_entries-edit_field .l-content .screenshots-positioner .b-image {
   margin: 0;
 }
 
@@ -8595,6 +8701,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   border-top: none;
   padding-top: 0;
 }
+
 
 .p-db_entries-edit_field .l-content .block > :where(.b-text_with_paragraphs, .m8) {
   border-bottom: none;
@@ -8617,11 +8724,34 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: 100%;
 }
 
+.p-db_entries-edit_field .l-content .screenshots-positioner {
+  border-radius: var(--brdr-lrg);
+  padding: 0;
+}
+
+.p-db_entries-edit_field .l-content .screenshots-positioner .subheadline {
+  padding: 1em;
+  border-bottom: 1px solid var(--clr-brdr);
+}
+
+.p-db_entries-edit_field .l-content .screenshots-positioner :where(.m5, .cc, .buttons) {
+  padding: 0 1em;
+}
+
+.p-db_entries-edit_field .l-content .screenshots-positioner .buttons {
+  padding-bottom: 1em;
+}
+
 .p-db_entries-edit_field .l-content .videos-deleter .cc,
-.p-db_entries-edit_field .l-content .block > .cc-2 .new_video {
+.p-db_entries-edit_field .l-content .block > .cc-2 .new_video,
+.p-db_entries-edit_field .l-content .screenshots-positioner .cc {
   gap: 8px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.p-db_entries-edit_field .l-content .screenshots-positioner .cc {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .p-db_entries-edit_field .new_video .buttons,
@@ -8629,16 +8759,20 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-column: span 2;
 }
 
+.p-db_entries-edit_field .l-content .screenshots-positioner .b-image,
 .p-db_entries-edit_field .l-content .videos-deleter .cc .b-video,
-.p-db_entries-edit_field .new_video .b-input.video_name > input {
+.p-db_entries-edit_field .new_video .b-input.video_name > input,
+.p-db_entries-edit_field .b-video .video-link {
   width: 100%;
   max-width: none;
 }
 
 .p-db_entries-edit_field .new_video .buttons {
+  margin-top: 2em;
   justify-self: end;
 }
 
+.p-db_entries-edit_field .l-content .screenshots-positioner,
 .p-db_entries-edit_field .l-content .videos-deleter {
   margin-top: 12px;
   margin-bottom: 12px;
@@ -8647,6 +8781,75 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-db_entries-edit_field .l-content .videos-deleter .cc {
   grid-template-columns: repeat(3, 1fr);
   border-top: none;
+}
+
+.p-db_entries-edit_field :is(.b-image, .b-video):hover .controls {
+  padding: 4px 4px 0 0;
+  gap: 2px;
+}
+
+:is(.b-image, .b-video) :is(.edit, .delete, .collapse, .drag-handle, .confirm, .cancel,
+.move-left, .move-right, .mobile-edit, .prosemirror-expand, .prosemirror-open):before {
+  width: auto;
+  font-size: 20px;
+  padding: 4px;
+}
+
+:is(.b-image, .b-video) :is(.edit, .delete, .collapse, .drag-handle, .confirm, .cancel,
+.move-left, .move-right, .mobile-edit, .prosemirror-expand, .prosemirror-open) {
+  margin: 0 !important;
+  color: var(--white);
+  background: var(--main);
+  border-radius: var(--brdr-mdm);
+}
+
+:is(.b-image, .b-video) :is(.edit, .delete, .collapse, .drag-handle, .confirm, .cancel,
+.move-left, .move-right, .mobile-edit, .prosemirror-expand, .prosemirror-open):hover {
+  background: var(--second);
+}
+
+:is(.b-image, .b-video) :is(.edit, .delete, .collapse, .drag-handle, .confirm, .cancel,
+.move-left, .move-right, .mobile-edit, .prosemirror-expand, .prosemirror-open):active {
+  background: var(--second-brt);
+  transform: scale(.95);
+}
+
+.b-image :is(.move-left, .move-right) {
+  top: 40%;
+}
+
+.b-image .move-left {
+  left: 4px;
+}
+
+.b-image .move-right {
+  right: 4px;
+}
+
+.b-dropzone:before, .b-dropzone:after {
+  color: var(--text-off);
+  text-shadow: 1px 1px 2px rgba(from var(--shadow) r g b / .1);
+  transition: .3s ease;
+}
+
+.b-dropzone:hover:before, .b-dropzone:hover:after {
+  color: var(--main);
+  font-weight: 700;
+  text-shadow: none;
+}
+
+.b-dropzone {
+  border: 1px solid var(--clr-brdr);
+	background-image: radial-gradient(var(--clr-darker-add) 1px, transparent 1px);
+	background-size: 20px 22px;
+	background-color: var(--clr-dark);
+  transition: .3s ease;
+}
+
+.b-dropzone:hover {
+  border-color: var(--main);
+	background-image: radial-gradient(var(--main) 1px, transparent 1px);
+  box-shadow: 0 0 0 7px inset rgba(from var(--main) r g b / .2), 0 0 0 1px inset var(--main);
 }
 
 /* ============ Глобальные ============ */ 
@@ -11893,5 +12096,5 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 :root {
-  --build: 'shi.Modern Reborn alpha 0.4.12';
+  --build: 'shi.Modern Reborn alpha 0.4.14';
 }
