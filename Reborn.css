@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Material+Icons+Round');
-
 :root {
   --avatar: url('https://raw.githubusercontent.com/kpryu/shi.Modern.Reborn/main/assets/no_image.gif');
 
@@ -557,9 +555,12 @@ a.b-mention:active s {
 .buttons :is(input, .cancel, a:not(.b-button)):active {
   color: var(--text-off);
   transform: scale(.95);
-  pointer-events: none;
   user-select: none;
   transition: .1s ease;
+}
+
+.buttons input:active {
+  color: var(--white);
 }
 
 .b-form .buttons {
@@ -8212,6 +8213,14 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-db_entries-screenshots .l-content :where(.block, .b-source, .cc),
 .p-db_entries-videos .l-content :where(.block, .b-source, .cc) {
   margin: 0 !important;
+}
+
+.p-db_entries-videos .l-content > .block > .block:not(:first-child) {
+  margin-top: 12px !important;
+}
+
+.p-db_entries-videos .l-content > .block > .block:not(:first-child) .subheadline {
+  border-radius: var(--brdr-lrg-tp);
 }
 
 .p-db_entries-videos .l-content :where(.subheadline, .cc, .b-source),
