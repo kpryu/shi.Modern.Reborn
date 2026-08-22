@@ -77,6 +77,7 @@
   --paused: 96, 49, 142;
   --other: 100, 120, 140;
   --spoiler: 190, 41, 41;
+  --censor: #df2f2f;
   
   --color-studio: 40, 77, 123;
   --color-new: 46, 122, 189;
@@ -180,6 +181,10 @@ html {
   background: transparent;
 }
 
+.b-forums .ajax-loading {
+  display: none;
+}
+
 .ajax-loading:not(.vk-like):after {
   content: '';
   width: 20px;
@@ -189,31 +194,37 @@ html {
 }
 
 @keyframes loading-3 {
-  0% {
-    box-shadow: 20px 0 var(--main), -20px 0 rgba(from var(--main) r g b / .2);
-    background: var(--main);
+    33% {
+      background-position: 0% 50%, 50% 100%, 100% 100%;
   }
   
-  33% {
-    box-shadow: 20px 0 var(--main), -20px 0 rgba(from var(--main) r g b / .2);
-    background: rgba(from var(--main) r g b / .2);
+    50% {
+      background-position: 0% 0%, 50% 50%, 100% 100%;
   }
   
-  66% {
-    box-shadow: 20px 0 rgba(from var(--main) r g b / .2), -20px 0 var(--main);
-    background: rgba(from var(--main) r g b / .2);
+    66% {
+      background-position: 0% 0%, 50% 0%,100% 50%;
+  }
+  
+    100% {
+      background-position: 0% 0%, 50% 0%, 100% 0%;
   }
 }
 
 .b-ajax.vk-like:after,
 .ajax-loading.vk-like:before {
   content: '';
-  width: 12px;
+  width: 22.5px;
   height: 12px;
-  background: var(--main);
-  border-radius: var(--brdr-sml);
-  box-shadow: 20px 0 rgba(from var(--main) r g b / .2), -20px 0 var(--main);
-  animation: loading-3 1s infinite linear alternate;
+  --vk: linear-gradient(var(--main) calc(50% - 5px),
+    transparent 0 calc(50% + 5px), var(--main) 0);
+  background: 
+    var(--vk) 0%   100%,
+    var(--vk) 50%  100%,
+    var(--vk) 100% 100%;
+  background-size: 4.5px calc(200% + 10px);
+  background-repeat: no-repeat;
+  animation: loading-3 1s infinite linear;
 }
 
 .tipsy,
@@ -414,9 +425,12 @@ body, input, select, button, textarea {
 }
 
 /* === Инпуты === */
+.coauthor-suggest,
+.b-input .ti-input,
 .b-input select,
 .b-input textarea,
-.b-input input {
+:is(.p-collections-new, .p-collections-edit) .b-input .ti-input,
+.b-input input:not(input[type="checkbox"], input[type="radio"]) {
   line-height: 2;
   padding: 0 8px;
   color: var(--text-off);
@@ -426,25 +440,88 @@ body, input, select, button, textarea {
   transition: .3s ease;
 }
 
+.b-input textarea {
+  line-height: normal;
+}
+
 .b-input select {
   appearance: textarea;
 }
 
+.ti-focus .ti-input,
+.coauthor-suggest:focus,
+.coauthor-suggest:hover,
+.b-input .ti-input:focus,
+.b-input .ti-input:hover,
+:is(.p-collections-new, .p-collections-edit) .ti-focus .ti-input,
+:is(.p-collections-new, .p-collections-edit) .b-input .ti-input:focus,
+:is(.p-collections-new, .p-collections-edit) .b-input .ti-input:hover,
 .b-input select:focus,
 .b-input select:hover,
 .b-input textarea:focus,
 .b-input textarea:hover,
 .b-input input:focus,
-.b-input input:hover {
+.b-input input:hover,
+.b-input input:not(input[type="checkbox"], input[type="radio"]):focus,
+.b-input input:not(input[type="checkbox"], input[type="radio"]):hover {
   color: var(--text);
   background: var(--clr-block);
 }
 
+
+.ti-focus .ti-input,
+.coauthor-suggest:focus,
+.b-input .ti-input:focus,
+:is(.p-collections-new, .p-collections-edit) .ti-focus .ti-input,
+:is(.p-collections-new, .p-collections-edit) .b-input .ti-input:focus,
 .b-input select:focus,
 .b-input textarea:focus,
-.b-input input:focus {
+.b-input input:not(input[type="checkbox"], input[type="radio"]):focus {
   border-color: var(--second);
   box-shadow: 0 0 0 1px inset var(--second), 0 0 0 3px rgba(from var(--second) r g b / .4);
+}
+
+:is(.p-collections-new, .p-collections-edit) .b-input .ti-input {
+  min-height: 34px;
+}
+
+.b-input:has(.ti-focus) .ti-input {
+  border-radius: var(--brdr-lrg-tp);
+  border-bottom: none;
+}
+
+:is(.p-collections-new, .p-collections-edit) .ti-focus .ti-input {
+  border-color: var(--second) !important;
+}
+
+.b-input .ti-autocomplete {
+  border: 1px solid var(--second);
+  border-top: none;
+  background: var(--clr-block);
+  border-radius: var(--brdr-lrg-bt);
+  box-shadow: 0 0 0 1px inset var(--second), 0 0 0 3px rgba(from var(--second) r g b / .4);
+}
+
+.b-input .ti-autocomplete > ul {
+  max-height: 300px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--second) var(--clr-dark);
+}
+
+.b-input .ti-tag,
+.b-input .ti-selected-item {
+  color: var(--white);
+  align-items: center;
+  background-color: var(--second);
+}
+
+.b-input .ti-tag {
+  transition: .2s ease;
+}
+
+.b-input .ti-tag:has(.ti-icon-close:hover) {
+  background-color: var(--red);
 }
 
 /* === Плейсхолдеры === */
@@ -569,6 +646,72 @@ a.b-mention:active s {
   gap: 8px;
 }
 
+/* === Под Коллекциями и Отзывами === */
+.inner > .buttons {
+  justify-content: end;
+  display: flex !important;
+}
+
+.inner > .buttons .main-controls {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 4px;
+  z-index: 1;
+  opacity: 0;
+  transition: .3s ease;
+}
+
+.inner:hover > .buttons .main-controls {
+  opacity: 1;
+}
+
+.inner > .buttons .main-controls > :where(span, a) {
+  display: flex;
+  align-items: center;
+  line-height: normal !important;
+  border-radius: var(--brdr-mdm);
+  border: 1px solid transparent;
+  color: var(--text-off);
+  padding: 3px 5px;
+  margin: 0;
+  gap: 3px;
+  transition: .3s ease;
+}
+
+.inner > .buttons .main-controls > :is(span, a):hover {
+  color: var(--text);
+  background: var(--clr-darker);
+  border-color: rgba(from var(--opacity) r g b / .03);
+}
+
+.inner > .buttons .main-controls > :is(span, a):before {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 1 !important;
+}
+
+.inner > .buttons .main-controls > :is(span, a):after {
+  content: attr(title);
+  line-height: normal;
+  width: auto;
+  display: block;
+  font-size: 12px;
+}
+
+.inner > .buttons .item-quote {
+  order: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s ease;
+}
+
+.inner > .buttons .item-quote.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* ==== Загаловки ==== */
 h2, h3, h4 {
   color: var(--text-brt);
@@ -652,7 +795,10 @@ h2, h3, h4 {
   z-index: 1;
 }
 
-.spns_yd_970x90:has(div:empty) {
+.spns_yd_240x400:has(div:empty), .spns_yd_240x500:has(div:empty), .spns_yd_240x600:has(div:empty),
+.spns_yd_300x600:has(div:empty), .spns_yd_1170x200:has(div:empty), .spns_yd_970x90:has(div:empty),
+.spns_mt_300x250:has(div:empty), .spns_mt_240x400:has(div:empty), .spns_mt_300x600:has(div:empty),
+.spns_mt_970x250:has(div:empty), .spns_mt_970x90:has(div:empty), .spns_advrtr_240x400:has(div:empty) {
   display: none;
 }
 
@@ -679,6 +825,7 @@ h2, h3, h4 {
 /* ====== Иконки? ====== */
 .b-quote-v2:before,
 .b-user16 > a:before,
+.remove-coauthor:before,
 .b-nothing_here:after,
 .b-lang_trigger:before,
 .b-critique_votes:before,
@@ -705,7 +852,10 @@ header.head h2 a.back:before,
 .l-page .menu-toggler .toggler:before,
 .b-review-topic > .inner header:before,
 .b-footer_vote .vote-group .vote:before,
+.p-topics header h1 a.reload:hover:after,
 .b-status-line .section.main .comments:before,
+.p-collections-index header.head .misc:before,
+.b-status-line .section.main .collection-size:before,
 .b-reviews_navigation .navigation-node:before,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show)
 .l-page :where(.other-names, .more-info):before,
@@ -715,10 +865,10 @@ header.head h2 a.back:before,
 .b-status-line .section.created_at time:before,
 .b-status-line .section.changed_at time:before,
 .b-db_entry > .c-about .contest_winners .medal:before,
+.inner > .buttons .main-controls > :where(span, a):before,
 .l-menu .block > .b-external_link.b-menu-line > .b-link:before,
 .p-animes-show .b-db_entry > .c-about .contest_winners .winners:after,
 .c-image > .b-user_rate .expanded-options .option .status-name:before,
-.b-review-topic > .inner > .buttons .main-controls > :where(span, a):before,
 :is(.b-image, .b-video) :is(.edit, .delete, .collapse, .drag-handle, .confirm, .cancel,
 .move-left, .move-right, .mobile-edit, .prosemirror-expand, .prosemirror-open):before,
 .b-catalog_entry:is(.planned, .watching, .completed, .rewatching, .on_hold, .dropped) .image-decor:after,
@@ -741,6 +891,14 @@ header.head h2 a.back:before,
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
+}
+
+.p-topics header h1 a.reload:hover:after {
+  content: 'autorenew';
+}
+
+.b-status-line .section.main .collection-size:before {
+  content: 'grid_view';
 }
 
 .b-video .video-link:before {
@@ -779,6 +937,7 @@ header.head h2 a.back:before,
   content: 'question_answer';
 }
 
+.buttons .item-edit:before,
 :is(.b-image, .b-video) .edit:before,
 .p-animes .item-edit:before,
 :is(.b-image, .b-video) .mobile-edit:before,
@@ -861,21 +1020,26 @@ header.head h2 a.back:before,
   content: 'keyboard_double_arrow_left';
 }
 
-.b-review-topic .buttons .item-quote:before,
+.buttons .item-quote:before,
+.buttons .item-quote.is-active:before,
 .b-quote-v2:before {
   content: 'format_quote';
 }
 
-.b-review-topic .buttons .item-ignore:before,
+.buttons .item-ignore:before,
 .b-spoiler > label:before {
   content: 'visibility_off';
 }
 
-.b-review-topic .buttons .item-reply:before {
+.buttons .item-ignore.selected:before {
+  content: 'visibility';
+}
+
+.buttons .item-reply:before {
   content: 'reply';
 }
 
-.b-review-topic .buttons .item-moderation:before {
+.buttons .item-moderation:before {
   content: 'flag';
 }
 
@@ -897,7 +1061,8 @@ header.head h2 a.back:before  {
   content: 'arrow_drop_down';
 }
 
-.b-add_to_list .plus:before {
+.b-add_to_list .plus:before,
+.p-collections-index header.head .misc:before {
   content: 'add';
 }
 
@@ -937,8 +1102,8 @@ header.head h2 a.back:before  {
   content: 'highlight_off';
 }
 
+.buttons .item-delete:before,
 :is(.b-image, .b-video) .delete:before,
-.b-review-topic .buttons .item-delete:before,
 .c-image > .b-user_rate .expanded-options > .remove-trigger .status-name:before {
   content: 'delete_forever';
 }
@@ -947,6 +1112,11 @@ header.head h2 a.back:before  {
   content: 'done';
 }
 
+.remove-coauthor:before,
+.p-collections-new .remove-coauthor::before,
+.p-collections-create .remove-coauthor::before,
+.p-collections-edit .remove-coauthor::before,
+.p-collections-update .remove-coauthor::before,
 :is(.b-image, .b-video) .cancel:before {
   content: 'clear';
 }
@@ -1031,6 +1201,10 @@ header.head h2 a.back:before  {
   padding-left: 8px;
 }
 
+.b-quote-v2:not(:first-child) {
+  margin-top: 6px;
+}
+
 .b-quote-v2:before {
   font-size: 84px;
   position: absolute;
@@ -1044,7 +1218,7 @@ header.head h2 a.back:before  {
 }
 
 :is(.b-quote, .b-quote-v2) .quoteable .b-user16 {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .b-quote-v2 .quote-content {
@@ -1247,6 +1421,19 @@ input[type="radio"] {
   width: auto;
   height: auto;
   transition: .3s ease;
+}
+
+.b-input input[type="checkbox"],
+.b-input input[type="radio"] {
+  border: none;
+  color: var(--text-off);
+  background: transparent;
+  padding: 0;
+}
+
+.b-input input[type="checkbox"]:checked,
+.b-input input[type="radio"]:checked {
+  color: var(--text);
 }
 
 input[type="checkbox"]:before {
@@ -2057,6 +2244,11 @@ body > .b-feedback > .marker-positioner > .marker-text {
   transition: .2s ease;
 }
 
+.l-top_menu-v2 .global-search > .field input:focus {
+  border-color: var(--second);
+  box-shadow: 0 0 0 1px inset var(--second), 0 0 0 3px rgba(from var(--second) r g b / .4);
+}
+
 @keyframes search-hvr {
   12% {
    transform: scale(3) translateX(2px) translateY(2px);
@@ -2288,26 +2480,9 @@ body > .b-feedback > .marker-positioner > .marker-text {
   border: 1px solid;
   border-radius: var(--brdr-sml);
   line-height: 1;
-  font-variant-caps: all-small-caps;
   transition: .2s ease;
-}
-
-@supports (-webkit-appearance: none) and (not (-moz-appearance: none)) {
-  .b-tag,
-  .b-tag[href],
-  .b-anime_status_tag,
-  .b-anime_status_tag.released,
-  .b-anime_status_tag.ongoing,
-  .b-anime_status_tag.anons,
-  .b-anime_status_tag.paused,
-  .b-anime_status_tag.episode,
-  .b-anime_status_tag.studio,
-  .b-anime_status_tag.review,
-  .b-anime_status_tag.other,
-  .b-anime_status_tag.spoilers,
-  .b-db_entry-variant-list_item > .info .line .value .b-anime_status_tag {
-    font-size: 14px
-  }
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
 .b-tag,
@@ -2324,6 +2499,16 @@ body > .b-feedback > .marker-positioner > .marker-text {
   color: var(--white);
   background: rgba(from var(--main) r g b / .8);
   border-color: var(--main);
+}
+
+.b-tag:not(:last-child),
+.b-tag[href]:not(:last-child) {
+  margin-right: 3px;
+}
+
+.b-tag:last-child,
+.b-tag[href]:last-child {
+  margin-right: 0;
 }
 
 .b-anime_status_tag.studio,
@@ -2433,6 +2618,11 @@ body > .b-feedback > .marker-positioner > .marker-text {
   gap: 4px;
 }
 
+.line .value :is(.b-tag, .b-anime_status_tag),
+.b-db_entry-variant-list_item > .info .line .value .b-anime_status_tag {
+  margin: 0;
+  padding: 5px 8px 4px;
+}
 
 /* ========== Маркеры ========== */
 .b-comment > .inner > .markers > .b-broadcast_marker,
@@ -2745,6 +2935,7 @@ body > .b-feedback > .marker-positioner > .marker-text {
 .body > .body-inner > .collection-row,
 .collection-groups > .cc-collection-groups,
 .block > .cc-characters > .c-characters > .cc, .block > .block > .cc-similar,
+.resources-loader > .cc-characters > .c-characters > .cc, .resources-loader > .block > .cc-similar,
 .p-characters .cc-roles {
   grid-template-columns: repeat(7, 1fr);
 }
@@ -3143,6 +3334,42 @@ body[data-localized_names="ru"] .c-works .b-catalog_entry .cover .title > .name-
   line-height: 1;
 }
 
+.b-catalog_entry .cover .image-decor > .text:before {
+  display: none;
+}
+
+.b-catalog_entry .cover .image-decor > .text,
+.p-user_rates-index .list-posters .user_rate > .text {
+  bottom: 0;
+  font-size: 12px;
+  color: var(--white);
+  text-shadow: 0 1px 3px var(--black), 0 1px 6px var(--black);
+  line-height: normal;
+  max-height: 20px;
+  border-radius: var(--brdr-sml-bt);
+  background: rgba(from var(--black) r g b / .6);
+  backdrop-filter: blur(2px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  scrollbar-color: var(--main) transparent;
+}
+
+.b-catalog_entry .cover .image-decor:hover > .text,
+.b-catalog_entry:hover .cover .image-decor > .text,
+.p-user_rates-index .list-posters .user_rate:hover > .text {
+  max-height: 52px;
+}
+
+.b-catalog_entry .cover .image-decor > .text:hover,
+.p-user_rates-index .list-posters .user_rate > .text:hover {
+  max-height: 100%;
+}
+
+.p-user_rates-index .list-posters .user_rate > .text:before {
+  background: transparent;
+  border-radius: var(--brdr-sml-bt);
+}
+
 /* ========== Статистика / Полоски в боковом меню ========= */
 .bar.horizontal {
   display: flex;
@@ -3315,6 +3542,15 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
   grid-row-start: 2;
 }
 
+body:not(:has(.b-modal)) .b-catalog_entry-tooltip:not(:has(.rating)) .flexible-button {
+  margin-top: 0;
+}
+
+.b-catalog_entry-tooltip :is(.flexible-button, .b-add_to_list) .trigger .text,
+.b-catalog_entry-tooltip :is(.flexible-button, .b-add_to_list) .trigger .status-name {
+  font-size: 12px;
+}
+
 .b-catalog_entry-tooltip .inner a.name {
   font-family: var(--font-alt);
   font-weight: var(--alt-font-weight);
@@ -3371,10 +3607,10 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 
 .b-catalog_entry-tooltip .inner .rating .text {
   color: var(--text-brt);
-  font-weight: 500;
-  font-variant-caps: all-small-caps;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 10px;
   margin: 0 0 -3px;
+  text-transform: uppercase;
 }
 
 .b-catalog_entry-tooltip .flexible-button .b-add_to_list {
@@ -3409,7 +3645,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 }
 
 [data-locale="ru"] .b-add_to_list.planned .trigger:has(.plus) .status-name:after {
-  content: 'К себе в список';
+  content: 'В список';
 }
 
 [data-locale="ru"] .b-add_to_list.planned .trigger:not(:has(.plus)) .status-name:after {
@@ -3442,9 +3678,9 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 }
 
 .b-add_to_list .trigger .status-name {
-  font-variant-caps: all-small-caps;
-  padding-bottom: 1px;
+  text-transform: uppercase;
   font-weight: 800;
+  font-size: 14px;
 }
 
 .c-image > .b-user_rate .b-add_to_list .trigger > .edit-trigger,
@@ -3820,7 +4056,7 @@ body:not(:has(.b-modal)) .b-catalog_entry-tooltip .flexible-button {
 
 .c-image > .b-user_rate .b-add_to_list .trigger .plus:before,
 .c-image > .b-user_rate .b-add_to_list .trigger .edit:before {
-  font-size: 24px;
+  font-size: 23px;
 }
 
 .c-image > .b-user_rate .b-add_to_list .expanded-options {
@@ -4202,6 +4438,8 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   grid-area: 3 / 4 / 3 / 5;
   display: flex;
   align-items: center;
+  justify-self: end;
+  width: 100%;
   gap: 8px;
 }
 
@@ -4568,9 +4806,9 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   display: inline-block;
   margin: 0;
   line-height: 1;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 800;
-  font-variant-caps: all-small-caps;
+  text-transform: uppercase;
 }
 
 .b-source .contributors {
@@ -4603,6 +4841,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   align-items: center;
   border-radius: var(--brdr-sml);
   padding: 4px 6px;
+  text-transform: uppercase;
   gap: 4px;
   transition: .2s ease;
 }
@@ -4621,6 +4860,119 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .b-source .source .key,
 .b-source .contributors .key {
   color: var(--text-off);
+}
+
+/* ======= Карточки Клубы ======= */
+.b-clubs > .b-club.detailed > .info > .grouped:after {
+  display: none;
+}
+
+.b-clubs > .b-club.detailed {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: column;
+  overflow: hidden;
+  padding: .6em;
+  margin: 0;
+  width: 100%;
+  border-radius: var(--brdr-lrg);
+  background: var(--clr-block);
+  box-shadow: 0 2px 8px rgba(from var(--shadow) r g b / .2);
+  transition: .2s ease;
+}
+
+.b-clubs > .b-club.detailed:hover {
+  transform: scale(1.04);
+}
+
+.b-clubs > .b-club.detailed > .name-logo {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  transition: .2s ease;
+}
+
+.b-clubs > .b-club.detailed > .name-logo:hover {
+  color: var(--second);
+}
+
+.b-clubs > .b-club.detailed > .name-logo:active {
+  color: var(--extra);
+}
+
+.b-clubs > .b-club.detailed > .name-logo > .logo {
+  margin: 0;
+  width: 48px;
+  border-radius: var(--brdr-lrg);
+}
+
+.b-clubs > .b-club.detailed > .name-logo > .name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: collapse;
+  word-break: break-word;
+  text-wrap: balance;
+  text-align: center;
+  line-height: normal;
+  color: inherit;
+  font-family: var(--font-alt);
+  font-weight: var(--alt-font-weight);
+  font-size: 14px;
+  width: 210px;
+  margin: 3px 0 0; 
+  padding: 2px 0 2px;
+  text-decoration: none;
+}
+
+.b-clubs > .b-club.detailed > .info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: var(--text-off);
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.b-clubs > .b-club.detailed > .info > .grouped .number {
+  color: inherit;
+  font-weight: 800;
+}
+
+.b-clubs > .b-club.detailed > .info > .grouped .value {
+  color: inherit;
+  font-weight: 600;
+}
+
+.b-clubs > .b-club.detailed > .info.author {
+  display: flex;
+  flex-flow: row;
+  font-size: 11px;
+  margin-top: auto;
+  padding-top: .6em;
+  width: 100%;
+}
+
+.b-clubs > .b-club.detailed > .info.author:before {
+  content: 'Создатель:';
+  margin-right: auto;
+}
+
+.b-clubs > .b-club.detailed > .info.author > .b-user16 a {
+  color: var(--text-off);
+}
+
+.b-clubs > .b-club.detailed > .info.author > .b-user16 a:hover {
+  color: var(--second);
+}
+
+.b-clubs > .b-club.detailed > .info.author > .b-user16 a:active {
+  color: var(--extra);
 }
 
 /* ======== Смайлы ======== */
@@ -4901,8 +5253,15 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   padding: .4em 0 0;
 }
 
-.b-comment > .inner .body .ban .b-user16 {
-  vertical-align: bottom;
+.b-comment > .inner .body .ban {
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse;
+  font-size: 0;
+}
+
+.b-comment > .inner .body .ban .resolution {
+  font-size: 15px;
 }
 
 .b-comment > .inner .body .ban .resolution,
@@ -4944,11 +5303,10 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 /* ===== Обзор Комментариев ===== */
 .p-comments-show > .l-page > div > div > .subheadline,
 .p-comments-show > .l-page > div > div > .block > .subheadline {
+  gap: 6px;
   display: flex;
-  flex-flow: column;
   justify-content: center;
   align-items: center;
-  gap: 6px;
   background: var(--clr-block);
   border: 1px solid var(--clr-brdr);
   border-bottom: none;
@@ -4956,7 +5314,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 .p-comments-show  .subheadline .b-user16 {
-  margin: 0;
+  margin: 0 0 0 auto;
 }
 
 .p-comments-show > .l-page > div > div > .block > .b-comment:first-child,
@@ -4993,6 +5351,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 
 /* ===== Подгрузка Комментариев ===== */
 .b-forum .faye-loader,
+.b-comments .faye-loader,
 .b-comments .comments-loader,
 .b-comments .comments-hider,
 .b-comments .comments-expander {
@@ -5008,7 +5367,12 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   transition: .2s ease;
 }
 
+.b-forum .faye-loader {
+  border-radius: var(--brdr-lrg-bt);
+}
+
 .b-forum .faye-loader:hover,
+.b-comments .faye-loader:hover,
 .b-comments .comments-loader:hover,
 .b-comments .comments-hider:hover,
 .b-comments .comments-expander:hover {
@@ -5487,28 +5851,30 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 @keyframes textarea-gradient {
-  0% { 
-    transform: rotate(0);
+  0% {
+    transform: translateX(-35%);
+  }
+  
+  50% { 
+    transform: translateX(-35%);
   }
   
   100% {
-    transform: rotate(360deg);
+    transform: translateX(35%);
   }
 }
 
 .b-shiki_editor > .body > .editor .b-input.text:before {
   content: '';
   position: absolute;
-  aspect-ratio: 1/1;
-  inset: -500% -50px 0;
-  border-radius: 50%;
-  background-size: 200%;
-  background: linear-gradient(to right, var(--second-brt), var(--main) 60%);
+  inset: -50% -200% 0;
+  background-size: 100%;
+  background: linear-gradient(to right, var(--main) 40%, var(--second-brt) 50%, var(--main) 50%);
 }
 
 .b-shiki_editor > .body > .editor .b-input.text:hover:before,
 .b-shiki_editor > .body > .editor .b-input.text:has(textarea:focus):before {
-  animation: textarea-gradient 2s linear infinite;
+  animation: textarea-gradient 10s linear infinite;
 }
 
 .b-shiki_editor > .body > .editor .b-input.text:after {
@@ -5777,7 +6143,9 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .b-critique_votes span,
 .b-critique_votes:before,
 .b-status-line .section.main .comments:before,
-.b-status-line .section.created_at time:before {
+.b-status-line .section.created_at time:before,
+.b-status-line .section.changed_at time:before,
+.b-status-line .section.main .collection-size:before {
   color: inherit;
 }
 
@@ -5836,7 +6204,6 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 }
 
 .b-review_opinion_marker.is-neutral input:not(:checked) + span:hover {
-  color: var(--text);
   background: var(--second-brt);
 }
 
@@ -5846,6 +6213,10 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 
 .b-review_opinion_marker.is-negative input:not(:checked) + span:hover {
   background: color-mix(in srgb, var(--red) 70%, var(--clr-dark) 30%);
+}
+
+.p-reviews-new .b-input textarea:focus {
+  box-shadow: none;
 }
 
 .p-critiques-new .l-content > .block,
@@ -5864,6 +6235,10 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   border-radius: var(--brdr-lrg-bt);
   justify-content: end;
   margin-bottom: .6em;
+}
+
+.p-reviews-new .l-content .m8 {
+  text-align: center;
 }
 
 .b-reviews_navigation .navigation-container {
@@ -6073,6 +6448,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .b-status-line .section.main .comments:before,
 .b-status-line .section.created_at time:before,
 .b-status-line .section.changed_at time:before,
+.b-status-line .section.main .collection-size:before,
 .b-reviews_navigation .review-controls .create-review.mini:before {
   font-size: 18px;
 }
@@ -6096,6 +6472,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .b-status-line .changed_at,
 .b-status-line .section.main > span {
   padding: 4px 8px;
+  color: var(--text);
   background: var(--clr-darker);
   border-radius: var(--brdr-mdm);
 }
@@ -6139,7 +6516,6 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 .b-review-topic.is-review_review_author_details > .inner .review-info .user-rate .b-add_to_list .status-name {
   padding: 0;
   font-size: 14px;
-  font-variant-caps: normal;
   text-transform: uppercase;
   line-height: normal;
 }
@@ -6251,66 +6627,6 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   grid-area: 3 / 1 / 3 / 5;
 }
 
-.b-review-topic > .inner > .buttons .main-controls {
-  display: flex;
-  align-items: center;
-  justify-self: end;
-  gap: 4px;
-  z-index: 1;
-  opacity: 0;
-  transition: .3s ease;
-}
-
-.b-review-topic > .inner:hover > .buttons .main-controls {
-  opacity: 1;
-}
-
-.b-review-topic > .inner > .buttons .main-controls > :where(span, a) {
-  display: flex;
-  align-items: center;
-  line-height: normal !important;
-  border-radius: var(--brdr-mdm);
-  border: 1px solid transparent;
-  color: var(--text-off);
-  padding: 3px 5px;
-  margin: 0;
-  gap: 3px;
-  transition: .3s ease;
-}
-
-.b-review-topic > .inner > .buttons .main-controls > :where(span, a):hover {
-  color: var(--text);
-  background: var(--clr-darker);
-  border-color: rgba(from var(--opacity) r g b / .03);
-}
-
-.b-review-topic > .inner > .buttons .main-controls > :where(span, a):before {
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
-  line-height: 1 !important;
-}
-
-.b-review-topic > .inner > .buttons .main-controls > :where(span, a):after {
-  content: attr(title);
-  line-height: normal;
-  width: auto;
-  display: block;
-  font-size: 12px;
-}
-
-.b-review-topic > .inner > .buttons .item-quote {
-  order: -1;
-  opacity: 0;
-  pointer-events: none;
-  transition: .3s ease;
-}
-
-.b-review-topic > .inner > .buttons .item-quote.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 /* ===== Отзывы на Форуме и в Профиле ===== */
 :is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .markers,
 .b-review-topic .b-status-line .section:not(:last-child):after {
@@ -6376,7 +6692,8 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   font-family: var(--font-alt);
   font-weight: var(--alt-font-weight);
   color: var(--text-brt);
-  align-self: center;
+  margin-bottom: 4px;
+  align-self: end;
 }
 
 [data-localized_names="ru"]:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner .name-date .name > .name-ru,
@@ -6395,7 +6712,7 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   grid-area: 1 / 5 / 1 / 5;
   justify-self: end;
   display: flex;
-  padding: 8px;
+  padding: 8px 8px 4px 0;
   gap: 4px;
 }
 
@@ -6413,7 +6730,6 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 
 .b-topic-preview > .inner header .b-anime_status_tag:before {
   font-family: var(--font-alt);
-  font-variant-caps: normal;
   text-transform: uppercase;
   font-weight: 800;
   font-size: 10px;
@@ -6462,11 +6778,6 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
   line-height: 0 !important;
 }
 
-:is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .b-user16 {
-  font-variant-caps: normal;
-  font-size: 12px;
-}
-
 :is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic .b-status-line .main {
   margin-right: auto;
 }
@@ -6501,6 +6812,645 @@ body[data-locale="en"]:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-ima
 
 :is(.p-profiles.p-profiles-reviews, .p-topics.p-topics-index) .b-review-topic > .inner > .buttons {
   grid-area: 5 / 3 / 5 / 6;
+}
+
+/* ========== Коллекции ========== */
+.p-collections-index .l-page {
+  padding-top: 30px;
+}
+
+.p-collections-index header.head {
+  justify-items: center;
+}
+
+.p-collections-index .l-page header.head .notice {
+  margin: -20px 6px 0;
+}
+
+.p-collections-index header.head .misc {
+  padding: 0;
+  font-size: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--brdr-mdm);
+}
+
+.p-collections-index header.head .misc:before {
+  color: inherit;
+}
+
+#collections_index .l-page > div > header.head .misc:hover,
+:is(.p-collections-index) .l-page > div > header.head .misc:hover {
+  color: var(--text);
+  background: var(--clr-dark-add);
+}
+
+.b-collection-topic > .inner > .markers,
+.b-collection-topic > .inner .b-status-line .main:after,
+.b-collection-topic > .inner .b-status-line .created_at:after {
+  display: none;
+}
+
+.b-collection-topic > .inner > header,
+.b-collection-topic > .inner .name-date {
+  display: contents;
+}
+
+.b-anime_status_tag.collection,
+.b-collection-topic > .b-comments,
+.b-collection-topic > .inner > .buttons,
+.b-collection-topic > .inner > .prebody,
+.b-collection-topic > .inner .poster img,
+.b-collection-topic > .inner .b-status-line,
+.b-topic > .inner header .b-anime_status_tag,
+.b-collection-topic > .inner > .prebody .additionals,
+.b-collection-topic > .inner .b-status-line .main > span,
+.b-collection-topic > .inner > .prebody .tags .b-anime_status_tag,
+.b-collection-topic.b-topic-preview > .inner > .prebody .additionals {
+  margin: 0;
+}
+
+.b-collection-topic > .inner .status-tags,
+.b-collection-topic > .inner .b-status-line,
+.b-collection-topic > .inner > .prebody .tags,
+.b-collection-topic > .inner .b-status-line .main {
+  gap: 4px;
+}
+
+.b-collection-topic > .inner {
+  padding: 1em;
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+  border-bottom: none;
+}
+
+.l-content:has(.b-collection-topic) > .b-forum.b-search-results > .faye-loader {
+  margin: 0;
+  border: 1px solid var(--clr-brdr);
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.l-content:has(.faye-loader) .b-collection-topic:nth-child(2) > .inner {
+  margin-top: 0;
+  border-radius: 0;
+}
+
+.p-collections-index .b-collection-topic > .inner {
+  border: 1px solid var(--clr-brdr);
+  border-radius: var(--brdr-lrg);
+}
+
+.p-collections-index .b-collection-topic:first-child > .inner {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.b-collection-topic > .inner {
+  display: grid;
+  grid-template-columns: 54px repeat(3, 1fr);
+}
+
+.p-topics-index .b-collection-topic:not(:first-child) > .inner {
+  border-radius: var(--brdr-lrg-tp);
+  margin-top: 12px;
+}
+
+.b-collection-topic > .inner .poster {
+  grid-area: 1 / 1 / 3 / 1;
+}
+
+.b-collection-topic > .inner .poster img {
+  border-radius: var(--brdr-sml);
+}
+
+.b-collection-topic > .inner .name {
+  grid-area: 1 / 2 / 1 / 4;
+  font-family: var(--font-alt);
+  text-overflow: ellipsis;
+  align-self: center;
+  overflow: hidden;
+}
+
+.b-collection-topic > .inner .status-tags {
+  grid-area: 1 / 4 / 1 / 4;
+  margin-top: -2px;
+  padding-bottom: 4px;
+  display: flex !important;
+  justify-self: end;
+}
+
+.b-collection-topic > .inner .b-anime_status_tag {
+  height: fit-content;
+}
+
+.b-collection-topic > .inner .b-status-line {
+  grid-area: 2 / 2 / 2 / 5;
+}
+
+.b-collection-topic > .inner .b-status-line :where(.created_at, .changed_at) time,
+.b-collection-topic > .inner .b-status-line .main :where(.b-critique_votes, .collection-size, .comments) {
+  display: flex;
+  color: inherit;
+  align-items: center;
+  line-height: normal;
+}
+
+.b-collection-topic > .inner .b-status-line .created_at {
+  margin-left: auto;
+}
+
+.b-collection-topic > .inner .body {
+  padding-top: 12px;
+  grid-area: 3 / 1 / 3 / 5;
+}
+
+.b-collection-topic > .inner > .prebody {
+  grid-area: 4 / 1 / 4 / 3;
+  align-self: center;
+}
+
+.b-collection-topic > .inner > .prebody .tags {
+  display: flex;
+}
+
+.b-anime_status_tag.collection,
+.b-anime_status_tag.collection-tag {
+  color: var(--text);
+  background: var(--clr-darker);
+  line-height: normal;
+  padding: 4px 12px;
+  font-size: 10px;
+}
+
+.b-anime_status_tag.collection-tag:hover {
+  color: var(--white);
+}
+
+.b-collection-topic .b-anime_status_tag:before {
+  line-height: normal;
+}
+
+.b-collection-topic .b-anime_status_tag.spoilers,
+.b-collection-topic .b-anime_status_tag.censored {
+  font-family: var(--font-alt);
+  font-size: 10px;
+  padding: 4px 12px;
+}
+
+.b-collection-topic .b-anime_status_tag.censored {
+  font-size: 12px;
+  padding: 2px 12px;
+}
+
+.b-anime_status_tag.collection,
+.b-collection-topic .b-anime_status_tag.spoilers,
+.b-collection-topic .b-anime_status_tag.censored {
+  border: none;
+}
+
+.b-collection-topic > .inner > .buttons {
+  grid-area: 4 / 3 / 4 / 5;
+  padding: 4px 0;
+  justify-self: end;
+  align-self: center;
+}
+
+.b-collection-topic > .inner .collection-row.is-spoilers .cover .image-cutter,
+.b-collection-topic > .inner .collection-row.is-censored .cover .image-cutter {
+  border-color: var(--clr-brdr);
+}
+
+.b-collection-topic > .inner .b-anime_status_tag.spoilers {
+  color: rgb(var(--spoiler));
+  background: rgb(var(--spoiler), .16);
+}
+
+.b-collection-topic > .inner .b-anime_status_tag.censored {
+  color: var(--censor);
+  background: rgba(from var(--censor) r g b / .25);
+}
+
+/* ======= На странице Коллекции ======= */
+.b-collection-topic .b-footer_vote,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .status-tags,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .body-inner > .block {
+  margin: 0;
+}
+
+.b-collection-topic .cc-collection-groups > .c-column:last-child,
+.x1000 .b-collection-topic .cc-collection-groups > .c-column:last-child,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .collection-groups > .subheadline {
+  margin: 0 !important;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .buttons,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .status-tags {
+  width: 100%;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .prebody {
+  height: 100%;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .poster,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .prebody {
+  padding-left: 12px;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .buttons,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .status-tags,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .b-status-line {
+  padding-right: 12px;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .body-inner > .block,
+.p-collections-show .b-collection-topic > :where(.subheadline, .b-comments.is-headline, .editor-container),
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .collection-groups > :where(.subheadline, .cc-collection-groups) {
+  padding: 1em;
+  background: var(--clr-block);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .name,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .poster,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .prebody,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .buttons,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .status-tags,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .b-status-line {
+  background: var(--clr-block);
+}
+
+.p-collections-show .b-collection-topic {
+  padding: 0;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 12px;
+  background: transparent;
+  grid-template-columns: 70px repeat(3, 1fr);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .prebody {
+  grid-area: 3 / 1 / 3 / 3;
+  align-content: center;
+  border-left: 1px solid var(--clr-brdr);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .buttons {
+  grid-area: 3 / 3 / 3 / 5;
+  border-right: 1px solid var(--clr-brdr);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block:has(:not(.prebody)) .buttons {
+  grid-area: 3 / 1 / 3 / 5;
+  border-left: 1px solid var(--clr-brdr);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .poster {
+  grid-area: 1 / 1 / 3 / 1;
+  border-left: 1px solid var(--clr-brdr);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .name {
+  grid-area: 1 / 2 / 1 / 4;
+  height: 100% !important;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .status-tags {
+  grid-area: 1 / 4 / 1 / 4;
+  justify-content: end;
+  border-right: 1px solid var(--clr-brdr);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .b-status-line {
+  grid-area: 2 / 2 / 2 / 5;
+  border-right: 1px solid var(--clr-brdr);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block .body {
+  padding: 0;
+  grid-area: 4 / 1 / 4 / 5;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .body-inner > .block,
+.p-collections-show .b-collection-topic > :where(.subheadline, .b-comments.is-headline, .editor-container),
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .collection-groups > :where(.subheadline, .cc-collection-groups) {
+  border: 1px solid var(--clr-brdr);
+}
+
+.p-collections-show .b-collection-topic > .b-comments.is-headline,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .body-inner > .block,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block > footer,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block > footer .b-footer_vote,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .collection-groups > .cc-collection-groups:not(:last-child) {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .body-inner > .block,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .collection-groups > .cc-collection-groups:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+:is(.p-topics-show, .p-collections-show) .l-page .l-content .b-collection-topic > .subheadline,
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .collection-groups > .subheadline {
+  border-radius: var(--brdr-lrg-tp);
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .collection-groups > .cc-collection-groups {
+  padding: .5em;
+  border-top: none;
+}
+
+:is(.p-topics-show, .p-collections-show) .b-collection-topic .inner.block > footer {
+  grid-area: 6 / 1 / 6 / 5;
+  border: 1px solid var(--clr-brdr);
+  border-top: none;
+}
+
+.p-collections-show .b-collection-topic > .subheadline {
+  border-bottom: none;
+}
+
+.p-collections-show .b-collection-topic > .b-comments.is-headline {
+  padding-top: 0;
+  border-top: none;
+}
+
+.p-collections-show .b-collection-topic > .editor-container {
+  border-radius: var(--brdr-lrg);
+}
+
+/* ===== Новая Коллекция / Редактирование Коллекции ===== */
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child .remove-coauthor:after,
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .m5:first-child,
+:is(.p-collections-new, .p-collections-edit) .l-page .block > .c-column > .m5:empty,
+:is(.p-collections-new, .p-collections-edit) .l-page .block > .cc-2:after,
+.p-collections-new .block > .cc-2 .c-column:empty {
+  display: none;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .b-input,
+:is(.p-collections-new, .p-collections-edit) .l-page .new_collection > .block,
+:is(.p-collections-new, .p-collections-edit) .l-page .block > .cc-2 .c-column,
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .coauthor-suggest,
+:is(.p-collections-new, .p-collections-edit) .l-page .m8 {
+  margin: 0;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .m5,
+:is(.p-collections-new, .p-collections-edit) .l-page .m8,
+:is(.p-collections-new, .p-collections-edit) .l-page .subheadline.m5 {
+  margin: 0 !important;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .block2 .buttons,
+:is(.p-collections-new, .p-collections-edit) .l-page :where(.m8, .b-text_with_paragraphs, .subheadline.m5, .block > .cc-2, .block > .b-shiki_editor) {
+  padding: 1em;
+  background: var(--clr-block);
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .block2 .buttons,
+:is(.p-collections-new, .p-collections-edit) .l-page :where(.b-text_with_paragraphs, .subheadline.m5, .block > .cc-2, .block > .b-shiki_editor) {
+  border: 1px solid var(--clr-brdr);
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .block2 .buttons,
+:is(.p-collections-new, .p-collections-edit) .l-page :where(.b-text_with_paragraphs, .block > .cc-2) {
+  border-radius: var(--brdr-lrg-bt);
+  border-top: none;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .m8 {
+  padding: 0 1em;
+  text-align: center;
+  border-left: 1px solid var(--clr-brdr);
+  border-right: 1px solid var(--clr-brdr);
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .b-text_with_paragraphs {
+  margin-bottom: 12px !important;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .subheadline.m5 {
+  border-radius: var(--brdr-lrg-tp);
+  border-bottom: none;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .block > .cc-2 {
+  margin-bottom: 12px;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .block > .cc-2 .c-column {
+  display: grid;
+  grid-template-columns: 400px repeat(4, 1fr);
+  float: none;
+  width: 100%;
+  gap: 8px;
+}
+
+.p-collections-edit .l-page .block > .cc-2 .c-column:first-child {
+  border-bottom: 1px solid var(--clr-brdr);
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .collection_name {
+  grid-area: 2 / 1 / 3 / 3;
+  width: 100%;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .collection_name > #collection_name {
+  max-width: none;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .collection_kind {
+  grid-area: 2 / 3 / 3 / 3;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .b-input:has(.collection-state-hint) {
+  grid-area: 1 / 1 / 1 / 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 8px;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column .collection-state-hint {
+  width: 100%;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .collection_is_censored,
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .collection_is_spoilers {
+  align-self: center;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .collection_is_censored {
+  grid-area: 2 / 5 / 2 / 5;
+  align-self: start;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column > .collection_is_spoilers {
+  grid-area: 2 / 5 / 2 / 5;
+  align-self: end;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column > #vue_tags_input {
+  grid-area: 3 / 1 / 3 / 6;
+  width: 100%;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .b-input:has(.b-user16) {
+  grid-area: 1 / 1 / 1 / 3;
+  text-transform: uppercase;
+  font-family: var(--font-alt);
+  font-size: var(--alt-font-size);
+  font-weight: var(--alt-font-weight);
+  align-items: center;
+  align-self: center;
+  display: flex;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .coauthor-suggest {
+  border-radius: var(--brdr-mdm);
+  grid-area: 1 / 4 / 1 / 6;
+  align-self: center;
+  justify-self: end;
+  position: static;
+  font-size: 12px;
+  line-height: 2;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .page-reload-hint {
+  grid-area: 2 / 1 / 2 / 3;
+  font-size: 12px;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .subheadline {
+  grid-area: 1 / 3 / 1 / 6;
+  text-align: left;
+  border: none;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .b-nothing_here,
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .m5:has(.b-user16) {
+  grid-area: 2 / 3 / 2 / 6;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child > .m5:has(.b-user16) {
+  align-items: center;
+  display: flex;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child .remove-coauthor {
+  display: flex;
+  position: relative;
+  vertical-align: sub;
+  color: var(--text-off);
+  transition: .2s ease;
+  font-size: 0;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child .remove-coauthor:hover {
+  color: var(--red);
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child .remove-coauthor:before {
+  color: inherit;
+  font-size: 20px;
+  padding: 0;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .c-column:last-child .remove-coauthor > a {
+  position: absolute;
+  border: none;
+  padding: 0;
+  inset: 0;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .c-column .b-input .ti-new-tag-input-wrapper .ti-new-tag-input {
+  max-width: none;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .cc-2 .b-input.m20 {
+  margin-bottom: 0 !important;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .block > .b-shiki_editor {
+  border-radius: var(--brdr-lrg-tp);
+  border: 1px solid var(--clr-brdr);
+  margin: 0 !important;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .new_collection > .block2 {
+  font-size: 0;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .block2 .buttons {
+  width: 100%;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .buttons > .cancel {
+  margin-right: auto;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .buttons > input[type="submit"] {
+  padding: 5px 45px;
+}
+
+:is(.p-collections-new, .p-collections-edit) .l-page .buttons > input[type="submit"]:hover {
+  padding: 5px 55px;
+}
+
+/* ===== Коллекции в подсказках ===== */
+.tooltip-inner .b-collection-topic > .inner {
+  border: none;
+  padding: 0;
+}
+
+.tooltip-inner .b-collection-topic > .inner .name {
+  grid-area: 1 / 2 / 1 / 5; 
+}
+
+.tooltip-inner .b-collection-topic > .inner .status-tags {
+  grid-area: 2 / 4 / 2 / 4;
+  align-self: center;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltip-inner .b-collection-topic > .inner > .prebody {
+  grid-area: 2 / 2 / 2 / 4;
+}
+
+.tooltip-inner .b-collection-topic > .inner > .body {
+  padding-top: 6px;
+}
+
+.tooltip-inner .b-collection-topic .b-catalog_entry .cover .title.two_lined {
+  font-size: 10px;
+  line-height: 1.2;
+  padding: 8px 4px;
+}
+
+.tooltip-inner .b-collection-topic > .inner .see-more .text {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.tooltip-inner .b-collection-topic > .inner .see-more .text .inner .dots {
+  font-size: 16px;
+}
+
+.tooltip-inner .b-collection-topic > .inner .b-status-line {
+  grid-area: 4 / 1 / 4 / 5;
 }
 
 /* ======== Загаловок / Заголовки ======== */
@@ -6670,7 +7620,18 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-column-end: 11;
 }
 
+.p-topics header h1 a.reload {
+  display: flex;
+  align-items: center;
+}
+
+.p-topics header h1 a.reload:hover:after {
+  font-size: 32px;
+  margin-left: 6px;
+}
+
 /* ========== Страницы с Боковым Меню ========== */
+.l-menu > .b-contests-menu,
 .l-page:has(.l-menu) > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu),
 .p-topics-show > .l-page > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu),
 .p-db_entries > .l-page > div :where(.menu-slide-outer, .menu-slide-inner, .b-animes-menu) {
@@ -6692,6 +7653,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .l-menu .block2,
 .l-content .b-comments,
 .l-content > .subheadline,
+.b-contests-menu > .block,
 .p-topics .l-menu .b-forums,
 .l-content .editor-container,
 .p-people-index > .l-page > div > .cc-8,
@@ -6742,6 +7704,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 /* ======== Боковое Меню ======== */
+.b-contests-menu > .block,
 .l-page > div .l-menu > .b-animes-menu > .block,
 .l-page > div .l-menu > .b-animes-menu > .b-favoured,
 .l-page > div .l-menu > .b-animes-menu > .b-menu-links {
@@ -6751,6 +7714,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   max-width: calc(1260px / 4);
 }
 
+.b-contests-menu > .block .subheadline,
 .l-page > div .l-menu > .b-animes-menu .subheadline {
   border-bottom: 1px solid var(--clr-brdr);
   padding: .6em;
@@ -6802,8 +7766,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 .b-animes-menu .friend-rate .status,
-.b-animes-menu .friend-rate .b-user16,
-.b-animes-menu .friend-rate .b-user16 a {
+.b-animes-menu .friend-rate .b-user16 {
   font-size: inherit;
   line-height: inherit;
 }
@@ -6815,6 +7778,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .b-animes-menu .friend-rate .b-user16 a {
   position: absolute;
   width: 100%;
+  font-size: 10px;
+  line-height: 24px;
   justify-content: left;
   padding: 0;
 }
@@ -7020,6 +7985,62 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   opacity: 0;
   width: 0;
   margin-right: -500px;
+}
+
+/* ====== В Избранном / В Клубах / В Коллекциях ====== */
+.p-db_entries-clubs .l-content .b-club,
+.p-db_entries-favoured .l-content .b-user {
+  margin: 0;
+}
+
+.p-db_entries-clubs .l-content .b-clubs,
+.p-db_entries-favoured .l-content > .block > .block,
+:where(.p-db_entries-collections, .p-db_entries-clubs, .p-db_entries-favoured) .l-content .subheadline {
+  padding: 1em;
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+}
+
+:where(.p-db_entries-collections, .p-db_entries-clubs, .p-db_entries-favoured) .l-content .b-options-floated.count {
+  color: var(--text-off);
+  font-size: 12px;
+  margin: 16px 6px 0 0;
+}
+
+.p-db_entries-clubs .l-content .b-clubs,
+.p-db_entries-favoured .l-content > .block > .block {
+  border-top: none;
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.p-db_entries-clubs .l-content .b-clubs,
+.p-db_entries-favoured .l-content > .block > .block {
+  display: grid;
+  grid-template-columns: repeat(26, 1fr);
+  gap: 2px;
+}
+
+.p-db_entries-clubs .l-content .b-clubs {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.p-db_entries-clubs .l-content .b-clubs .name-logo > .name {
+  -webkit-line-clamp: 2;
+}
+
+.p-db_entries-favoured .l-content .b-user img {
+  border-radius: var(--brdr-sml);
+  transition: .1s ease;
+}
+
+.p-db_entries-favoured .l-content .b-user:hover img {
+  transform: scale(1.1);
+}
+
+.p-db_entries-clubs .l-content .b-club {
+  overflow: hidden;
+  width: 100%;
 }
 
 /* ======== Основная Страница ======== */
@@ -7336,6 +8357,117 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-column: span 8;
 }
 
+/* ======= Турнир ======= */
+.p-contests-show .l-page .menu-slide-outer > .menu-slide-inner > .l-content {
+  grid-column: 1 / 4;
+  grid-row: 3 / 5;
+}
+
+.p-contests-show .l-page > div .menu-slide-outer > .menu-slide-inner > .l-menu {
+  grid-row-start: 1;
+  grid-row-end: 9;
+}
+
+.p-contests-show .cc-round_stats::after {
+  display: none;
+}
+
+.p-contests-show .l-content .contest_round > .subheadline,
+.l-menu > .b-contests-menu .user_rates-minified .b-catalog_entry,
+.p-contests-show .contest_round > .cc-round_stats .c-column > .subheadline {
+  margin: 0 !important;
+}
+
+.p-contests-show .voting-warning,
+.p-contests-show .l-page div > .block:has(.b-text_with_paragraphs),
+.p-contests-show .contest_round > .cc-round_stats:last-child > .c-column,
+.p-contests-show .l-content .contest_round > :where(.subheadline, .match-container) {
+  margin: 0;
+}
+
+.p-contests-show .contest_round > .cc-round_stats:last-child,
+.p-contests-show .l-content .contest_round > .match-container,
+.p-contests-show .l-page div > .block:has(.b-text_with_paragraphs),
+.p-contests-show .contest_round > .cc-round_stats .c-column .match-day:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.p-contests-show .cc-round_stats > .c-column:last-child:last-child,
+.p-contests-show .cc-round_stats > .c-column:first-child:last-child:last-child {
+  margin-bottom: 12px !important;
+}
+
+.p-contests-show .contest_round > .cc-round_stats:last-child,
+.p-contests-show .l-page div > .block:has(.b-text_with_paragraphs),
+.p-contests-show .contest_round > .cc-round_stats:not(:last-child) .match-day,
+.p-contests-show .contest_round > .cc-round_stats:not(:last-child) .c-column > .subheadline,
+.p-contests-show .l-content .contest_round > :where(.subheadline, .match-container) {
+  background: var(--clr-block);
+  border: 1px solid var(--clr-brdr);
+  padding: 1em;
+}
+
+.p-contests-show .contest_round > .cc-round_stats .c-column > .subheadline {
+  padding: 1em;
+}
+
+.p-contests-show .l-content .contest_round > .subheadline,
+.p-contests-show .contest_round > .cc-round_stats .c-column > .subheadline {
+  border-radius: var(--brdr-lrg-tp);
+}
+
+.p-contests-show .l-page div > .block:has(.b-text_with_paragraphs),
+.p-contests-show .contest_round > .cc-round_stats:not(:last-child) .c-column .match-day {
+  border-radius: var(--brdr-lrg-bt);
+}
+
+.p-contests-show .contest_round > .cc-round_stats .c-column .match-day {
+  padding-top: 0;
+}
+
+.p-contests .match-day > .date {
+  font-weight: var(--alt-font-weight);
+  font-size: var(--alt-font-size);
+  font-family: var(--font-alt);
+  text-align: center;
+  line-height: 2;
+  padding: .4em;
+}
+
+.p-contests-show .contest_round > .cc-round_stats:last-child .match-day:first-child > .date {
+  padding-top: 0;
+  line-height: 1.4;
+}
+
+.p-contests-show .contest_round > .cc-round_stats:last-child {
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 0;
+  grid-gap: 12px;
+  display: grid;
+}
+
+.p-contests-show .contest_round > .cc-round_stats:last-child > .c-column {
+  width: 100%;
+}
+
+.p-contests-show .contest_round > .cc-round_stats:last-child > .c-column:first-child {
+  grid-column: 1 / 1;
+}
+
+.p-contests-show .contest_round > .cc-round_stats:last-child > .c-column:last-child {
+  grid-column: 2 / 4;
+}
+
+.p-contests-show .l-page div > .block:has(.b-text_with_paragraphs) {
+  grid-column: 1 / 4;
+  grid-row: 2 / 2;
+}
+
+.p-contests-show .l-content .contest_round > .match-container {
+  border-top: none;
+  padding-top: .6em;
+}
+
 /* ======== Страница Аниме/Манги/Ранобэ ======== */
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .no-video:after,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc:after,
@@ -7373,7 +8505,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-related-authors,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about > .cc,
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block > .b-db_entry {
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block > .b-db_entry,
+:is(.p-animes-show) .l-content > .block > .resources-loader {
   display: contents;
 }
 
@@ -7405,6 +8538,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :where(.b-db_entry-variant-list_item, .b-db_entry-variant-list_item .image, .b-db_entry-variant-list_item .b-user_rate),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content:not(:has(.cc-characters .c-characters)) > .block .c-image .b-user_rate,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .contest_winners .winners:hover .winner:nth-child(n+2),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .block > .resources-loader .block:has(.cc-similar),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-options-floated,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .name,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-show_more,
@@ -7439,6 +8573,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .block > .block:has(.cc-similar),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content .block > .resources-loader .block:has(.cc-similar),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-reviews_navigation),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-about .c-info-right > .block,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .cc-related-authors .c-column,
@@ -7462,7 +8597,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block:has(.b-reviews_navigation),
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block
-:where(.c-characters, .c-screenshots, .c-videos, .block:has(.cc-similar), .cc-related-authors .c-column:first-child) .subheadline {
+:where(.c-characters, .c-screenshots, .c-videos, .block:has(.cc-similar),
+.cc-related-authors .c-column:first-child) .subheadline {
   padding: 1em;
 }
 
@@ -7477,6 +8613,14 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   grid-row: 1 / 3;
   padding-left: 1em;
   border-left: 1px solid var(--clr-brdr);
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .b-watch_banner {
+  grid-column: 3 / 5;
+  grid-row: 5 / 5;
+  margin: .1em 1em auto 4em;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--main-brt) 50%, var(--main) 50%) 0%, var(--main) 52%, color-mix(in srgb, var(--main) 50%, #000 50%) 100%);
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .c-info-right .watch-online {
@@ -7607,10 +8751,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   pointer-events: auto;
 }
 
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .b-db_entry .b-entry-info .b-tag {
-  font-size: 12px;
-}
-
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page :where(.other-names, .more-info) {
   position: static;
   color: var(--text-off);
@@ -7660,6 +8800,11 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-videos .cc .b-video,
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors > .c-authors .b-db_entry-variant-list_item img {
   border-radius: var(--brdr-sml);
+}
+
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-content > .block .c-screenshots img {
+  width: 100%;
+  height: 100%;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors > .c-authors .info > .name .b-link {
@@ -8113,8 +9258,14 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   margin-left: 2px;
 }
 
+.b-db_entry-variant-list_item > .info .b-user_rate .b-add_to_list .trigger,
+.b-db_entry-variant-list_item > .info .b-user_rate .b-add_to_list .option {
+  font-size: 10px;
+}
+
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .b-user_rate .trigger .status-name {
   padding: 0 6px;
+  font-size: 10px;
 }
 
 :is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .cc-related-authors .c-column:first-child .b-db_entry-variant-list_item .trigger-arrow {
@@ -8180,7 +9331,8 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   background: var(--clr-dark-add);
 }
 
-:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page .l-content .block > .block:has(.cc-similar) {
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page .l-content .block > .block:has(.cc-similar),
+:is(.p-animes-show, .p-mangas-show, .p-ranobe-show) .l-page .l-content .block .resources-loader > .block:has(.cc-similar) {
   grid-column: 1 / 5;
   grid-row: 10 / 10;
   padding: 0 1em 1em;
@@ -8323,6 +9475,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .b-user_history-line > .id,
 .b-user_history-line > .date,
 .b-log_entry > span.state,
+.b-user_history-line .destroy,
 .b-log_entry > .spoiler.target > .change-details,
 .b-user_rate_log > .spoiler.target > .info {
   margin: 0 !important;
@@ -8372,7 +9525,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .b-user_rate_log > span > .b-user16,
 .b-user_rate_log > span > .bubbled-processed,
 .b-user_rate_log > .oauth_application > .b-oauth_application > a,
-.b-user_history-line > :where(.id, span, .date) {
+.b-user_history-line > :where(.id, span, .date, .destroy) {
   display: flex;
   align-items: center;
   height: 36px;
@@ -8382,14 +9535,15 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .b-user_history-line > .id,
 .b-user_history-line > .date,
+.b-user_history-line > .destroy,
 .b-log_entry > span:first-child > a,
 .b-log_entry > :is(span.date, span.state, span.column),
 .b-user_rate_log > .date,
 .b-user_rate_log > span.action,
 .b-user_rate_log > span:first-child a {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
-  font-variant-caps: all-small-caps;
+  text-transform: uppercase;
   color: var(--text-dead);
   background: rgba(from var(--opacity) r g b / .04);
   padding: 0 12px;
@@ -8402,7 +9556,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .b-log_entry > span.column {
   border-left: 1px solid rgba(from var(--opacity) r g b / .04);
-  font-size: 13px;
   max-width: 200px;
   overflow: hidden;
   text-align: center;
@@ -8420,9 +9573,24 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   order: 3;
 }
 
+.b-user_history-line > .destroy {
+  padding: 0 8px;
+  width: auto;
+}
+
+.b-user_history-line:hover > .destroy {
+  color: color-mix(in srgb, var(--text-off) 50%, var(--red) 50%);
+  background: rgba(from var(--red) r g b / .1);
+}
+
+.b-user_history-line > .destroy:hover {
+  color: var(--red);
+  background: rgba(from var(--red) r g b / .24);
+}
+
 .b-log_entry > span.state,
 .b-user_rate_log > span.action {
-  font-size: 13px;
+  font-size: 11px;
   padding: 0 8px;
   border-left: 1px solid;
   border-right: 1px solid;
@@ -8512,7 +9680,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   max-width: 360px;
   color: var(--text);
   font-family: var(--font-alt);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   text-wrap: nowrap;
   padding: 0 12px;
@@ -8521,6 +9689,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   text-overflow: ellipsis;
   z-index: 1;
   transition: .3s ease;
+}
+
+.p-profiles-logs .b-user_rate_log > span > .bubbled-processed {
+  display: block;
+  line-height: 36px;
+  max-width: 600px;
 }
 
 .b-user_history-line > span {
@@ -8768,6 +9942,11 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   max-width: none;
 }
 
+.p-db_entries-edit_field .b-input textarea[id="reason"] {
+  padding: 6px 8px;
+  text-wrap: wrap;
+}
+
 .p-db_entries-edit_field .new_video .buttons {
   margin-top: 2em;
   justify-self: end;
@@ -9000,7 +10179,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  white-space: break-spaces;
+  white-space: collapse;
   font-weight: 200;
   font-size: 14px;
   line-height: 1;
@@ -10082,12 +11261,12 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   width: fit-content;
   min-height: 22px;
   font-family: var(--font-alt);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
-  font-variant-caps: all-small-caps;
   line-height: 1.3;
   margin: 3px 0 0 3px;
   padding: 0 6px;
+  text-transform: uppercase;
   border-radius: var(--brdr-sml);
   backdrop-filter: blur(2px);
   background: rgba(from var(--black) r g b / .1);
@@ -10143,6 +11322,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 /* - - - Другие страницы - - - */
 .p-user_rates-index .item-add:before,
+.b-user_history-line .destroy:before,
 .p-profiles-comments .comments-search:after,
 .p-profiles-comments .comments-search:before,
 .p-user_histories .b-options-floated a:before,
@@ -10173,6 +11353,10 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
+}
+
+.b-user_history-line .destroy:before {
+  content: 'delete';
 }
 
 .p-profiles-comments .comments-search:before,
@@ -10276,7 +11460,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 .p-profiles-versions .b-log_entry > .author,
 .p-user_histories .l-page > div > .block > .history-page > .mischeadline,
 .p-profiles-clubs > .l-page > div > .block > .b-options-floated,
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info > .grouped:after,
 .p-profiles-collections .b-options-floated > a:after,
 .p-profiles-collections .b-options-floated a span.brackets:after,
 .p-profiles-collections .b-options-floated .link span.brackets:after,
@@ -10394,8 +11577,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   gap: 8px;
 }
 
-.p-profiles-friends > .l-page > div > .block > .cc > .b-user,
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club {
+.p-profiles-friends > .l-page > div > .block > .cc > .b-user {
   display: flex;
   flex-flow: column;
   overflow: hidden;
@@ -10405,8 +11587,7 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   transition: .2s ease;
 }
 
-.p-profiles-friends > .l-page > div > .block > .cc > .b-user > .name,
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo > .name {
+.p-profiles-friends > .l-page > div > .block > .cc > .b-user > .name {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -10485,95 +11666,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
 
 .p-profiles-clubs > .l-page > div > .block > .b-clubs {
   grid-template-columns: repeat(5, 1fr);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club {
-  justify-content: flex-start;
-  align-items: center;
-  padding: .6em;
-  border-radius: var(--brdr-lrg);
-  box-shadow: 0 2px 8px rgba(from var(--shadow) r g b / .2);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club:hover {
-  transform: scale(1.04);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  color: var(--text);
-  transition: .2s ease;
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo:hover {
-  color: var(--second);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo:active {
-  color: var(--extra);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo > .logo {
-  margin: 0;
-  width: 48px;
-  border-radius: var(--brdr-lrg);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .name-logo > .name {
-  font-size: 14px;
-  width: 210px;
-  margin: 3px 0 0; 
-  padding: 2px 0 2px;
-  text-decoration: none;
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  color: var(--text-off);
-  font-variant-caps: all-small-caps;
-  font-size: 12px;
-  line-height: 1;
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info > .grouped .number {
-  color: inherit;
-  font-weight: 800;
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info > .grouped .value {
-  color: inherit;
-  font-weight: 600;
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info.author {
-  display: flex;
-  flex-flow: row;
-  font-size: 13px;
-  margin-top: auto;
-  padding-top: .6em;
-  width: 100%;
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info.author:before {
-  content: 'Создатель:';
-  margin-right: auto;
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info.author > .b-user16 a {
-  color: var(--text-off);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info.author > .b-user16 a:hover {
-  color: var(--second);
-}
-
-.p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info.author > .b-user16 a:active {
-  color: var(--extra);
 }
 
 /* ======== Избранное ======== */
@@ -11707,34 +12799,6 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   pointer-events: none;
 }
 
-.p-user_rates-index .list-posters .user_rate > .text {
-  bottom: 0;
-  font-size: 12px;
-  color: var(--white);
-  text-shadow: 0 1px 3px var(--black), 0 1px 6px var(--black);
-  line-height: normal;
-  max-height: 20px;
-  border-radius: var(--brdr-sml-bt);
-  background: rgba(from var(--black) r g b / .6);
-  backdrop-filter: blur(2px);
-  overflow-y: auto;
-  scrollbar-width: none;
-  scrollbar-color: var(--main) transparent;
-}
-
-.p-user_rates-index .list-posters .user_rate:hover > .text {
-  max-height: 52px;
-}
-
-.p-user_rates-index .list-posters .user_rate > .text:hover {
-  max-height: 100%;
-}
-
-.p-user_rates-index .list-posters .user_rate > .text:before {
-  background: transparent;
-  border-radius: var(--brdr-sml-bt);
-}
-
 .p-user_rates-index .l-page .l-content > .list-groups > header {
   padding: 0;
   height: 56px;
@@ -12058,44 +13122,16 @@ body:not(#profiles_show) > .l-page header.head :where(h1, h2) a.back:active {
   padding: 10px;
 }
 
-
-
-/* - - - Размеры шрифта для гугла - - - */
-@supports (-webkit-appearance: none) and (not (-moz-appearance: none)) {
-  #profiles_show .achievements .cc-franchises .b-badge:after,
-  #profiles_show .b-achievement.is-badge:after,
-  #profiles_show .b-achievement.is-badge[data-progress="100"]:after {
-    font-size: 13px;
-  }
-
-  .b-user_rate_log > .date,
-  .b-user_history-line > .id,
-  .b-user_history-line > .date,
-  .b-user_rate_log > span.action,
-  .b-log_entry > span:first-child > a,
-  .b-user_rate_log > span:first-child a,
-  .b-collection-topic > .inner .see-more,
-  .b-catalog_entry-tooltip .inner .rating .text,
-  .b-collection-topic > .inner .see-more.animanga,
-  .b-log_entry > :is(span.date, span.state, span.column),
-  .p-profiles:not(.p-profiles-show).p-profiles header.head h1 > .misc,
-  .p-profiles-clubs > .l-page > div > .block > .b-clubs > .b-club > .info,
-  .p-achievements-index .block2 > .cc-achievements .c-about :where(.hint, .percent) {
-    font-size: 14px;
-  }
-
-  .b-user_history-line > span,
-  .b-user16 {
-    font-size: 15px;
-  }
-
-  .b-postloader.collapsed > .next:after,
-  .p-profiles-collections .b-nothing_here,
-  .b-shiki_editor > .links > label > span {
-    font-size: 18px;
-  }
+:root {
+  --build: 'shi.Modern Reborn alpha 0.4.16';
 }
 
-:root {
-  --build: 'shi.Modern Reborn alpha 0.4.14';
+/* Активность */
+.p-profiles.p-profiles-show .profile-head > .c-info > .c-additionals > b {
+  font-size: 0;
+}
+
+.p-profiles.p-profiles-show .profile-head > .c-info > .c-additionals > b:after {
+  content: 'Я насрал:';
+  font-size: var(--alt-font-size);
 }
